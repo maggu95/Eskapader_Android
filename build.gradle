@@ -13,6 +13,10 @@ buildscript {
     }
 }
 
+ext {
+    navigationVersion = "2.3.0"
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

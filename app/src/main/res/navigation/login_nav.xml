@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/loggInnFragment">
+    <fragment
+        android:id="@+id/opprettBrukerFragment"
+        android:name="usn.gruppe7.eskapader_android.OpprettBrukerFragment"
+        android:label="fragment_opprett_bruker"
+        tools:layout="@layout/fragment_opprett_bruker" >
+        <action
+            android:id="@+id/action_opprettBrukerFragment_to_loggInnFragment"
+            app:destination="@id/loggInnFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loggInnFragment"
+        android:name="usn.gruppe7.eskapader_android.LoggInnFragment"
+        android:label="LoggInnFragment"
+        tools:layout="@layout/fragment_logg_inn">
+        <action
+            android:id="@+id/action_loggInnFragment_to_opprettBrukerFragment2"
+            app:destination="@id/opprettBrukerFragment" />
+    </fragment>
+</navigation>
