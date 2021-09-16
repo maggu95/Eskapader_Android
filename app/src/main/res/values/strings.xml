@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Eskapader_Android</string>
+    <string name="opprettBrukerLink"> <u>Har du ikke bruker? Trykk her for å opprette </u> </string>
 </resources>
