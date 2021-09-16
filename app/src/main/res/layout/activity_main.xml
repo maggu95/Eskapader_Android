@@ -10,7 +10,7 @@
         android:id="@+id/tittel"
         android:layout_width="382dp"
         android:layout_height="163dp"
-        android:text="Eskapader top 10 apps, you wont belive nr. 2 !!!1"
-        tools:layout_editor_absoluteX="0dp"
+        android:text="You wont last 5 minutes playing this app"
+        tools:layout_editor_absoluteX="-1dp"
         tools:layout_editor_absoluteY="1dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
