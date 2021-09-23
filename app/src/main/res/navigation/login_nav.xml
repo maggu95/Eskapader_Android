@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_opprettBrukerFragment_to_loggInnFragment"
             app:destination="@id/loggInnFragment" />
+        <action
+            android:id="@+id/action_opprettBrukerFragment_to_godkjentBruker"
+            app:destination="@id/godkjentBruker" />
     </fragment>
     <fragment
         android:id="@+id/loggInnFragment"
@@ -21,5 +24,15 @@
         <action
             android:id="@+id/action_loggInnFragment_to_opprettBrukerFragment2"
             app:destination="@id/opprettBrukerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/godkjentBruker"
+        android:name="usn.gruppe7.eskapader_android.GodkjentBruker"
+        android:label="GodkjentBruker"
+        tools:layout="@layout/fragment_godkjent_bruker"
+        >
+        <action
+            android:id="@+id/action_godkjentBruker_to_loggInnFragment"
+            app:destination="@id/loggInnFragment" />
     </fragment>
 </navigation>
