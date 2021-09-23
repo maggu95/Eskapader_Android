@@ -14,9 +14,6 @@
             app:navGraph="@navigation/login_nav"
             app:defaultNavHost="true"
             tools:layout="@layout/fragment_hoved_meny">
-
-
         </androidx.fragment.app.FragmentContainerView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
