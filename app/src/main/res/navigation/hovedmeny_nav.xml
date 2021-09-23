@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hovedmeny_nav"
+    app:startDestination="@id/hovedMenyFragment">
+
+    <fragment
+        android:id="@+id/hovedMenyFragment"
+        android:name="usn.gruppe7.eskapader_android.HovedMenyFragment"
+        android:label="HovedMenyFragment"
+        tools:layout="@layout/fragment_hoved_meny"/>
+</navigation>
