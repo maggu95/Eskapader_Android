@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_hovedMenyFragment_to_musikkQuiz"
             app:destination="@id/musikkQuiz" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_dilemmaActivity"
+            app:destination="@id/dilemmaActivity" />
     </fragment>
     <activity
         android:id="@+id/musikkQuiz"
         android:name="usn.gruppe7.eskapader_android.MainActivity"
         android:label="musikkquiz_spill"
         tools:layout="@layout/musikkquiz_spill" />
+    <activity
+        android:id="@+id/dilemmaActivity"
+        android:name="usn.gruppe7.eskapader_android.DilemmaActivity"
+        android:label="DilemmaActivity"
+        tools:layout="@layout/dilemma_layout"/>
 </navigation>

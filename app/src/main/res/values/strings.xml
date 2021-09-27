@@ -17,4 +17,11 @@
     <string name="musAltTekst2_3">Lose Yourself, Eminem</string>
     <string name="musAltTekst2_4">Come Together, The Beatles</string>
 
+
+    <string name="dilemmatekst1_1">Aldri vaske håret</string>
+    <string name="dilemmatekst1_2">Aldri pusse tennene</string>
+
+    <string name="dilemmatekst2_1">Kropp dekket av pels</string>
+    <string name="dilemmatekst2_2">Kropp dekket av fiskeskall</string>
+
 </resources>

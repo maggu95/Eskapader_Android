@@ -1,5 +1,6 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +21,13 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         val bilde : ImageView = itemView.findViewById(R.id.spillKortBilde)
 
         init {
-            val kortTrykket : Int = adapterPosition
             itemView.setOnClickListener() {
-                itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz)
+                val kortTrykket : Int = adapterPosition
+                when (kortTrykket) {
+                    0 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz)
+                    1 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_dilemmaActivity)
+                }
+
             }
         }
 

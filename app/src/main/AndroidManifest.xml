@@ -10,7 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eskapader_Android">
         <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
+        <activity
             android:name=".HovedMenyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DilemmaActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"

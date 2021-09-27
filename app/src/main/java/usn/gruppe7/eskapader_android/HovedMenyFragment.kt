@@ -47,6 +47,9 @@ class HovedMenyFragment : Fragment() {
             if (i == 1) {
                 leggTilSpill("Musikkquiz", "asdf", "asdf", "asdf", R.mipmap.ic_launcher_round)
             }
+            if (i == 2) {
+                leggTilSpill("Dilemma", "asdf", "asdf", "asdf", R.mipmap.ic_launcher_round)
+            }
 
             //leggTilSpill("Spill $i", "Instuks 1", "Instruks 2", "Instruks 3", R.mipmap.ic_launcher_round)
         }
