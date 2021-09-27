@@ -9,5 +9,14 @@
         android:id="@+id/hovedMenyFragment"
         android:name="usn.gruppe7.eskapader_android.HovedMenyFragment"
         android:label="HovedMenyFragment"
-        tools:layout="@layout/fragment_hoved_meny"/>
+        tools:layout="@layout/fragment_hoved_meny">
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_musikkQuiz"
+            app:destination="@id/musikkQuiz" />
+    </fragment>
+    <activity
+        android:id="@+id/musikkQuiz"
+        android:name="usn.gruppe7.eskapader_android.MainActivity"
+        android:label="musikkquiz_spill"
+        tools:layout="@layout/musikkquiz_spill" />
 </navigation>

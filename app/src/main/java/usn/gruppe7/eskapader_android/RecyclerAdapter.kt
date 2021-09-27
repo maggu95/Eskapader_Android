@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
 class RecyclerAdapter(private val tittler: List<String>, private val instruks1 : List<String> ,private val instruks2: List<String> ,private val instruks3 : List<String>, private val bilde : List<Int> ) :
@@ -20,7 +21,9 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
         init {
             val kortTrykket : Int = adapterPosition
-            Toast.makeText(itemView.context, "Trykket på kort:  ${position + 1}" , Toast.LENGTH_SHORT).show()
+            itemView.setOnClickListener() {
+                itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz)
+            }
         }
 
 

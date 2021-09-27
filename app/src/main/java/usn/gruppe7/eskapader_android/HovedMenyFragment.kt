@@ -25,6 +25,11 @@ class HovedMenyFragment : Fragment() {
         recyclerAdapter.layoutManager = LinearLayoutManager(context)
         recyclerAdapter.adapter = RecyclerAdapter(tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste)
         fyllEksempelData()
+
+
+
+
+
         return binding.root
     }
 
@@ -39,7 +44,11 @@ class HovedMenyFragment : Fragment() {
 
     fun fyllEksempelData() {
         for(i in 1..25) {
-            leggTilSpill("Spill $i", "Instuks 1", "Instruks 2", "Instruks 3", R.mipmap.ic_launcher_round)
+            if (i == 1) {
+                leggTilSpill("Musikkquiz", "asdf", "asdf", "asdf", R.mipmap.ic_launcher_round)
+            }
+
+            //leggTilSpill("Spill $i", "Instuks 1", "Instruks 2", "Instruks 3", R.mipmap.ic_launcher_round)
         }
     }
 
