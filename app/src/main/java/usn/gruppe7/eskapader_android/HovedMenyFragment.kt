@@ -25,11 +25,6 @@ class HovedMenyFragment : Fragment() {
         recyclerAdapter.layoutManager = LinearLayoutManager(context)
         recyclerAdapter.adapter = RecyclerAdapter(tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste)
         fyllEksempelData()
-
-
-
-
-
         return binding.root
     }
 

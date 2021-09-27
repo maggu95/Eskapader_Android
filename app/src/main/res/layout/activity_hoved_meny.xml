@@ -2,18 +2,40 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/loggInnFragment"
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/mainHost"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <fragment
+            android:id="@+id/MainHost"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:navGraph="@navigation/login_nav"
             app:defaultNavHost="true"
-            tools:layout="@layout/fragment_hoved_meny">
-        </androidx.fragment.app.FragmentContainerView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:navGraph="@navigation/hoved_nav"
+            />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navViewMain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/navdrawer_menu" />
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+
 </layout>

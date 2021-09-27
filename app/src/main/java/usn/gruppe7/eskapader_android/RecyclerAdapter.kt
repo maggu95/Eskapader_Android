@@ -31,9 +31,6 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             }
         }
 
-
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

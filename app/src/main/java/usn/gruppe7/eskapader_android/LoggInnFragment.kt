@@ -31,7 +31,7 @@ class LoggInnFragment : Fragment() {
 
         binding.loggInnBtn.setOnClickListener { view : View ->
 
-            view.findNavController().navigate(R.id.action_loggInnFragment_to_hoved_nav)
+            view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
         }
 
         return binding.root

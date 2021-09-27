@@ -25,8 +25,8 @@
             android:id="@+id/action_loggInnFragment_to_opprettBrukerFragment2"
             app:destination="@id/opprettBrukerFragment" />
         <action
-            android:id="@+id/action_loggInnFragment_to_hoved_nav"
-            app:destination="@id/hoved_nav" />
+            android:id="@+id/action_loggInnFragment_to_hovedMenyActivity"
+            app:destination="@id/hovedMenyActivity" />
     </fragment>
     <fragment
         android:id="@+id/godkjentBruker"
@@ -38,5 +38,8 @@
             android:id="@+id/action_godkjentBruker_to_loggInnFragment"
             app:destination="@id/loggInnFragment" />
     </fragment>
-    <include app:graph="@navigation/hoved_nav" />
+    <activity
+        android:id="@+id/hovedMenyActivity"
+        android:name="usn.gruppe7.eskapader_android.HovedMenyActivity"
+        android:label="HovedMenyActivity" />
 </navigation>
