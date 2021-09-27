@@ -1,11 +1,13 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Intent
 import android.database.DatabaseUtils
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -27,8 +29,11 @@ class LoggInnFragment : Fragment() {
         }
 
 
+        binding.loggInnBtn.setOnClickListener { view : View ->
+
+            view.findNavController().navigate(R.id.action_loggInnFragment_to_hoved_nav)
+        }
+
         return binding.root
     }
-
-
 }
