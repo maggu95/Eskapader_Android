@@ -19,6 +19,15 @@
         <action
             android:id="@+id/action_hovedMenyFragment_to_kontaktFragment"
             app:destination="@id/kontaktFragment" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_min_aide"
+            app:destination="@id/min_aide" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_rettigheterFragment"
+            app:destination="@id/rettigheterFragment" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <activity
         android:id="@+id/musikkQuiz"
@@ -35,4 +44,19 @@
         android:name="usn.gruppe7.eskapader_android.KontaktFragment"
         android:label="fragment_kontakt"
         tools:layout="@layout/fragment_kontakt" />
+    <fragment
+        android:id="@+id/min_aide"
+        android:name="usn.gruppe7.eskapader_android.min_aide"
+        android:label="fragment_min_aide"
+        tools:layout="@layout/fragment_min_aide" />
+    <fragment
+        android:id="@+id/rettigheterFragment"
+        android:name="usn.gruppe7.eskapader_android.RettigheterFragment"
+        android:label="fragment_rettigheter"
+        tools:layout="@layout/fragment_rettigheter" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="usn.gruppe7.eskapader_android.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
 </navigation>

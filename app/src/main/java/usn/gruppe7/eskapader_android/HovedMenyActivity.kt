@@ -1,5 +1,6 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,18 +9,21 @@ import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import usn.gruppe7.eskapader_android.databinding.ActivityHovedMenyBinding
 import usn.gruppe7.eskapader_android.databinding.ActivityLoginBinding
 
 class HovedMenyActivity : AppCompatActivity() {
+    private lateinit var currFragment : String
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var binding : ActivityHovedMenyBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_hoved_meny)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
+        currFragment = ""
 
         drawerLayout = binding.mainHost
 
@@ -40,11 +44,19 @@ class HovedMenyActivity : AppCompatActivity() {
 
     fun test(item : MenuItem) {
         val s  = item.titleCondensed
+        if(s == currFragment) return
         when(s) {
             "Kontakt" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
+            "Profil" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_min_aide)
+            "Rettigheter" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_rettigheterFragment)
+            "Info" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_infoFragment)
+            "Logg ut" -> loggUt()
         }
+        currFragment  = s.toString()
+        return
     }
 
+    /*
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         val s  = item.titleCondensed
         //Toast.makeText(this,"TEkst",Toast.LENGTH_LONG).show()
@@ -57,6 +69,16 @@ class HovedMenyActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
 
+    }
+
+     */
+
+
+
+    fun loggUt() {
+        val i = Intent(this,LoginActivity::class.java)
+        startActivity(i)
+        Toast.makeText(this,"Logget ut", Toast.LENGTH_LONG).show()
     }
 
 }
