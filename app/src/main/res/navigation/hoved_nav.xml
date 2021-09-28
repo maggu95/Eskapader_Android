@@ -16,9 +16,6 @@
         <action
             android:id="@+id/action_hovedMenyFragment_to_dilemmaActivity"
             app:destination="@id/dilemmaActivity" />
-        <action
-            android:id="@+id/action_hovedMenyFragment_to_kontaktFragment"
-            app:destination="@id/kontaktFragment" />
     </fragment>
     <activity
         android:id="@+id/musikkQuiz"
@@ -35,4 +32,24 @@
         android:name="usn.gruppe7.eskapader_android.KontaktFragment"
         android:label="fragment_kontakt"
         tools:layout="@layout/fragment_kontakt" />
+    <fragment
+        android:id="@+id/min_sideFragment"
+        android:name="usn.gruppe7.eskapader_android.min_aide"
+        android:label="fragment_min_aide"
+        tools:layout="@layout/fragment_min_side" />
+    <fragment
+        android:id="@+id/rettigheterFragment"
+        android:name="usn.gruppe7.eskapader_android.RettigheterFragment"
+        android:label="fragment_rettigheter"
+        tools:layout="@layout/fragment_rettigheter" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="usn.gruppe7.eskapader_android.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/loggUtFragment2"
+        android:name="usn.gruppe7.eskapader_android.LoggUtFragment"
+        android:label="fragment_logg_ut"
+        tools:layout="@layout/fragment_logg_ut" />
 </navigation>
