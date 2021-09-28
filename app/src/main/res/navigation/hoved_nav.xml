@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_hovedMenyFragment_to_dilemmaActivity"
             app:destination="@id/dilemmaActivity" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_kontaktFragment"
+            app:destination="@id/kontaktFragment" />
     </fragment>
     <activity
         android:id="@+id/musikkQuiz"
@@ -27,4 +30,9 @@
         android:name="usn.gruppe7.eskapader_android.DilemmaActivity"
         android:label="DilemmaActivity"
         tools:layout="@layout/dilemma_layout"/>
+    <fragment
+        android:id="@+id/kontaktFragment"
+        android:name="usn.gruppe7.eskapader_android.KontaktFragment"
+        android:label="fragment_kontakt"
+        tools:layout="@layout/fragment_kontakt" />
 </navigation>

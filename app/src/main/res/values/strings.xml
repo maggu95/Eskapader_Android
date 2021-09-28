@@ -23,5 +23,13 @@
 
     <string name="dilemmatekst2_1">Kropp dekket av pels</string>
     <string name="dilemmatekst2_2">Kropp dekket av fiskeskall</string>
+    <string name="min_side">Min Side</string>
+
+    <string-array name="språk">
+        <item>Norsk</item>
+        <item>Engelsk</item>
+        <item>Spansk</item>
+        <item>Arabic bruh</item>
+    </string-array>
 
 </resources>

@@ -3,6 +3,7 @@ package usn.gruppe7.eskapader_android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -35,6 +36,27 @@ class HovedMenyActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.MainHost)
         return NavigationUI.navigateUp(navController, drawerLayout)
+    }
+
+    fun test(item : MenuItem) {
+        val s  = item.titleCondensed
+        when(s) {
+            "Kontakt" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val s  = item.titleCondensed
+        //Toast.makeText(this,"TEkst",Toast.LENGTH_LONG).show()
+         when (s) {
+             "Kontakt" -> {
+                 Toast.makeText(this,s,Toast.LENGTH_LONG).show()
+//                 this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
+                 return true
+             }
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
 }

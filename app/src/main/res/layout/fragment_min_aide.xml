@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".min_aide">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5">
+
+
+        <TextView
+            android:id="@+id/minSide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="@string/min_side"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginEnd="63dp"
+            android:layout_marginBottom="38dp"
+            android:src="@drawable/eskapader_logo2"
+            app:layout_constraintBottom_toTopOf="@+id/endre_språk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minSide"
+            android:contentDescription="TODO" />
+
+        <TextView
+            android:id="@+id/endre_språk"
+            android:layout_width="184dp"
+            android:layout_height="39dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="12dp"
+            android:text="Endre språk:"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textInputEditText5"
+            app:layout_constraintEnd_toStartOf="@+id/spinner"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="18dp"
+            android:entries="@array/språk"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/endre_språk"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/endre_språk"
+            app:layout_constraintTop_toTopOf="@+id/endre_språk"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditText5"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="29dp"
+            android:hint="Gammelt passord"
+            app:layout_constraintBottom_toTopOf="@+id/editText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/endre_språk" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="24dp"
+            android:hint="Nytt passord"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputEditText5" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="39dp"
+            android:text="Bekreft bytte"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
