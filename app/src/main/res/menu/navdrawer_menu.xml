@@ -11,17 +11,21 @@
     <item
         android:id="@+id/til_info"
         android:icon="@android:drawable/ic_dialog_info"
-        android:title="Info" />
+        android:title="Info"
+        android:onClick="test"/>
     <item
         android:id="@+id/til_Rettigheter"
         android:icon="?android:attr/actionModeFindDrawable"
-        android:title="Rettigheter" />
+        android:title="Rettigheter"
+        android:onClick="test"/>
     <item
         android:id="@+id/til_Kontakt"
         android:icon="@android:drawable/stat_notify_chat"
-        android:title="Kontakt" />
+        android:title="Kontakt"
+        android:onClick="test"/>
     <item
         android:id="@+id/til_LoggUt"
         android:icon="@android:drawable/ic_menu_revert"
-        android:title="Logg ut" />
+        android:title="Logg ut"
+        android:onClick="test"/>
 </menu>

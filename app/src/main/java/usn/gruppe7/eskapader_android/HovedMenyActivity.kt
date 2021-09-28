@@ -39,18 +39,21 @@ class HovedMenyActivity : AppCompatActivity() {
     }
 
     fun test(item : MenuItem) {
-        Toast.makeText(this,item.itemId,Toast.LENGTH_LONG).show()
+        val s  = item.titleCondensed
+        when(s) {
+            "Kontakt" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(this,"TEkst",Toast.LENGTH_LONG).show()
-         when (item.itemId) {
-             R.id.til_Kontakt -> {
-                 Toast.makeText(this,"Til kontakt",Toast.LENGTH_LONG).show()
-                 this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
+        val s  = item.titleCondensed
+        //Toast.makeText(this,"TEkst",Toast.LENGTH_LONG).show()
+         when (s) {
+             "Kontakt" -> {
+                 Toast.makeText(this,s,Toast.LENGTH_LONG).show()
+//                 this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
                  return true
              }
-             else ->  Toast.makeText(this,"Trykket på noe",Toast.LENGTH_LONG).show()
         }
         return super.onOptionsItemSelected(item)
 
