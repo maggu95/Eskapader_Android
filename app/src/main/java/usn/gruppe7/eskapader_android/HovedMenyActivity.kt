@@ -3,6 +3,7 @@ package usn.gruppe7.eskapader_android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
@@ -35,6 +36,24 @@ class HovedMenyActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.MainHost)
         return NavigationUI.navigateUp(navController, drawerLayout)
+    }
+
+    fun test(item : MenuItem) {
+        Toast.makeText(this,item.itemId,Toast.LENGTH_LONG).show()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Toast.makeText(this,"TEkst",Toast.LENGTH_LONG).show()
+         when (item.itemId) {
+             R.id.til_Kontakt -> {
+                 Toast.makeText(this,"Til kontakt",Toast.LENGTH_LONG).show()
+                 this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
+                 return true
+             }
+             else ->  Toast.makeText(this,"Trykket på noe",Toast.LENGTH_LONG).show()
+        }
+        return super.onOptionsItemSelected(item)
+
     }
 
 }
