@@ -17,7 +17,7 @@ class DilemmaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dilemma_layout)
 
-        val shape: Drawable? = getDrawable(R.drawable.rounded_borders_musikkquiz)
+        val shape: Drawable? = getDrawable(R.drawable.rounded_borders_dilemma)
         val dilemma1 = findViewById<TextView>(R.id.dill_alt_1)
         val dilemma2 = findViewById<TextView>(R.id.dill_alt_2)
         val btNesteDilemma = findViewById<Button>(R.id.btNesteDilemma)
@@ -30,12 +30,13 @@ class DilemmaActivity : AppCompatActivity() {
         dilemma2.setOnClickListener() {
             dilemma2.background = shape
             btNesteDilemma.visibility = View.VISIBLE
-
         }
 
         btNesteDilemma.setOnClickListener() {
             dilemma1.setText(R.string.dilemmatekst2_1)
             dilemma2.setText(R.string.dilemmatekst2_2)
+            dilemma1.setBackgroundResource(R.drawable.dillemma_rounded_borders)
+            dilemma2.setBackgroundResource(R.drawable.dillemma_rounded_borders)
         }
 
     }

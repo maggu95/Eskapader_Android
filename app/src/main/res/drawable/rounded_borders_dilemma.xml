@@ -16,4 +16,7 @@
         android:radius="2dp">
     </corners>
 
+    <!--- This is the background color -->
+    <solid android:color="@color/whitesmoke" />
+
 </shape>

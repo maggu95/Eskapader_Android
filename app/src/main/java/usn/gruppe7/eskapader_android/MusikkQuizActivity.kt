@@ -47,6 +47,11 @@ class MainActivity : AppCompatActivity() {
             txt2.setText(R.string.musAltTekst2_2)
             txt3.setText(R.string.musAltTekst2_3)
             txt4.setText(R.string.musAltTekst2_4)
+
+            txt1.setBackgroundResource(R.drawable.rounded_corner_view)
+            txt2.setBackgroundResource(R.drawable.rounded_corner_view)
+            txt3.setBackgroundResource(R.drawable.rounded_corner_view)
+            txt4.setBackgroundResource(R.drawable.rounded_corner_view)
         }
 
 
@@ -56,3 +61,5 @@ class MainActivity : AppCompatActivity() {
 
     }
 }
+
+
