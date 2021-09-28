@@ -23,13 +23,10 @@ class HovedMenyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_hoved_meny)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
-        currFragment = ""
 
         drawerLayout = binding.mainHost
 
         val navController = this.findNavController(R.id.MainHost)
-        Log.d("Test", drawerLayout.toString())
-
 
         NavigationUI.setupActionBarWithNavController(this,navController, drawerLayout)
 
@@ -41,38 +38,6 @@ class HovedMenyActivity : AppCompatActivity() {
         val navController = this.findNavController(R.id.MainHost)
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
-
-    fun test(item : MenuItem) {
-        val s  = item.titleCondensed
-        if(s == currFragment) return
-        when(s) {
-            "Kontakt" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
-            "Profil" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_min_aide)
-            "Rettigheter" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_rettigheterFragment)
-            "Info" -> this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_infoFragment)
-            "Logg ut" -> loggUt()
-        }
-        currFragment  = s.toString()
-        return
-    }
-
-    /*
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val s  = item.titleCondensed
-        //Toast.makeText(this,"TEkst",Toast.LENGTH_LONG).show()
-         when (s) {
-             "Kontakt" -> {
-                 Toast.makeText(this,s,Toast.LENGTH_LONG).show()
-//                 this.findNavController(R.id.MainHost).navigate(R.id.action_hovedMenyFragment_to_kontaktFragment)
-                 return true
-             }
-        }
-        return super.onOptionsItemSelected(item)
-
-    }
-
-     */
-
 
 
     fun loggUt() {

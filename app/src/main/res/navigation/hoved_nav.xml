@@ -16,18 +16,6 @@
         <action
             android:id="@+id/action_hovedMenyFragment_to_dilemmaActivity"
             app:destination="@id/dilemmaActivity" />
-        <action
-            android:id="@+id/action_hovedMenyFragment_to_kontaktFragment"
-            app:destination="@id/kontaktFragment" />
-        <action
-            android:id="@+id/action_hovedMenyFragment_to_min_aide"
-            app:destination="@id/min_aide" />
-        <action
-            android:id="@+id/action_hovedMenyFragment_to_rettigheterFragment"
-            app:destination="@id/rettigheterFragment" />
-        <action
-            android:id="@+id/action_hovedMenyFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
     </fragment>
     <activity
         android:id="@+id/musikkQuiz"
