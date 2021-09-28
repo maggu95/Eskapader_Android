@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.musikkquiz_spill)
 
         // Henter border fra my_border.xml
-        val shape: Drawable? = getDrawable(R.drawable.rounded_borders)
+        val shape: Drawable? = getDrawable(R.drawable.rounded_borders_musikkquiz)
 
         val sangtekst = findViewById<TextView>(R.id.sangtekst)
 
