@@ -23,7 +23,6 @@ class HovedMenyActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_hoved_meny)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
-
         drawerLayout = binding.mainHost
 
         val navController = this.findNavController(R.id.MainHost)
@@ -39,11 +38,5 @@ class HovedMenyActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, drawerLayout)
     }
 
-
-    fun loggUt() {
-        val i = Intent(this,LoginActivity::class.java)
-        startActivity(i)
-        Toast.makeText(this,"Logget ut", Toast.LENGTH_LONG).show()
-    }
 
 }

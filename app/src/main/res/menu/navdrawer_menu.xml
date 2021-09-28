@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/profilFragment"
+        android:id="@+id/min_sideFragment"
         android:icon="@android:drawable/ic_menu_myplaces"
         android:title="Profil"
         />
@@ -22,9 +22,8 @@
         android:title="Kontakt"
         />
     <item
-        android:id="@+id/loggUtItem"
+        android:id="@+id/loggUtFragment2"
         android:icon="@android:drawable/ic_menu_revert"
         android:title="Logg ut"
-        android:onClick="loggUt"
         />
 </menu>

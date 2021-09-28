@@ -35,7 +35,7 @@ class min_aide : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_min_aide, container, false)
+        return inflater.inflate(R.layout.fragment_min_side, container, false)
     }
 
 

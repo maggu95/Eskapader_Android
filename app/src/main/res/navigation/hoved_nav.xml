@@ -33,10 +33,10 @@
         android:label="fragment_kontakt"
         tools:layout="@layout/fragment_kontakt" />
     <fragment
-        android:id="@+id/min_aide"
+        android:id="@+id/min_sideFragment"
         android:name="usn.gruppe7.eskapader_android.min_aide"
         android:label="fragment_min_aide"
-        tools:layout="@layout/fragment_min_aide" />
+        tools:layout="@layout/fragment_min_side" />
     <fragment
         android:id="@+id/rettigheterFragment"
         android:name="usn.gruppe7.eskapader_android.RettigheterFragment"
@@ -47,4 +47,9 @@
         android:name="usn.gruppe7.eskapader_android.InfoFragment"
         android:label="fragment_info"
         tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/loggUtFragment2"
+        android:name="usn.gruppe7.eskapader_android.LoggUtFragment"
+        android:label="fragment_logg_ut"
+        tools:layout="@layout/fragment_logg_ut" />
 </navigation>
