@@ -1,14 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RettigheterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5">
 
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:layout_marginBottom="14dp"
+            android:text="Behandling av personlig informasjon"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="33dp"
+            android:text="1. Personlig informasjon"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="26dp"
+            android:text="Eskapader er forpliktet til å beskytte personvernet og sikkerheten til brukerne våre og være åpen om hvordan vi behandler informasjon om deg. Denne personvernerklæringen beskriver hvordan vi behandler dine personlige opplysninger og hvordan du kan utøve dine personvernrettigheter. Begreper med store bokstaver har betydningen gitt dem i vedlegg A “Definisjoner”. Eskapaders tjenester lar brukerne våre lage og laste opp innhold, spille og være vert for spill og invitere andre til å bli med i et spill. Eskapader fungerer som databehandler for personlig informasjon i brukerinnhold, og for personlig informasjon som vi ellers kan samle inn og behandle på vegne av brukerne våre på plattformen. Slik behandling dekkes ikke av denne personvernerklæringen. Vær oppmerksom på at i den grad vi gir deg beskjed om andre eller ytterligere personvernregler, vil disse retningslinjene styre slike interaksjoner. For detaljer om Kahoot behandling av studentdata, vennligst les våre retningslinjer for personvern for studenter. Vennligst se nedenfor for detaljer om vår innsamling av informasjon fra brukere."
+            app:layout_constraintBottom_toTopOf="@+id/textView10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="16dp"
+            android:text="Hvis du har spørsmål eller kommentarer, eller hvis du er bekymret for måten vi har håndtert personvernspørsmål på, kan du kontakte oss på sporsmål@eskapader.com."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="22dp"
+            android:src="@drawable/eskapader_logo2"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
