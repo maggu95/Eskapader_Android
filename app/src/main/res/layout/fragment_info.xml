@@ -56,7 +56,7 @@
             android:layout_marginStart="17dp"
             android:layout_marginEnd="17dp"
             android:layout_marginBottom="24dp"
-            android:text="Eskapader ble opprettet som et APP2000 prosjekt ved USN campus Bø, og blir i øyeblikket videreutviklet i APP3000."
+            android:text="Eskapader ble opprettet som et APP2000-prosjekt ved USN campus Bø, og blir i øyeblikket videreutviklet i MOB3000."
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/textView19"
             app:layout_constraintEnd_toEndOf="parent"
@@ -70,7 +70,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="91dp"
-            android:text='Eskapaders "far" er Magnus Johnsen, og hans to underslåtter Bo Larsen og Snorre Gonsholt.'
+            android:text='Utviklerne bak Eskapader er Magnus Johnsen, Bo Andree Larsen og Snorre Gonsholt'
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

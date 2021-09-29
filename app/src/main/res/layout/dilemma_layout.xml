@@ -42,6 +42,7 @@
             android:textSize="24dp"
             app:layout_constraintBottom_toTopOf="@+id/dill_alt_2"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dilemma_overskrift" />
 

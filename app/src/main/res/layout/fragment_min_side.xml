@@ -56,6 +56,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView7" />
 
+
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="0dp"
@@ -67,8 +68,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/endre_språk"
             app:layout_constraintTop_toTopOf="@+id/endre_språk"
+            app:layout_constraintVertical_bias="0.0"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText5"

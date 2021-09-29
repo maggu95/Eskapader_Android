@@ -34,8 +34,16 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/dilemma_layout.xml" value="0.340625" />
+        <entry key="app/src/main/res/layout/fragment_godkjent_bruker.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_hoved_meny.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_info.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_kontakt.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/fragment_logg_inn.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/fragment_min_side.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_opprett_bruker.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/fragment_rettigheter.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/musikkquiz_spill.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/spill_kort.xml" value="0.340625" />
       </map>
     </option>
