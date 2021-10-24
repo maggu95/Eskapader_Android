@@ -24,7 +24,7 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
             itemView.setOnClickListener() {
                 val kortTrykket : Int = adapterPosition
                 when (kortTrykket) {
-                    0 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz)
+                    0 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz_Activity)
                     1 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_dilemmaActivity)
                 }
 

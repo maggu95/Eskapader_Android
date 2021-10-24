@@ -11,17 +11,12 @@
         android:label="HovedMenyFragment"
         tools:layout="@layout/fragment_hoved_meny">
         <action
-            android:id="@+id/action_hovedMenyFragment_to_musikkQuiz"
-            app:destination="@id/musikkQuiz" />
-        <action
             android:id="@+id/action_hovedMenyFragment_to_dilemmaActivity"
             app:destination="@id/dilemmaActivity" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_musikkQuiz_Activity"
+            app:destination="@id/musikkQuiz_Activity" />
     </fragment>
-    <activity
-        android:id="@+id/musikkQuiz"
-        android:name="usn.gruppe7.eskapader_android.MainActivity"
-        android:label="musikkquiz_spill"
-        tools:layout="@layout/musikkquiz_spill" />
     <activity
         android:id="@+id/dilemmaActivity"
         android:name="usn.gruppe7.eskapader_android.DilemmaActivity"
@@ -52,4 +47,9 @@
         android:name="usn.gruppe7.eskapader_android.LoggUtFragment"
         android:label="fragment_logg_ut"
         tools:layout="@layout/fragment_logg_ut" />
+    <activity
+        android:id="@+id/musikkQuiz_Activity"
+        android:name="usn.gruppe7.eskapader_android.MusikkQuiz_Activity"
+        android:label="MusikkQuiz_Activity"
+        tools:layout="@layout/musikkquiz_spill"/>
 </navigation>

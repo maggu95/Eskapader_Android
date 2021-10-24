@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="usn.gruppe7.eskapader_android">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,12 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eskapader_Android">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
-        <activity
             android:name=".HovedMenyActivity"
             android:exported="true" />
-        <activity android:name=".MainActivity"
+        <activity android:name=".MusikkQuiz_Activity"
                 android:exported="true"/>
         <activity
             android:name=".DilemmaActivity"
