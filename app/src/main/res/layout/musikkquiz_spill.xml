@@ -9,28 +9,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         >
 
         <androidx.fragment.app.FragmentContainerView
-            android:name="usn.gruppe7.eskapader_android.MusikkQuizFragment"
+            android:name="usn.gruppe7.eskapader_android.Loading_MusikkQuizFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout="@layout/fragment_musikk_quiz"
-            android:id="@+id/MusikkQuizFragment" />
-
+            tools:layout="@layout/fragment_loading__musikk_quiz"
+            android:id="@+id/musikkQuiz_Container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-
-
-
-
-
-
 
 </layout>

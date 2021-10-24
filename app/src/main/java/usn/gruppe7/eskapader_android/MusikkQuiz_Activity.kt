@@ -1,28 +1,24 @@
 package usn.gruppe7.eskapader_android
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import android.util.Log
-import android.widget.Button
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
-import org.json.JSONArray
 import org.json.JSONObject
-import org.json.JSONException
-import org.json.JSONTokener
-import usn.gruppe7.eskapader_android.databinding.ActivityHovedMenyBinding
+import usn.gruppe7.eskapader_android.databinding.MusikkquizSpillBinding
 
 
 class MusikkQuiz_Activity : AppCompatActivity() {
     @SuppressLint("UseCompatLoadingForDrawables", "CutPasteId")
-    val quizListe : MutableList<MusikkSpørsmål> = mutableListOf<MusikkSpørsmål>()
-    private val url = "https://eskapader.herokuapp.com/spill"
+    val quizListe = ArrayList<MusikkSpørsmål>()
+    private lateinit var binding: MusikkquizSpillBinding
     private var currSpørsmål : Int = 0
+    private val url = "https://eskapader.herokuapp.com/spill"
 
     init {
         currSpørsmål = 0;
@@ -32,7 +28,9 @@ class MusikkQuiz_Activity : AppCompatActivity() {
     @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.musikkquiz_spill)
+        //setContentView(R.layout.musikkquiz_spill)
+        binding = DataBindingUtil.setContentView(this, R.layout.musikkquiz_spill)
+        val container = binding.musikkQuizContainer
 
         val queue = Volley.newRequestQueue(this)
         val json = JsonArrayRequest(Request.Method.GET, url, null,
@@ -55,6 +53,16 @@ class MusikkQuiz_Activity : AppCompatActivity() {
                     quizListe.add(musikkObjekt)
                     Log.d("FOR", "Laget objekt: $i ${musikkObjekt.toString()}")
                 }
+                //Her er listen data ferdig hentet
+                val bundle = Bundle().apply {
+                    putParcelableArrayList("LIST", ArrayList<Parcelable>(quizListe))
+
+                }
+                val quizFragment = MusikkQuizFragment.newInstance(quizListe)
+                val transaction = supportFragmentManager.beginTransaction()
+                transaction.replace(container.id,quizFragment)
+                transaction.commit()
+
             },
             { error ->
                 Log.d("Feil i API kall: " , "Error: $error")

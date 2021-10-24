@@ -2,6 +2,7 @@ package usn.gruppe7.eskapader_android
 
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,27 +10,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import usn.gruppe7.eskapader_android.databinding.FragmentMusikkQuizBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [MusikkQuiz.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MusikkQuizFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class MusikkQuizFragment() : Fragment() {
+    private lateinit var quizListe : ArrayList<MusikkSpørsmål>
+    private var currSpørs : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        quizListe = arguments?.getParcelableArrayList<MusikkSpørsmål>("quizListe") as ArrayList<MusikkSpørsmål>
     }
 
     override fun onCreateView(
@@ -38,27 +25,33 @@ class MusikkQuizFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentMusikkQuizBinding>(inflater,R.layout.fragment_musikk_quiz,container,false)
+        binding.sangtekst.text = quizListe[0].getSpørsmålsTekst()
+        binding.musAlt1.text = quizListe[0].getSpørsmål(0)
+        binding.musAlt2.text = quizListe[0].getSpørsmål(1)
+        binding.musAlt3.text = quizListe[0].getSpørsmål(2)
+        binding.musAlt4.text = quizListe[0].getSpørsmål(3)
 
-        //return inflater.inflate(R.layout.fragment_musikk_quiz, container, false)
+
+        binding.btBekreft.setOnClickListener {
+            currSpørs++
+            binding.sangtekst.text = quizListe[currSpørs].getSpørsmålsTekst()
+            binding.musAlt1.text = quizListe[currSpørs].getSpørsmål(0)
+            binding.musAlt2.text = quizListe[currSpørs].getSpørsmål(1)
+            binding.musAlt3.text = quizListe[currSpørs].getSpørsmål(2)
+            binding.musAlt4.text = quizListe[currSpørs].getSpørsmål(3)
+        }
+
+
+
         return binding.root
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MusikkQuiz.
-         */
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(liste : ArrayList<MusikkSpørsmål>) =
             MusikkQuizFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putParcelableArrayList("quizListe", liste)
                 }
             }
     }

@@ -1,11 +1,17 @@
 package usn.gruppe7.eskapader_android
 
-class MusikkSpørsmål (spørsmål: String, idTall: Int) {
+import android.os.Parcel
+import android.os.Parcelable
+
+class MusikkSpørsmål (spørsmål: String, idTall: Int) : Parcelable {
     private val spørsmålsTekst = spørsmål
-    private val id =  idTall;
+    private val id =  idTall
     var spørsmål : MutableList<String> = mutableListOf()
 
-
+    constructor(parcel: Parcel) : this(
+        TODO("spørsmål"),
+        TODO("idTall")
+    )
 
 
     fun addSpørsmål (s : String) {
@@ -33,15 +39,23 @@ class MusikkSpørsmål (spørsmål: String, idTall: Int) {
 
     }
 
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
 
+    }
 
+    override fun describeContents(): Int {
+        return 0
+    }
 
+    companion object CREATOR : Parcelable.Creator<MusikkSpørsmål> {
+        override fun createFromParcel(parcel: Parcel): MusikkSpørsmål {
+            return MusikkSpørsmål(parcel)
+        }
 
-
-
-
-
-
+        override fun newArray(size: Int): Array<MusikkSpørsmål?> {
+            return arrayOfNulls(size)
+        }
+    }
 
 
 }
