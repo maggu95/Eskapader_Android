@@ -12,8 +12,13 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import usn.gruppe7.eskapader_android.databinding.ActivityHovedMenyBinding
 import usn.gruppe7.eskapader_android.databinding.ActivityLoginBinding
+import java.net.URL
 
 class HovedMenyActivity : AppCompatActivity() {
     private lateinit var currFragment : String
@@ -25,11 +30,14 @@ class HovedMenyActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
         drawerLayout = binding.mainHost
 
+
         val navController = this.findNavController(R.id.MainHost)
 
         NavigationUI.setupActionBarWithNavController(this,navController, drawerLayout)
 
         NavigationUI.setupWithNavController(binding.navViewMain, navController)
+
+
     }
 
 
