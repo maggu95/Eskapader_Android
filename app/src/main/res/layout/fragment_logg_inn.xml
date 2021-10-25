@@ -32,15 +32,15 @@
             android:layout_marginStart="37dp"
             android:layout_marginBottom="11dp"
             android:text="Logg inn"
-            app:layout_constraintBottom_toTopOf="@+id/loggInnBtn3"
-            app:layout_constraintStart_toStartOf="@+id/loggInnBtn3"
+            app:layout_constraintBottom_toTopOf="@+id/gjestLoggInnbt"
+            app:layout_constraintStart_toStartOf="@+id/gjestLoggInnbt"
             app:layout_constraintTop_toBottomOf="@+id/passordInput" />
 
         <Button
-            android:id="@+id/loggInnBtn3"
+            android:id="@+id/gjestLoggInnbt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="38dp"
+            android:layout_marginStart="36dp"
             android:layout_marginBottom="11dp"
             android:text="Logg inn som gjest"
             app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -61,7 +61,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loggInnBtn3" />
+            app:layout_constraintTop_toBottomOf="@+id/gjestLoggInnbt" />
 
         <ImageView
             android:id="@+id/imageView"

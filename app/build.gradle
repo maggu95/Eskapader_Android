@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt' //Plugin for MongoDB realm
+    id 'realm-android' //Plugin for MongoDB realm
 }
 
 android {
@@ -20,7 +22,12 @@ android {
     }
 
     buildTypes {
+        def appId = "authenticationdemo-wgbmm"  // Replace with proper Application ID
+        debug {
+            buildConfigField "String", "MONGODB_REALM_APP_ID", "\"${appId}\""
+        }
         release {
+            buildConfigField "String", "MONGODB_REALM_APP_ID", "\"${appId}\""
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -32,6 +39,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+// Gjør det mulig å synce Gradle opp mot Realm
+realm {
+    syncEnabled = true
 }
 
 dependencies {

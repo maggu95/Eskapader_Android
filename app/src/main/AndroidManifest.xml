@@ -3,6 +3,7 @@
     package="usn.gruppe7.eskapader_android">
 
     <application
+        android:name= ".RealmInit"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,11 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Eskapader_Android">
         <activity
-            android:name=".MainActivity"
-            android:exported="true"/>
-        <activity
             android:name=".HovedMenyActivity"
             android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"/>
+
         <activity android:name=".MainActivity"
                 android:exported="true"/>
         <activity
