@@ -3,19 +3,25 @@ package usn.gruppe7.eskapader_android
 import android.os.Parcel
 import android.os.Parcelable
 
-class MusikkSpørsmål (spørsmål: String, idTall: Int) : Parcelable {
+class MusikkSpørsmål (spørsmål: String, idTall: Int, svarTall: Int) : Parcelable {
     private val spørsmålsTekst = spørsmål
     private val id =  idTall
+    private val svar = svarTall
     var spørsmål : MutableList<String> = mutableListOf()
 
-    constructor(parcel: Parcel) : this(
+    constructor(parcel: Parcel) : this (
         TODO("spørsmål"),
-        TODO("idTall")
+        TODO("idTall"),
+        TODO("svar")
     )
 
 
     fun addSpørsmål (s : String) {
         spørsmål.add(s)
+    }
+
+    fun getSvar (): Int {
+        return svar;
     }
 
     fun getSpørsmålsTekst() : String {
@@ -34,7 +40,8 @@ class MusikkSpørsmål (spørsmål: String, idTall: Int) : Parcelable {
                 "Spørsmål 1 -> " + spørsmål[0] + "\n" +
                 "Spørsmål 2 -> " + spørsmål[1] + "\n" +
                 "Spørsmål 3 -> " + spørsmål[2] + "\n" +
-                "Spørsmål 4 -> " + spørsmål[3]
+                "Spørsmål 4 -> " + spørsmål[3] + "\n" +
+                "Svar -> " + getSvar()
 
 
     }

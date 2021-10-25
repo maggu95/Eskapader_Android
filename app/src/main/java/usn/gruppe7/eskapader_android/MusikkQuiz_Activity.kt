@@ -42,7 +42,8 @@ class MusikkQuiz_Activity : AppCompatActivity() {
                 for(i in 0 until quizResponse.length()) {
                     val id = quizResponse.getJSONObject(i).getInt("Sporsmal_id")
                     val spørsmålTekst = quizResponse.getJSONObject(i).getString("Sporsmaltekst")
-                    var musikkObjekt = MusikkSpørsmål(spørsmålTekst, id)
+                    val svar = quizResponse.getJSONObject(i).getInt("Svar")
+                    var musikkObjekt = MusikkSpørsmål(spørsmålTekst, id,svar)
 
                     val spørsmålListe = quizResponse.getJSONObject(i).getJSONArray("Alternativ")
                     for(i in 0 until spørsmålListe.length()) {
@@ -56,7 +57,6 @@ class MusikkQuiz_Activity : AppCompatActivity() {
                 //Her er listen data ferdig hentet
                 val bundle = Bundle().apply {
                     putParcelableArrayList("LIST", ArrayList<Parcelable>(quizListe))
-
                 }
                 val quizFragment = MusikkQuizFragment.newInstance(quizListe)
                 val transaction = supportFragmentManager.beginTransaction()

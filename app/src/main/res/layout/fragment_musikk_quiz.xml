@@ -77,7 +77,7 @@
             />
 
         <TextView
-            android:id="@+id/musAlt4"
+            android:id="@+id/musAlt3"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="30dp"
@@ -97,7 +97,7 @@
             />
 
         <TextView
-            android:id="@+id/musAlt3"
+            android:id="@+id/musAlt4"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_marginStart="30dp"

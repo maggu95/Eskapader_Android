@@ -26,8 +26,15 @@
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/nav_header.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/spill_kort.xml" value="0.67" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/menu/navdrawer_menu.xml" value="0.5541666666666667" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/drawable/rounded_borders_dilemma.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/drawable/rounded_borders_musikkquiz.xml" value="0.12708333333333333" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/drawable/rounded_borders_musikkquiz_feil.xml" value="0.1609375" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/drawable/rounded_borders_musikkquiz_korrekt.xml" value="0.1609375" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/drawable/rounded_corner_view.xml" value="0.12708333333333333" />
         <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/layout/activity_hoved_meny.xml" value="0.1947463768115942" />
         <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/layout/fragment_kontakt.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/layout/fragment_loading__musikk_quiz.xml" value="0.2318840579710145" />
+        <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/layout/fragment_musikk_quiz.xml" value="0.136" />
         <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/layout/fragment_profil.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/layout/fragment_rettigheter.xml" value="0.24954710144927536" />
         <entry key="..\:/Users/magnu/Desktop/Eskapader_Android/app/src/main/res/menu/navdrawer_menu.xml" value="0.264" />
