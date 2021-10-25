@@ -1,5 +1,7 @@
 package usn.gruppe7.eskapader_android
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +20,7 @@ class MusikkQuizFerdigFragment : Fragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
 
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +31,14 @@ class MusikkQuizFerdigFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentMusikkQuizFerdigBinding>(inflater,R.layout.fragment_musikk_quiz_ferdig,container,false)
         //return inflater.inflate(R.layout.fragment_musikk_quiz_ferdig, container, false)
         binding.resultatTxt.text = "Poengsum: \n $poeng"
+        binding.backBtn.setOnClickListener {
+            val intent = Intent(context, HovedMenyActivity::class.java)
+            startActivity(intent)
+
+        }
+
+
+
         return binding.root
     }
 
