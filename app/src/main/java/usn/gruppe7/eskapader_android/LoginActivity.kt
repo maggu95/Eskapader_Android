@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-
         username = findViewById(R.id.passordInput)
         password = findViewById(R.id.brukernavnInput)
         loginButton = findViewById(R.id.loggInnBtn)
@@ -47,6 +46,20 @@ class LoginActivity : AppCompatActivity() {
             loggInnGjest(app);
             view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
         };
+
+        createUserButton.setOnClickListener{view: View ->
+            view?.findNavController()?.navigate(R.id.action_loggInnFragment_to_opprettBrukerFragment2)
+        }
+
+        loginButton.setOnClickListener { view: View ->
+            if (username.text.toString().isNotEmpty() && password.text.toString().isNotEmpty()) {
+                loggInn(app, username.text.toString(), password.text.toString(), view)
+            }
+            else
+                Log.v("X", "BRUKERNAVN ELLER PASSORD ER TOM!!!!")
+        }
+
+
 
     }
 
@@ -63,6 +76,28 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+    private fun loggInn(app: App, username: String, password: String, view: View) : Boolean{
+        var sjekk: Boolean = false
+        val creds = Credentials.emailPassword(username, password)
+        app.loginAsync(creds) {
+            // re-enable the buttons after user login returns a result
+            if (!it.isSuccess) {
+                onLoginFailed(it.error.message ?: "FEIL I INNLOGGING")
+            } else {
+                //onLoginSuccess()
+                sjekk = true
+                view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
+                Log.v(ContentValues.TAG, "KLARTE Å LOGGEGE INN SKIKKELIG!!")
+            }
+        }
+        return sjekk
+    }
+
+    private fun onLoginFailed(errorMsg: String) {
+        Log.e(ContentValues.TAG, errorMsg)
+    }
+
 
     /*
     private fun onLoginSuccess() {
