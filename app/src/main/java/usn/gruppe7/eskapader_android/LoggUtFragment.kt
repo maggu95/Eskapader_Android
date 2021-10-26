@@ -21,12 +21,12 @@ class LoggUtFragment : Fragment() {
 
         var user = app.currentUser();
         if (user != null) {
-            if (user.profile.email.toString() != null) {
-                Log.v("X", "BRUKER: skikkelig bruker");
+            if (user.profile.email != null) {
+                Log.v("X", "logget ut bruker");
                 loggUtBruker(app, user)
             }
                 else {
-                    Log.v("X", "BRUKER: gjeste bruker");
+                    Log.v("X", "logget ut gjestbruker");
                     loggUtGjest(app, user)
                 }
             }
@@ -49,7 +49,7 @@ class LoggUtFragment : Fragment() {
                 val user = it.get()
                 user.removeAsync { result: App.Result<User?> ->
                     if (result.isSuccess) {
-                        Log.v("X","Logget ut: ${user.profile.email.toString()}" );
+                        Log.v("X","Gjest: ${user.profile.email.toString()}" );
                     } else {
                         Log.e("EXAMPLE", "Failed to remove user from device.")
                     }
@@ -63,7 +63,7 @@ class LoggUtFragment : Fragment() {
     private fun loggUtBruker(app: App, user: User) {
         user?.logOutAsync {
             if (it.isSuccess) {
-                Log.v("AUTH", "LOGGET UT SKIKKELIG: ${user.profile.email.toString()} ")
+                Log.v("AUTH", "Logget ut bruker: ${user.profile.email.toString()} ")
             } else {
                 Log.e("AUTH", it.error.toString())
             }
