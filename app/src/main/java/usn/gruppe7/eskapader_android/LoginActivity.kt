@@ -52,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginButton.setOnClickListener { view: View ->
+            Log.d("Debug", "Trykket på LOGIN")
             if (username.text.toString().isNotEmpty() && password.text.toString().isNotEmpty()) {
                 loggInn(app, username.text.toString(), password.text.toString(), view)
             }
@@ -68,7 +69,7 @@ class LoginActivity : AppCompatActivity() {
         var user: User? = null
         app.loginAsync(credentials) {
             if (it.isSuccess) {
-                Log.v(ContentValues.TAG, "Successfully authenticated anonymously.")
+                Log.d(ContentValues.TAG, "Successfully authenticated anonymously.")
                 user = app.currentUser()
             } else {
                 Log.e(ContentValues.TAG, it.error.toString())
@@ -77,21 +78,26 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun loggInn(app: App, username: String, password: String, view: View) : Boolean{
-        var sjekk: Boolean = false
+    private fun loggInn(app: App, username: String, password: String, view: View) {
         val creds = Credentials.emailPassword(username, password)
+
+        var user = app.currentUser()
+        /*
+        if (user != null)
+            Log.d(ContentValues.TAG, "Det finnes en bruker!")
+
+         */
+
         app.loginAsync(creds) {
             // re-enable the buttons after user login returns a result
             if (!it.isSuccess) {
                 onLoginFailed(it.error.message ?: "FEIL I INNLOGGING")
             } else {
                 //onLoginSuccess()
-                sjekk = true
                 view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
                 Log.v(ContentValues.TAG, "KLARTE Å LOGGEGE INN SKIKKELIG!!")
             }
         }
-        return sjekk
     }
 
     private fun onLoginFailed(errorMsg: String) {

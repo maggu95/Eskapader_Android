@@ -7,9 +7,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toStartOf="@+id/bekreftBrukerbtn"
-        app:layout_constraintStart_toStartOf="@+id/bekreftBrukerbtn">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/OpprettKontoTittel"
@@ -18,65 +16,35 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="40dp"
+            android:layout_marginBottom="17dp"
             android:text="Opprett en Eskapade Konto"
             android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/FornavnInput"
+            app:layout_constraintBottom_toTopOf="@+id/txtInfoOmBrukernavn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/FornavnInput"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="11dp"
-            android:ems="10"
-            android:hint="Fornavn"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/EtternavnInput"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/OpprettKontoTittel" />
-
-        <EditText
-            android:id="@+id/EtternavnInput"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="11dp"
-            android:ems="10"
-            android:hint="Etternavn"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/lagBrukernavnInput"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/FornavnInput" />
-
-        <EditText
             android:id="@+id/lagBrukernavnInput"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="34dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="35dp"
             android:ems="10"
             android:hint="Brukernavn"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/lagPassordInput"
+            app:layout_constraintBottom_toTopOf="@+id/txtInfoOmPassord"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/EtternavnInput" />
+            app:layout_constraintTop_toBottomOf="@+id/txtInfoOmBrukernavn" />
 
         <EditText
             android:id="@+id/lagPassordInput"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="21dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Passord"
@@ -84,19 +52,19 @@
             app:layout_constraintBottom_toTopOf="@+id/BekreftPassordInput"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lagBrukernavnInput" />
+            app:layout_constraintTop_toBottomOf="@+id/txtInfoOmPassord" />
 
         <EditText
             android:id="@+id/BekreftPassordInput"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="21dp"
-            android:layout_marginEnd="21dp"
-            android:layout_marginBottom="56dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="43dp"
             android:ems="10"
             android:hint="Bekreft passord"
             android:inputType="textPassword"
-            app:layout_constraintBottom_toTopOf="@+id/tilLoginTxt"
+            app:layout_constraintBottom_toTopOf="@+id/bekreftBrukerbtn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lagPassordInput" />
@@ -105,25 +73,46 @@
             android:id="@+id/tilLoginTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginBottom="77dp"
+            android:layout_marginStart="4dp"
             android:text="Logg inn istedet"
             android:textColor="#0414FD"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/bekreftBrukerbtn"
             app:layout_constraintEnd_toStartOf="@+id/bekreftBrukerbtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BekreftPassordInput" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/bekreftBrukerbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="14dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="63dp"
             android:text="Bekreft bruker"
-            app:layout_constraintBaseline_toBaselineOf="@+id/tilLoginTxt"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tilLoginTxt" />
+            app:layout_constraintStart_toEndOf="@+id/tilLoginTxt"
+            app:layout_constraintTop_toBottomOf="@+id/BekreftPassordInput" />
+
+        <TextView
+            android:id="@+id/txtInfoOmBrukernavn"
+            android:layout_width="206dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="9dp"
+            android:text="Krav til brukernavn: \n -Bør ikke kunne identifisere deg \n -Kan ikke ha mellomrom "
+            app:layout_constraintBottom_toTopOf="@+id/lagBrukernavnInput"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/OpprettKontoTittel" />
+
+        <TextView
+            android:id="@+id/txtInfoOmPassord"
+            android:layout_width="332dp"
+            android:layout_height="76dp"
+            android:layout_marginBottom="8dp"
+            android:text="Krav til passord: \n -Må være mellom 6 og 128 karakterer \n -Må inneholde minst ett tall \n -Ikke bruk et passord som brukes andre steder            "
+            app:layout_constraintBottom_toTopOf="@+id/lagPassordInput"
+            app:layout_constraintStart_toStartOf="@+id/lagPassordInput"
+            app:layout_constraintTop_toBottomOf="@+id/lagBrukernavnInput" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

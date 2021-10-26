@@ -1,5 +1,6 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,8 +19,8 @@ class GodkjentBruker : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentGodkjentBrukerBinding>(inflater,R.layout.fragment_godkjent_bruker,container, false)
 
         binding.button.setOnClickListener { view : View ->
-            view.findNavController().navigate(R.id.action_godkjentBruker_to_loggInnFragment)
-
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
         }
         return binding.root
     }
