@@ -16,12 +16,14 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import io.realm.Realm
+import io.realm.log.LogLevel
+import io.realm.log.RealmLog
 import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 import usn.gruppe7.eskapader_android.databinding.ActivityLoginBinding
-
+lateinit var app: App
 class LoginActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
 
@@ -31,10 +33,27 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var gjestLoginButton: Button
     private lateinit var createUserButton: TextView
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        Realm.init(this)
+        app = App(
+            AppConfiguration.Builder(BuildConfig.MONGODB_REALM_APP_ID)
+                .defaultSyncErrorHandler { session, error ->
+                    Log.e(ContentValues.TAG, "Sync error: ${error.errorMessage}")
+                }
+                .build())
+
+        // Enable more logging in debug mode
+        if (BuildConfig.DEBUG) {
+            RealmLog.setLevel(LogLevel.ALL)
+        }
+
+        Log.v(ContentValues.TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
 
         username = findViewById(R.id.passordInput)
         password = findViewById(R.id.brukernavnInput)
