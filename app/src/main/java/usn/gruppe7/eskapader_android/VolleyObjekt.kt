@@ -10,7 +10,7 @@ class VolleyObjekt(val appContext: Context) : Volley() {
 
 
     fun hentSpill(url: String) {
-        val queue = Volley.newRequestQueue(appContext)
+        val queue = newRequestQueue(appContext)
         val json = JsonArrayRequest(
             Request.Method.GET, url, null,
             {

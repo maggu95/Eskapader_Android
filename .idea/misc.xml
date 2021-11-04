@@ -12,6 +12,8 @@
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/activity_hoved_meny.xml" value="0.1" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/dilemma_layout.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_dilemma.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_godkjent_bruker.xml" value="0.33" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_hoved_meny.xml" value="0.33" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_kontakt.xml" value="0.33177083333333335" />
@@ -22,6 +24,7 @@
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_musikk_quiz2.xml" value="0.3177083333333333" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_opprett_bruker.xml" value="0.5" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragment_profil.xml" value="0.33177083333333335" />
+        <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/fragnebt_dilemma.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/musikkquiz_spill.xml" value="0.328125" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/nav_header.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/magnu/AndroidStudioProjects/Eskapader/Eskapader_Android/app/src/main/res/layout/spill_kort.xml" value="0.67" />

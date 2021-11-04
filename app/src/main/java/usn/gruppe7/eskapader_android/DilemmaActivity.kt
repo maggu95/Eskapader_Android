@@ -10,34 +10,37 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
+import usn.gruppe7.eskapader_android.databinding.DilemmaLayoutBinding
+import usn.gruppe7.eskapader_android.databinding.MusikkquizSpillBinding
 
 class DilemmaActivity : AppCompatActivity() {
     @SuppressLint("UseCompatLoadingForDrawables", "CutPasteId")
+
+    private lateinit var binding: DilemmaLayoutBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dilemma_layout)
+       // setContentView(R.layout.dilemma_layout)
+        val url = "https://eskapader.herokuapp.com/spill"
+        binding = DataBindingUtil.setContentView(this, R.layout.dilemma_layout)
+        val container = binding.dilemmaContainer
 
         val shape: Drawable? = getDrawable(R.drawable.rounded_borders_dilemma)
         val dilemma1 = findViewById<TextView>(R.id.dill_alt_1)
         val dilemma2 = findViewById<TextView>(R.id.dill_alt_2)
         val btNesteDilemma = findViewById<Button>(R.id.btNesteDilemma)
 
-        dilemma1.setOnClickListener() {
-            btNesteDilemma.visibility = View.VISIBLE
-            dilemma1.background = shape
-        }
+        val volley = VolleyObjekt(this)
+        volley.hentSpill(url)
+        val dilemmaFragment =  DilemmaFragment()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(container.id,dilemmaFragment)
+        transaction.commit()
 
-        dilemma2.setOnClickListener() {
-            dilemma2.background = shape
-            btNesteDilemma.visibility = View.VISIBLE
-        }
 
-        btNesteDilemma.setOnClickListener() {
-            dilemma1.setText(R.string.dilemmatekst2_1)
-            dilemma2.setText(R.string.dilemmatekst2_2)
-            dilemma1.setBackgroundResource(R.drawable.dillemma_rounded_borders)
-            dilemma2.setBackgroundResource(R.drawable.dillemma_rounded_borders)
-        }
+
+
+
 
     }
 }
