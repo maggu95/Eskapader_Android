@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import io.realm.Realm
 import usn.gruppe7.eskapader_android.databinding.FragmentGodkjentBrukerBinding
 
 class GodkjentBruker : Fragment() {
@@ -17,6 +18,8 @@ class GodkjentBruker : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentGodkjentBrukerBinding>(inflater,R.layout.fragment_godkjent_bruker,container, false)
+
+
 
         binding.button.setOnClickListener { view : View ->
             val intent = Intent(context, LoginActivity::class.java)

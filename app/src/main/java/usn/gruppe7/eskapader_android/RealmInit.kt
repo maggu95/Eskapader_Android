@@ -11,14 +11,15 @@ import io.realm.mongodb.AppConfiguration
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 
-lateinit var app: App
+//lateinit var app: App
 
 class RealmInit: Application() {
 
     override fun onCreate() {
         super.onCreate()
         // Initialize the Realm SDK
-        Realm.init(this)
+
+        //Realm.init(this)
 
         /*
         val appID =  "authenticationdemo-wgbmm" // replace this with your App ID
@@ -26,7 +27,7 @@ class RealmInit: Application() {
             AppConfiguration.Builder(appID)
                 .build()
         )
-        */
+
 
 
         app = App(
@@ -43,6 +44,8 @@ class RealmInit: Application() {
 
         Log.v(TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
 
+
+         */
 
     }
 }
