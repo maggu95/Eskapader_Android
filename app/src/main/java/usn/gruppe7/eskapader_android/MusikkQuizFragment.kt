@@ -2,7 +2,6 @@ package usn.gruppe7.eskapader_android
 
 
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.DrawableWrapper
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,10 +13,9 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.databinding.DataBindingUtil
 import usn.gruppe7.eskapader_android.databinding.FragmentMusikkQuizBinding
-import kotlin.properties.Delegates
 
 class MusikkQuizFragment() : Fragment() {
-    private lateinit var quizListe : ArrayList<MusikkSpørsmål>
+    private lateinit var quizListe : ArrayList<Quiz>
     private var currSpørs : Int = 0
     private var valgtAlternativ : Int? = null
     private var poeng: Int = 0
@@ -29,7 +27,7 @@ class MusikkQuizFragment() : Fragment() {
     var valgtSvar : Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        quizListe = arguments?.getParcelableArrayList<MusikkSpørsmål>("quizListe") as ArrayList<MusikkSpørsmål>
+        quizListe = arguments?.getParcelableArrayList<Quiz>("quizListe") as ArrayList<Quiz>
         alternativer = arrayListOf<TextView>()
         valgtShape = context?.let { getDrawable(it,R.drawable.rounded_borders_musikkquiz) }!!
         defaultShape = context?.let { getDrawable(it,R.drawable.rounded_corner_view) }!!
@@ -144,7 +142,7 @@ class MusikkQuizFragment() : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(liste : ArrayList<MusikkSpørsmål>) =
+        fun newInstance(liste : ArrayList<Quiz>) =
             MusikkQuizFragment().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList("quizListe", liste)

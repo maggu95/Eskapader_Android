@@ -17,6 +17,7 @@ class DilemmaActivity : AppCompatActivity() {
     @SuppressLint("UseCompatLoadingForDrawables", "CutPasteId")
 
     private lateinit var binding: DilemmaLayoutBinding
+    val dilemmaListe = ArrayList<Dilemma>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +32,12 @@ class DilemmaActivity : AppCompatActivity() {
         val btNesteDilemma = findViewById<Button>(R.id.btNesteDilemma)
 
         val volley = VolleyObjekt(this)
-        volley.hentSpill(url)
-        val dilemmaFragment =  DilemmaFragment()
+        volley.hentSpill_Dilemma(dilemmaListe, "Dilemma")
+        for(i in 0 until dilemmaListe.size)
+            println(dilemmaListe.get(i))
+
+
+        val dilemmaFragment =  DilemmaFragment.newInstance(dilemmaListe)
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(container.id,dilemmaFragment)
         transaction.commit()

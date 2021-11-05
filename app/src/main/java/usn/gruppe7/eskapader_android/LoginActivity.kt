@@ -54,6 +54,8 @@ class LoginActivity : AppCompatActivity() {
         }
 
         Log.v(ContentValues.TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
+        val volley = VolleyObjekt(this)
+        volley.vekkAPI()
 
         username = findViewById(R.id.passordInput)
         password = findViewById(R.id.brukernavnInput)

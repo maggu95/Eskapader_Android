@@ -15,7 +15,7 @@ import usn.gruppe7.eskapader_android.databinding.MusikkquizSpillBinding
 
 class MusikkQuiz_Activity : AppCompatActivity() {
     @SuppressLint("UseCompatLoadingForDrawables", "CutPasteId")
-    val quizListe = ArrayList<MusikkSpørsmål>()
+    val quizListe = ArrayList<Quiz>()
     private lateinit var binding: MusikkquizSpillBinding
     private var currSpørsmål : Int = 0
     private val url = "https://eskapader.herokuapp.com/spill"
@@ -43,7 +43,7 @@ class MusikkQuiz_Activity : AppCompatActivity() {
                     val id = quizResponse.getJSONObject(i).getInt("Sporsmal_id")
                     val spørsmålTekst = quizResponse.getJSONObject(i).getString("Sporsmaltekst")
                     val svar = quizResponse.getJSONObject(i).getInt("Svar")
-                    var musikkObjekt = MusikkSpørsmål(spørsmålTekst, id,svar)
+                    var musikkObjekt = Quiz(spørsmålTekst, id,svar)
 
                     val spørsmålListe = quizResponse.getJSONObject(i).getJSONArray("Alternativ")
                     for(i in 0 until spørsmålListe.length()) {

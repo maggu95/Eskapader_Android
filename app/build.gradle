@@ -3,13 +3,20 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt' //Plugin for MongoDB realm
     id 'realm-android' //Plugin for MongoDB realm
+    id("kotlin-parcelize")
+
+
 }
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
     compileSdk 31
     buildFeatures{
-        dataBinding true
+        dataBinding = true
     }
+
+
 
     defaultConfig {
         applicationId "usn.gruppe7.eskapader_android"
