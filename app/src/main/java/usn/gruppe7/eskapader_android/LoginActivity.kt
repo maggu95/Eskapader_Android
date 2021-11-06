@@ -1,7 +1,6 @@
 package usn.gruppe7.eskapader_android
 
 import android.content.ContentValues
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +8,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
-import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
 import io.realm.Realm
 import io.realm.log.LogLevel
 import io.realm.log.RealmLog
@@ -22,7 +17,7 @@ import io.realm.mongodb.App
 import io.realm.mongodb.AppConfiguration
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
-import usn.gruppe7.eskapader_android.databinding.ActivityLoginBinding
+
 lateinit var app: App
 class LoginActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -54,7 +49,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         Log.v(ContentValues.TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
-        val volley = VolleyObjekt(this)
+        val volley = APIConnector(this)
         volley.vekkAPI()
 
         username = findViewById(R.id.passordInput)
