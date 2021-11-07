@@ -32,48 +32,16 @@ class MusikkQuiz_Activity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.musikkquiz_spill)
         val container = binding.musikkQuizContainer
 
-        val queue = Volley.newRequestQueue(this)
-        val json = JsonArrayRequest(Request.Method.GET, url, null,
-            { response ->
-                var resultat = response[1].toString()
-                val obj = JSONObject(resultat)
-                val quizResponse = obj.getJSONArray("Musikkquiz")
-
-                for(i in 0 until quizResponse.length()) {
-                    val id = quizResponse.getJSONObject(i).getInt("Sporsmal_id")
-                    val spørsmålTekst = quizResponse.getJSONObject(i).getString("Sporsmaltekst")
-                    val svar = quizResponse.getJSONObject(i).getInt("Svar")
-                    var musikkObjekt = Quiz(spørsmålTekst, id,svar)
-
-                    val spørsmålListe = quizResponse.getJSONObject(i).getJSONArray("Alternativ")
-                    for(i in 0 until spørsmålListe.length()) {
-                        val spørsmål = spørsmålListe.get(i).toString();
-                        musikkObjekt.addSpørsmål(spørsmål)
-                    }
-
-                    quizListe.add(musikkObjekt)
-                    Log.d("FOR", "Laget objekt: $i ${musikkObjekt.toString()}")
-                }
-                //Her er listen data ferdig hentet
-
-                val quizFragment = MusikkQuizFragment.newInstance(quizListe)
+        val connector = APIConnector(this)
+        connector.hentSpill_QuizAsync("Musikkquiz") {
+            result ->
+            if(result != null) {
+                val quizFragment = MusikkQuizFragment.newInstance(result)
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(container.id,quizFragment)
                 transaction.commit()
-
-            },
-            { error ->
-                Log.d("Feil i API kall: " , "Error: $error")
             }
-        )
-
-        // Add the request to the RequestQueue.
-        Log.i("Test","La til bruh")
-        queue.add(json)
-
-
-
-
+        }
     }
 }
 
