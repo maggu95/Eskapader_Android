@@ -5,141 +5,209 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".OpprettMusikkQuizFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="414dp"
         android:layout_height="match_parent"
-        app:layout_constraintEnd_toStartOf="@+id/linearLayout23"
-        app:layout_constraintStart_toStartOf="@+id/linearLayout23">
-
-        <EditText
-            android:id="@+id/inputQuizNavn"
-            android:layout_width="183dp"
-            android:layout_height="49dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Min musikkquiz"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="114dp"
-            tools:layout_editor_absoluteY="42dp" />
-
-        <EditText
-            android:id="@+id/inputSangtekst"
-            android:layout_width="233dp"
-            android:layout_height="101dp"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Mama just killed a man"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="89dp"
-            tools:layout_editor_absoluteY="135dp" />
-
-        <Button
-            android:id="@+id/btBekreftQuiz"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Button"
-            tools:layout_editor_absoluteX="154dp"
-            tools:layout_editor_absoluteY="521dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp">
 
         <LinearLayout
-            android:id="@+id/linearLayout22"
-            android:layout_width="177dp"
-            android:layout_height="128dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="260dp">
-
-            <CheckBox
-                android:id="@+id/checkBoxAlt1"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout2">
 
             <EditText
-                android:id="@+id/inputAlt1"
-                android:layout_width="160dp"
-                android:layout_height="48dp"
+                android:id="@+id/inputQuizNavn"
+                android:layout_width="183dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="115dp"
+                android:layout_marginTop="42dp"
+                android:layout_marginEnd="114dp"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="Alternativ 1"
-                android:inputType="textPersonName" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout23"
-            android:layout_width="177dp"
-            android:layout_height="128dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="207dp"
-            tools:layout_editor_absoluteY="260dp">
-
-            <CheckBox
-                android:id="@+id/checkBoxAlt2"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
-
-            <EditText
-                android:id="@+id/inputAlt2"
-                android:layout_width="160dp"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Alternativ 2"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout24"
-            android:layout_width="177dp"
-            android:layout_height="128dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="207dp"
-            tools:layout_editor_absoluteY="388dp">
-
-            <CheckBox
-                android:id="@+id/checkBoxAlt4"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
-
-            <EditText
-                android:id="@+id/inputAlt4"
-                android:layout_width="160dp"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Alternativ 4"
-                android:inputType="textPersonName" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout25"
-            android:layout_width="177dp"
-            android:layout_height="128dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="388dp">
-
-            <CheckBox
-                android:id="@+id/checkBoxAlt3"
-                android:layout_width="48dp"
-                android:layout_height="48dp" />
-
-            <EditText
-                android:id="@+id/inputAlt3"
-                android:layout_width="160dp"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="Alternativ 3"
+                android:hint="Min musikkquiz"
                 android:inputType="textPersonName"
-                tools:ignore="TouchTargetSizeCheck" />
+                app:layout_constraintBottom_toTopOf="@+id/inputSangtekst"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/inputSangtekst"
+                android:layout_width="233dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="89dp"
+                android:layout_marginEnd="89dp"
+                android:layout_marginBottom="24dp"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Mama just killed a man"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputQuizNavn" />
+
+            <Button
+                android:id="@+id/btBekreftQuiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="154dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="163dp"
+                android:layout_marginBottom="24dp"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/inputSangtekst">
+
+                <RadioButton
+                    android:id="@+id/radioButAlt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/inputAlt1"
+                    android:layout_width="160dp"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Alternativ 1"
+                    android:inputType="textPersonName" />
+
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/linearLayout2"
+                android:layout_width="177dp"
+                android:layout_height="128dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/linearLayout3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout1">
+
+                <RadioButton
+                    android:id="@+id/radioButAlt2"
+                    android:layout_width="48dp"
+                    android:layout_height="49dp" />
+
+                <EditText
+                    android:id="@+id/inputAlt2"
+                    android:layout_width="160dp"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Alternativ 2"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout4"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="87dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/linearLayout3"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+                <RadioButton
+                    android:id="@+id/radioButAlt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/inputAlt4"
+                    android:layout_width="160dp"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Alternativ 4"
+                    android:inputType="textPersonName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginBottom="87dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayout4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
+
+                <RadioButton
+                    android:id="@+id/radioButAlt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center" />
+
+                <EditText
+                    android:id="@+id/inputAlt3"
+                    android:layout_width="160dp"
+                    android:layout_height="48dp"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="Alternativ 3"
+                    android:inputType="textPersonName"
+                    tools:ignore="TouchTargetSizeCheck" />
+            </LinearLayout>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TableLayout
+                    android:id="@+id/tabQuiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </TableLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
         </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+
 
 
 </layout>

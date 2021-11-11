@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
 
         Log.v(ContentValues.TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
 
-
+        /*
         val volley = APIConnector(this)
 
         val spillnavn = "Test fra android"
@@ -68,6 +68,8 @@ class LoginActivity : AppCompatActivity() {
         dilemmaListe.add(dilemma)
         println("Poster $dilemma til database...")
         volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);
+
+         */
 
 
 
