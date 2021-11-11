@@ -21,6 +21,7 @@ class DilemmaActivity : AppCompatActivity() {
         val container = binding.dilemmaContainer
 
 
+
         val connector = APIConnector(this)
 
          connector.hentSpill_DilemmaAsync( "Dilemma") {

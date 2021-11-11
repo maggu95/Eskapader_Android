@@ -1,17 +1,18 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import usn.gruppe7.eskapader_android.databinding.FragmentHovedMenyBinding
 import usn.gruppe7.eskapader_android.databinding.FragmentOpprettMusikkquizBinding
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.cardview.widget.CardView
 
 
 class OpprettMusikkQuizFragment : Fragment() {
@@ -22,6 +23,10 @@ class OpprettMusikkQuizFragment : Fragment() {
     lateinit var  defaultShape : Drawable
     lateinit var quizListe : ArrayList<Quiz>
     lateinit var brukerRow: TableRow
+    private lateinit var kortLayout: ViewGroup
+    private lateinit var kortTxt: TextView
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +40,9 @@ class OpprettMusikkQuizFragment : Fragment() {
         textList = arrayListOf<EditText>()
         quizListe = arrayListOf<Quiz>()
 
+
         val binding = DataBindingUtil.inflate<FragmentOpprettMusikkquizBinding>(inflater,R.layout.fragment_opprett_musikkquiz,container,false)
+
         
 
         textList.add(binding.inputAlt1)
@@ -66,47 +73,46 @@ class OpprettMusikkQuizFragment : Fragment() {
             if (getSvar() < 0)
                 Toast.makeText(context, "Sørg for å velge riktig svar!", Toast.LENGTH_LONG).show()
             else {
-                val quiz = Quiz(binding.inputSangtekst.text.toString(), 0, getSvar())
+                val quiz = Quiz(binding.inputSangtekst.text.toString(), antQuizSpm, getSvar())
+
+
                 for (i in 0 until textList.size) {
                     quiz.addSpørsmål(textList.get(i).text.toString())
                 }
 
                 quizListe.add(quiz)
 
-                val quizRow = QuizRow(quiz, antQuizSpm)
-                quizRow.addRow(R.layout.bruker_row)
+                val quizRow = QuizRow(quiz, antQuizSpm, context)
+                antQuizSpm++
+
+                val tableRow = TableRow(context)
+                tableRow.setPadding(20, 20, 20, 20)
+
 
                 val textView = TextView(context)
                 textView.setText(quiz.getSpørsmålsTekst())
-                val tableRow = TableRow(context)
-                tableRow.setPadding(20, 20, 20, 20)
-                //tableRow.addView(quizRow)
+                textView.setTextColor(Color.WHITE)
+                textView.textSize = 35F
 
-                binding.tabQuiz.addView(tableRow)
-                tableRow.setOnClickListener{
-                    Toast.makeText(context, "You hit the quan!: ${binding.tabQuiz}" , Toast.LENGTH_LONG).show()
+                val card = CardView(requireContext())
+                card.minimumWidth = 900
+                card.minimumHeight=  90
+                card.setCardBackgroundColor(Color.parseColor("#8A2BE2"))
+                card.addView(textView)
+
+
+
+                quizRow.addKort(card)
+
+                //tableRow.addView(card)
+                binding.tabQuiz.addView(quizRow)
+                quizRow.setOnClickListener{
+                    Toast.makeText(context, "You hit the quan! ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
 
-
-
-        /*
-        for (i in 0 until textList.size ) {
-            textList.get(i).setOnClickListener {
-                print("Du trykket på alternativ -> $i")
-                textList.get(i).setBackgroundDrawable(valgtShape)
-                textList.get(i).background = valgtShape
-                //valgtAlternativ = i
-                for(j in 0 until textList.size) {
-                    if(textList.get(j) != textList.get(i) )
-                        textList.get(j).background = defaultShape
-                }
-            }
-        }
-
-         */
 
         return binding.root;
     }

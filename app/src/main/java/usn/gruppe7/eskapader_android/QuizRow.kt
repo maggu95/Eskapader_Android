@@ -1,15 +1,20 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Context
 import android.text.Layout
+import android.view.View
 import android.widget.TableRow
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 
-class QuizRow(val quiz: Quiz, val nr: Int) {
+class QuizRow(val quiz: Quiz, val nr: Int, context: Context?) : TableRow(context) {
+    var kort : CardView? = null
 
-    var row: Int? = null
 
-
-    fun addRow(tableRow: Int) {
-        row = tableRow
+    fun addKort( k : CardView) {
+        kort = k
+        addView(kort)
     }
+
 
 }
