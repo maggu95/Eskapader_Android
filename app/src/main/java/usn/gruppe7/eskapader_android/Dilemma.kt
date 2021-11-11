@@ -5,20 +5,18 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 class Dilemma(
-    val statistikk1: Int,
-    val statistikk2: Int,
+    val statistikk : Array<Int>,
     val id: Int,
     val tekst: String,
-    val alternativ1: String,
-    val alternativ2: String ) : Parcelable {
+    val alternativ : Array<String> ) : Parcelable {
 
 
     fun getStat1(): Int {
-        return statistikk1
+        return statistikk[0]
     }
 
     fun getStat2(): Int {
-        return statistikk2
+        return statistikk[1]
     }
 
 
@@ -27,7 +25,7 @@ class Dilemma(
     }
 
     override fun toString(): String {
-        return "$id \n $tekst \n $alternativ1  $alternativ2"
+        return "$id  $tekst  ${alternativ} ${statistikk }"
     }
 
 }

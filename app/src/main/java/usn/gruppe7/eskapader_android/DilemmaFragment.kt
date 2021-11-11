@@ -43,8 +43,8 @@ class DilemmaFragment : Fragment() {
         //Henter listen med dillemma
         val dilemmaListe =  arguments?.getParcelableArrayList<Dilemma>("liste") as ArrayList<Dilemma>
 
-        binding.dillAlt1.text = dilemmaListe.get(currDilemma).alternativ1
-        binding.dillAlt2.text = dilemmaListe.get(currDilemma).alternativ2
+        binding.dillAlt1.text = dilemmaListe.get(currDilemma).alternativ[0]
+        binding.dillAlt2.text = dilemmaListe.get(currDilemma).alternativ[1]
 
 
 

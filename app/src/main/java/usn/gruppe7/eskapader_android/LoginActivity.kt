@@ -49,8 +49,29 @@ class LoginActivity : AppCompatActivity() {
         }
 
         Log.v(ContentValues.TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
+
+
         val volley = APIConnector(this)
-        volley.vekkAPI()
+
+        val spillnavn = "Test fra android"
+        val author = "Android bruker"
+
+        val statListe = arrayOf(0,0)
+        val id = 0;
+        val SpørsmålsTekst = "Test fra android"
+        val alternativ = arrayOf("Alternativ 1", "Alternativ 2")
+
+
+       val dilemma =  Dilemma(statListe,id,SpørsmålsTekst, alternativ);
+
+        val dilemmaListe = arrayListOf<Dilemma>();
+        dilemmaListe.add(dilemma)
+        println("Poster $dilemma til database...")
+        volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);
+
+
+
+
 
         username = findViewById(R.id.passordInput)
         password = findViewById(R.id.brukernavnInput)
