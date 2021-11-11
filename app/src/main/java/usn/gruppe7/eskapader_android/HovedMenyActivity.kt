@@ -54,7 +54,7 @@ class HovedMenyActivity : AppCompatActivity() {
                     R.id.item_musikkquiz ->
                         view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
                     R.id.item_dilemma ->
-                        Toast.makeText(this, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettDilemmaFragment)
                 }
                 true
             })

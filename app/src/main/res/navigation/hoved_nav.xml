@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_hovedMenyFragment_to_opprettMusikkQuizFragment"
             app:destination="@id/opprettMusikkQuizFragment" />
+        <action
+            android:id="@+id/action_hovedMenyFragment_to_opprettDilemmaFragment"
+            app:destination="@id/opprettDilemmaFragment" />
     </fragment>
     <activity
         android:id="@+id/dilemmaActivity"
@@ -60,4 +63,8 @@
         android:name="usn.gruppe7.eskapader_android.OpprettMusikkQuizFragment"
         android:label="fragment_opprett_musikkquiz"
         tools:layout="@layout/fragment_opprett_musikkquiz" />
+    <fragment
+        android:id="@+id/opprettDilemmaFragment"
+        android:name="usn.gruppe7.eskapader_android.OpprettDilemmaFragment"
+        android:label="OpprettDilemmaFragment" />
 </navigation>
