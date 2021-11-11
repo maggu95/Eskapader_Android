@@ -11,6 +11,7 @@ import android.widget.PopupMenu
 import android.widget.Toast
 import androidx.core.view.size
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import usn.gruppe7.eskapader_android.databinding.FragmentHovedMenyBinding
 
@@ -20,6 +21,7 @@ class HovedMenyFragment : Fragment() {
     private val instruks2_Liste = mutableListOf<String>()
     private val instruks3_Liste = mutableListOf<String>()
     private val bildeliste = mutableListOf<Int>()
+    private lateinit var btLeggTilQuiz: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -28,6 +30,23 @@ class HovedMenyFragment : Fragment() {
         recyclerAdapter.layoutManager = LinearLayoutManager(context)
         recyclerAdapter.adapter = RecyclerAdapter(tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste)
         fyllEksempelData()
+
+        //btLeggTilQuiz = findViewById(R.id.btLeggTilQuiz)
+        btLeggTilQuiz = binding.btLeggTilQuiz;
+        btLeggTilQuiz.setOnClickListener { view : View ->
+            val popupMenu: PopupMenu = PopupMenu(context, btLeggTilQuiz)
+            popupMenu.menuInflater.inflate(R.menu.item_ny_quiz, popupMenu.menu)
+            popupMenu.setOnMenuItemClickListener( PopupMenu.OnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.item_musikkquiz ->
+                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
+                    R.id.item_dilemma ->
+                        Toast.makeText(context, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+                }
+                true
+            })
+            popupMenu.show()
+        }
 
         return binding.root
     }
