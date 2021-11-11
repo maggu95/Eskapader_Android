@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Musikkquiz"
+        android:id="@+id/item_musikkquiz"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Dilemma"
+        android:id="@+id/item_dilemma"
+        app:showAsAction="never"
+        />
+
+
+</menu>

@@ -1,11 +1,14 @@
 package usn.gruppe7.eskapader_android
 
 import android.os.Bundle
+import android.util.Log.INFO
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.core.view.size
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +28,7 @@ class HovedMenyFragment : Fragment() {
         recyclerAdapter.layoutManager = LinearLayoutManager(context)
         recyclerAdapter.adapter = RecyclerAdapter(tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste)
         fyllEksempelData()
+
         return binding.root
     }
 

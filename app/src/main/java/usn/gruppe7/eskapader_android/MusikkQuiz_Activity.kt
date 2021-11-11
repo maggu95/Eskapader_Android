@@ -34,6 +34,8 @@ class MusikkQuiz_Activity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.musikkquiz_spill)
         val container = binding.musikkQuizContainer
 
+
+
         val connector = APIConnector(this)
         connector.hentSpill_QuizAsync("Musikkquiz") {
             result ->

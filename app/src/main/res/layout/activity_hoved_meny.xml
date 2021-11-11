@@ -21,6 +21,7 @@
             app:defaultNavHost="true"
             app:navGraph="@navigation/hoved_nav"
             />
+
         </LinearLayout>
 
         <com.google.android.material.navigation.NavigationView

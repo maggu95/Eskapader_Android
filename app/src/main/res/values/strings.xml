@@ -24,6 +24,7 @@
     <string name="dilemmatekst2_1">Kropp dekket av pels</string>
     <string name="dilemmatekst2_2">Kropp dekket av fiskeskall</string>
     <string name="min_side">Min Side</string>
+    <string name="her_skal_musikkquiz_opprettes">Her skal musikkquiz opprettes!</string>
 
     <string-array name="språk">
         <item>Norsk</item>

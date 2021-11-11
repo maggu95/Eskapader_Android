@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -27,9 +28,10 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
                     0 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz_Activity)
                     1 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_dilemmaActivity)
                 }
-
             }
         }
+
+
 
     }
 
