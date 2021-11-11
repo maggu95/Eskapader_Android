@@ -53,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
         /*
         val volley = APIConnector(this)
 
-        val spillnavn = "Test fra android"
+        /*val spillnavn = "Test fra android 2 "
         val author = "Android bruker"
 
         val statListe = arrayOf(0,0)
@@ -64,10 +64,36 @@ class LoginActivity : AppCompatActivity() {
 
        val dilemma =  Dilemma(statListe,id,SpørsmålsTekst, alternativ);
 
+        val statListe2 = arrayOf(0,0)
+        val id2 = 1;
+        val SpørsmålsTekst2 = "Test fra android 2"
+        val alternativ2 = arrayOf("Alternativ 1", "Alternativ 2")
+
+
+        val dilemma2 =  Dilemma(statListe2,id2,SpørsmålsTekst2, alternativ2);
+
         val dilemmaListe = arrayListOf<Dilemma>();
         dilemmaListe.add(dilemma)
+        dilemmaListe.add(dilemma2)
         println("Poster $dilemma til database...")
-        volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);
+        volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);*/
+
+
+
+        val id = 0
+        val tekst = "Spørsmålstekst"
+        val alternativer = arrayOf("Alt1", "Alt2", "Alt3", "Alt4")
+        val svar = 2
+
+        val quiz1 = Quiz(tekst,id,svar)
+        quiz1.alternativ_Liste = alternativer.toMutableList();
+
+        val quiz2 = Quiz(tekst,id,svar+1)
+        quiz2.alternativ_Liste = alternativer.toMutableList()
+
+        val quizListe = arrayListOf(quiz1,quiz2)
+
+        volley.opprettQuizSpill("Android peasant", "Generisk quiz",quizListe )
 
          */
 

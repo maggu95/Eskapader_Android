@@ -15,6 +15,13 @@ class Dilemma(
         return statistikk[0]
     }
 
+    fun getStatistikkArr() : Array<Int> {
+        return statistikk
+    }
+    fun getAlternativArr() : Array<String> {
+        return alternativ
+    }
+
     fun getStat2(): Int {
         return statistikk[1]
     }
