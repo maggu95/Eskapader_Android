@@ -11,42 +11,61 @@
 
         <EditText
             android:id="@+id/dilemma_Alt2"
-            android:layout_width="351dp"
-            android:layout_height="67dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="94dp"
             android:ems="10"
             android:hint="Alternativ 2"
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="295dp" />
+            app:layout_constraintBottom_toTopOf="@+id/btLeggtilDilemma"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dilemma_Alt1" />
 
         <EditText
             android:id="@+id/dilemma_Spm"
-            android:layout_width="351dp"
-            android:layout_height="67dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="71dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="59dp"
             android:ems="10"
             android:hint="Spørsmålstekst her"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="71dp" />
+            app:layout_constraintBottom_toTopOf="@+id/dilemma_Alt1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/dilemma_Alt1"
-            android:layout_width="351dp"
-            android:layout_height="66dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="32dp"
             android:ems="10"
             android:hint="Alternativ 1"
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="30dp"
-            tools:layout_editor_absoluteY="198dp" />
+            app:layout_constraintBottom_toTopOf="@+id/dilemma_Alt2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dilemma_Spm" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btLeggtilDilemma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="99dp"
             android:text="Legg til"
-            tools:layout_editor_absoluteX="155dp"
-            tools:layout_editor_absoluteY="447dp" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dilemma_Alt2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
