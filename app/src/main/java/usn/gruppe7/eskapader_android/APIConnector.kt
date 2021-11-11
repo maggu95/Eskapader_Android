@@ -9,6 +9,7 @@ import org.json.JSONObject
 import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
+import org.json.JSONArray
 
 
 class APIConnector(val appContext: Context) : Volley() {
@@ -155,15 +156,26 @@ class APIConnector(val appContext: Context) : Volley() {
 
         postData.put("Spillnavn", spillNavn)
         postData.put("Author", author)
+        val DilemmaArray = JSONArray();
 
         for(i in 0 until dilemmaListe.size){
             val test = JSONObject();
-            test.put("Statistikk", dilemmaListe[i].statistikk)
-            test.put("Alternativer", dilemmaListe[i].alternativ)
+
+            val statArr = JSONArray();
+            statArr.put(dilemmaListe[i].statistikk[0])
+            statArr.put(dilemmaListe[i].statistikk[1])
+            test.put("Statistikk", statArr)
+
+            val altArr = JSONArray()
+            altArr.put(dilemmaListe[i].alternativ[0])
+            altArr.put(dilemmaListe[i].alternativ[1])
+            test.put("Alternativer", altArr)
+
             test.put("SpørsmålsTekst", dilemmaListe[i].tekst)
             test.put("Spørsmål_id", dilemmaListe[i].id)
-            postData.put("Dilemma", test)
+            DilemmaArray.put(i,test)
         }
+        postData.put("Dilemma",DilemmaArray)
 
         val req = JsonObjectRequest(Request.Method.POST,postURL,postData,
             {
@@ -198,8 +210,40 @@ class APIConnector(val appContext: Context) : Volley() {
 
         val postData = JSONObject()
 
+        postData.put("Spillnavn", spillNavn)
+        postData.put("Author", author)
 
+        val spørsmålArr = JSONArray();
 
+        for(i in 0 until quizListe.size){
+            val spørsmålObjekt = JSONObject()
+            spørsmålObjekt.put("Spørsmål_id", quizListe[i].idTall)
+            spørsmålObjekt.put("SpørsmålsTekst", quizListe[i].spørsmål)
+            spørsmålObjekt.put("Svar", quizListe[i].svarTall)
+
+            val alternativer = JSONArray()
+            alternativer.put(quizListe[i].alternativ_Liste[0])
+            alternativer.put(quizListe[i].alternativ_Liste[1])
+            alternativer.put(quizListe[i].alternativ_Liste[2])
+            alternativer.put(quizListe[i].alternativ_Liste[3])
+            spørsmålObjekt.put("Alternativer", alternativer)
+
+            spørsmålArr.put(i,spørsmålObjekt)
+        }
+        postData.put("Spørsmål",  spørsmålArr)
+
+        val req = JsonObjectRequest(Request.Method.POST,postURL,postData,
+            {
+                    response ->
+                val resultat = response.toString(4)
+                println(resultat)
+            },
+            {
+                    error ->
+                println("Feil oppsto i POST: $error")
+            }
+        )
+        requestQueue.add(req)
 
     }
 
