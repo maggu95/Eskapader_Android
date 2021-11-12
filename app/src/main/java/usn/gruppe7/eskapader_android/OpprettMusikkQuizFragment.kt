@@ -104,11 +104,20 @@ class OpprettMusikkQuizFragment : Fragment() {
                     Toast.makeText(context, "Du trykket på ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
                     hentQuiz(quiz.idTall, binding)
                     binding.scrollView.fullScroll(View.FOCUS_UP)
-                    val alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
+                    var alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
 
                     binding.inputSangtekst.addTextChangedListener{
                         binding.btRedigerQuiz.isVisible =
                             !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt)
+                    }
+
+
+                    for (elem: EditText in textList) {
+                        elem.addTextChangedListener {
+                            alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
+                            binding.btRedigerQuiz.isVisible =
+                                !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt)
+                        }
                     }
                 }
                 tømTekst(binding)
