@@ -20,6 +20,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.core.view.updateLayoutParams
+import androidx.core.widget.addTextChangedListener
 
 
 class OpprettMusikkQuizFragment : Fragment() {
@@ -41,6 +42,7 @@ class OpprettMusikkQuizFragment : Fragment() {
 
 
         val binding = DataBindingUtil.inflate<FragmentOpprettMusikkquizBinding>(inflater,R.layout.fragment_opprett_musikkquiz,container,false)
+        var aktivQuiz: Quiz? = null
 
         binding.btRedigerQuiz.isVisible = false
 
@@ -98,17 +100,23 @@ class OpprettMusikkQuizFragment : Fragment() {
                 quizRow.addView(card)
                 binding.tabQuiz.addView(quizRow)
                 quizRow.setOnClickListener{
+                    aktivQuiz = quiz
                     Toast.makeText(context, "Du trykket på ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
                     hentQuiz(quiz.idTall, binding)
                     binding.scrollView.fullScroll(View.FOCUS_UP)
                     val alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
-                    if (!quiz.sammenlign(binding.inputSangtekst.text.toString(), alt)) {
-                        binding.btRedigerQuiz.isVisible = true
+
+                    binding.inputSangtekst.addTextChangedListener{
+                        binding.btRedigerQuiz.isVisible =
+                            !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt)
                     }
                 }
                 tømTekst(binding)
             }
         }
+
+
+
         return binding.root;
     }
 
