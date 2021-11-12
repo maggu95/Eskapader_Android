@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import usn.gruppe7.eskapader_android.databinding.FragmentOpprettMusikkquizBinding
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.cardview.widget.CardView
+import androidx.core.view.get
 
 
 class OpprettMusikkQuizFragment : Fragment() {
@@ -23,9 +24,7 @@ class OpprettMusikkQuizFragment : Fragment() {
     lateinit var  defaultShape : Drawable
     lateinit var quizListe : ArrayList<Quiz>
     lateinit var brukerRow: TableRow
-    private lateinit var kortLayout: ViewGroup
-    private lateinit var kortTxt: TextView
-    private lateinit var test : CardView
+    private lateinit var kort : CardView
 
 
 
@@ -93,14 +92,16 @@ class OpprettMusikkQuizFragment : Fragment() {
 
                 val textView = TextView(context)
                 textView.setText(quiz.getSpørsmålsTekst())
-                textView.setTextColor(Color.WHITE)
-                textView.textSize = 35F
+                textView.setTextColor(Color.BLACK)
+                textView.textSize = 25F
 
-                test = inflater.inflate(R.layout.bruker_row,binding.tabQuiz,false) as CardView
-                test.addView(textView)
+                kort = inflater.inflate(R.layout.bruker_row,binding.tabQuiz,false) as CardView
+                //kort.requireV
+                //test.addView(textView)
+               // quizRow.addView(textView)
 
 
-               /* val card = CardView(requireContext())
+                val card = CardView(requireContext())
                 card.minimumWidth = 900
                 card.minimumHeight=  90
                 card.setCardBackgroundColor(Color.parseColor("#8A2BE2"))
@@ -109,12 +110,14 @@ class OpprettMusikkQuizFragment : Fragment() {
 
 
 
-                quizRow.addKort(card)*/
+
+
+                quizRow.addView(card)
 
                 //tableRow.addView(card)
-                binding.tabQuiz.addView(test)
+                binding.tabQuiz.addView(quizRow)
                 quizRow.setOnClickListener{
-                    Toast.makeText(context, "You hit the quan! ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Du trykket på ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
                 }
             }
         }

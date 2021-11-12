@@ -13,7 +13,9 @@ class QuizRow(val quiz: Quiz, val nr: Int, context: Context?) : TableRow(context
 
     fun addKort( k : CardView) {
         kort = k
+        //addView(txt,0)
         addView(kort)
+
     }
 
 
