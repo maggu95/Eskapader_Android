@@ -25,6 +25,7 @@ class OpprettMusikkQuizFragment : Fragment() {
     lateinit var brukerRow: TableRow
     private lateinit var kortLayout: ViewGroup
     private lateinit var kortTxt: TextView
+    private lateinit var test : CardView
 
 
 
@@ -85,8 +86,9 @@ class OpprettMusikkQuizFragment : Fragment() {
                 val quizRow = QuizRow(quiz, antQuizSpm, context)
                 antQuizSpm++
 
-                val tableRow = TableRow(context)
-                tableRow.setPadding(20, 20, 20, 20)
+                //val tableRow = TableRow(context)
+                //tableRow.setPadding(20, 20, 20, 20)
+
 
 
                 val textView = TextView(context)
@@ -94,7 +96,11 @@ class OpprettMusikkQuizFragment : Fragment() {
                 textView.setTextColor(Color.WHITE)
                 textView.textSize = 35F
 
-                val card = CardView(requireContext())
+                test = inflater.inflate(R.layout.bruker_row,binding.tabQuiz,false) as CardView
+                test.addView(textView)
+
+
+               /* val card = CardView(requireContext())
                 card.minimumWidth = 900
                 card.minimumHeight=  90
                 card.setCardBackgroundColor(Color.parseColor("#8A2BE2"))
@@ -102,10 +108,11 @@ class OpprettMusikkQuizFragment : Fragment() {
 
 
 
-                quizRow.addKort(card)
+
+                quizRow.addKort(card)*/
 
                 //tableRow.addView(card)
-                binding.tabQuiz.addView(quizRow)
+                binding.tabQuiz.addView(test)
                 quizRow.setOnClickListener{
                     Toast.makeText(context, "You hit the quan! ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
                 }
