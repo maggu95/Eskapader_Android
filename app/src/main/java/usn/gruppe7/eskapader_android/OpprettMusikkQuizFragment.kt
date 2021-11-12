@@ -1,41 +1,40 @@
 package usn.gruppe7.eskapader_android
 
+import android.app.ActionBar
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.FOCUS_UP
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import usn.gruppe7.eskapader_android.databinding.FragmentOpprettMusikkquizBinding
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
+import androidx.core.view.isVisible
+import androidx.core.view.updateLayoutParams
 
 
 class OpprettMusikkQuizFragment : Fragment() {
 
     lateinit var  textList : ArrayList<EditText>
     lateinit var  radioButtonList : ArrayList<RadioButton>
-    lateinit var valgtShape: Drawable
-    lateinit var  defaultShape : Drawable
+    lateinit var rowShape: Drawable
     lateinit var quizListe : ArrayList<Quiz>
-    lateinit var brukerRow: TableRow
-    private lateinit var kort : CardView
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        rowShape = context?.let { getDrawable(it,R.drawable.quizrow_drawable) }!!
         var antQuizSpm = 0;
-        valgtShape = context?.let { getDrawable(it,R.drawable.rounded_borders_musikkquiz) }!!
-        defaultShape = context?.let { getDrawable(it,R.drawable.rounded_corner_view) }!!
         radioButtonList = arrayListOf<RadioButton>()
         textList = arrayListOf<EditText>()
         quizListe = arrayListOf<Quiz>()
@@ -43,7 +42,7 @@ class OpprettMusikkQuizFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentOpprettMusikkquizBinding>(inflater,R.layout.fragment_opprett_musikkquiz,container,false)
 
-        
+        binding.btRedigerQuiz.isVisible = false
 
         textList.add(binding.inputAlt1)
         textList.add(binding.inputAlt2)
@@ -60,7 +59,6 @@ class OpprettMusikkQuizFragment : Fragment() {
 
         for (i in 0 until radioButtonList.size ) {
             radioButtonList.get(i).setOnClickListener {
-                //print("Du trykket på alternativ -> $i")
                 radioButtonList.get(i).isChecked = true
                 for(j in 0 until radioButtonList.size) {
                     if(radioButtonList.get(j) != radioButtonList.get(i) )
@@ -85,46 +83,40 @@ class OpprettMusikkQuizFragment : Fragment() {
                 val quizRow = QuizRow(quiz, antQuizSpm, context)
                 antQuizSpm++
 
-                //val tableRow = TableRow(context)
-                //tableRow.setPadding(20, 20, 20, 20)
-
-
-
                 val textView = TextView(context)
                 textView.setText(quiz.getSpørsmålsTekst())
-                textView.setTextColor(Color.BLACK)
+                textView.setTextColor(Color.WHITE)
                 textView.textSize = 25F
+                textView.setPadding(20, 20, 20, 20)
 
-                kort = inflater.inflate(R.layout.bruker_row,binding.tabQuiz,false) as CardView
-                //kort.requireV
-                //test.addView(textView)
-               // quizRow.addView(textView)
-
+                textView.maxWidth = binding.tabQuiz.width
 
                 val card = CardView(requireContext())
-                card.minimumWidth = 900
-                card.minimumHeight=  90
-                card.setCardBackgroundColor(Color.parseColor("#8A2BE2"))
+                card.background = rowShape
                 card.addView(textView)
 
-
-
-
-
-
                 quizRow.addView(card)
-
-                //tableRow.addView(card)
                 binding.tabQuiz.addView(quizRow)
                 quizRow.setOnClickListener{
                     Toast.makeText(context, "Du trykket på ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
+                    hentQuiz(quiz.idTall, binding)
+                    binding.scrollView.fullScroll(View.FOCUS_UP)
+                    val alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
+                    if (!quiz.sammenlign(binding.inputSangtekst.text.toString(), alt)) {
+                        binding.btRedigerQuiz.isVisible = true
+                    }
                 }
+                tømTekst(binding)
             }
         }
-
-
-
         return binding.root;
+    }
+
+    private fun hentQuiz(id: Int, binding: FragmentOpprettMusikkquizBinding) {
+        binding.inputSangtekst.setText(quizListe.get(id).getSpørsmålsTekst())
+        for (i in 0 until textList.size) {
+            textList[i].setText(quizListe.get(id).getSpørsmål(i))
+        }
     }
 
     private fun getSvar() : Int {
@@ -135,8 +127,10 @@ class OpprettMusikkQuizFragment : Fragment() {
     return -1
     }
 
-
-
-
+    private fun tømTekst(binding: FragmentOpprettMusikkquizBinding) {
+        binding.inputSangtekst.text.clear()
+        for (e: EditText in textList)
+            e.text.clear()
+    }
 }
 

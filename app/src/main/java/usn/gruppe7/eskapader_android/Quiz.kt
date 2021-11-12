@@ -29,7 +29,20 @@ class Quiz (val spørsmål: String, val idTall: Int, val svarTall: Int) : Parcel
         return alternativ_Liste[i]
     }
 
-
+    fun sammenlign(tittel: String, alt : Array<String>) : Boolean {
+        if (spørsmålsTekst != tittel) {
+            println(spørsmålsTekst + " ---- " + tittel)
+            println("Spørsmålstekst stemmer ikke")
+            return false;
+        }
+        for (i in 0 until alt.size) {
+            if (alt[i] != alternativ_Liste[i]) {
+                println("Alternativer stemmer ikke")
+                return false;
+            }
+        }
+        return true;
+    }
 
     override fun toString(): String {
         return "\n" +"Spørsmålstekst -> " + spørsmålsTekst + "\n" +
