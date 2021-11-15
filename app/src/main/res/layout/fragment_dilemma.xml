@@ -16,10 +16,10 @@
             android:layout_height="0dp"
             android:layout_marginTop="48dp"
             android:layout_marginBottom="73dp"
-            android:textColor="@color/whitesmoke"
             android:fontFamily="sans-serif"
             android:gravity="center"
             android:text="Dilemma"
+            android:textColor="@color/whitesmoke"
             android:textSize="40sp"
             app:layout_constraintBottom_toTopOf="@+id/dill_alt_1"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,14 +72,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="85dp"
-            android:text="Button"
+            android:text="Neste"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dill_alt_2"
             tools:visibility="invisible" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

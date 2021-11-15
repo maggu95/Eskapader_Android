@@ -17,6 +17,6 @@
     </corners>
 
     <!--- This is the background color -->
-    <solid android:color="@color/green" />
+    <solid android:color="@color/whitesmoke" />
 
 </shape>

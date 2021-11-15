@@ -11,7 +11,7 @@ class Dilemma(
     val alternativ : Array<String> ) : Parcelable {
 
 
-    fun getStat1(): Int {
+    fun getStat1(s: Int): Int {
         return statistikk[0]
     }
 
@@ -22,7 +22,7 @@ class Dilemma(
         return alternativ
     }
 
-    fun getStat2(): Int {
+    fun getStat2(s: Int): Int {
         return statistikk[1]
     }
 
