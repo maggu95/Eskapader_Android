@@ -18,6 +18,7 @@ class DilemmaFragment : Fragment() {
     lateinit var  normalShape : Drawable
     lateinit var korrektShape: Drawable
     private var valgtDilemma : Boolean = true
+    private var valgtAlternativ: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +28,6 @@ class DilemmaFragment : Fragment() {
 
         // lager binding
         val binding = DataBindingUtil.inflate<FragmentDilemmaBinding>(inflater,R.layout.fragment_dilemma,container,false)
-
         var currDilemma : Int = 0;
 
 
@@ -42,25 +42,28 @@ class DilemmaFragment : Fragment() {
         binding.dillAlt1.text = dilemmaListe.get(currDilemma).alternativ[0]
         binding.dillAlt2.text = dilemmaListe.get(currDilemma).alternativ[1]
 
+        val volley = APIConnector (requireContext())
 
         //Du valgte alternativ 1
         binding.dillAlt1.setOnClickListener{
-            if (valgtDilemma == false)
+            if (!valgtDilemma)
                 binding.dillAlt1.background = normalShape
             else
                 binding.dillAlt1.background = korrektShape
                 binding.btNesteDilemma.visibility = View.VISIBLE
                 valgtDilemma = true
+                valgtAlternativ = 0
         }
 
         //Du valgte alternativ 2
         binding.dillAlt2.setOnClickListener{
-            if (valgtDilemma == false)
+            if (!valgtDilemma)
                 binding.dillAlt2.background = normalShape
             else
                 binding.dillAlt2.background = korrektShape
             binding.btNesteDilemma.visibility = View.VISIBLE
             valgtDilemma = true
+            valgtAlternativ = 1
 
 
         }
