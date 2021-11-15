@@ -1,25 +1,20 @@
 package usn.gruppe7.eskapader_android
 
-import android.app.ActionBar
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.FOCUS_UP
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import usn.gruppe7.eskapader_android.databinding.FragmentOpprettMusikkquizBinding
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.get
 import androidx.core.view.isVisible
-import androidx.core.view.updateLayoutParams
+import androidx.core.view.iterator
 import androidx.core.widget.addTextChangedListener
 
 
@@ -29,6 +24,7 @@ class OpprettMusikkQuizFragment : Fragment() {
     lateinit var  radioButtonList : ArrayList<RadioButton>
     lateinit var rowShape: Drawable
     lateinit var quizListe : ArrayList<Quiz>
+    //lateinit var  radioGroup: RadioGroup
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +35,7 @@ class OpprettMusikkQuizFragment : Fragment() {
         radioButtonList = arrayListOf<RadioButton>()
         textList = arrayListOf<EditText>()
         quizListe = arrayListOf<Quiz>()
-
+        //radioGroup = RadioGroup(context)
 
         val binding = DataBindingUtil.inflate<FragmentOpprettMusikkquizBinding>(inflater,R.layout.fragment_opprett_musikkquiz,container,false)
         var aktivQuiz: Quiz? = null
@@ -56,8 +52,9 @@ class OpprettMusikkQuizFragment : Fragment() {
         radioButtonList.add(binding.radioButAlt3)
         radioButtonList.add(binding.radioButAlt4)
 
-
-
+        binding.btSlettInput.setOnClickListener {
+            tømTekst(binding)
+        }
 
         for (i in 0 until radioButtonList.size ) {
             radioButtonList.get(i).setOnClickListener {
@@ -70,10 +67,11 @@ class OpprettMusikkQuizFragment : Fragment() {
         }
 
         binding.btBekreftQuiz.setOnClickListener {
-            if (getSvar() < 0)
-                Toast.makeText(context, "Sørg for å velge riktig svar!", Toast.LENGTH_LONG).show()
+
+            if (!sjekkInput(binding))
+                Toast.makeText(context, "Sørg for at alle feltene er fylt inn!", Toast.LENGTH_SHORT).show()
             else {
-                val quiz = Quiz(binding.inputSangtekst.text.toString(), antQuizSpm, getSvar())
+                var quiz = Quiz(binding.inputSangtekst.text.toString(), antQuizSpm, getSvar())
 
 
                 for (i in 0 until textList.size) {
@@ -101,14 +99,14 @@ class OpprettMusikkQuizFragment : Fragment() {
                 binding.tabQuiz.addView(quizRow)
                 quizRow.setOnClickListener{
                     aktivQuiz = quiz
-                    Toast.makeText(context, "Du trykket på ${quiz.idTall}" , Toast.LENGTH_SHORT).show()
-                    hentQuiz(quiz.idTall, binding)
+                    hentQuiz(quizListe.indexOf(quiz), binding)
+                    //println("ID til valgt objekt -> " + quizListe.indexOf(quiz))
                     binding.scrollView.fullScroll(View.FOCUS_UP)
                     var alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
 
                     binding.inputSangtekst.addTextChangedListener{
                         binding.btRedigerQuiz.isVisible =
-                            !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt)
+                            !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt, getSvar())
                     }
 
 
@@ -116,38 +114,135 @@ class OpprettMusikkQuizFragment : Fragment() {
                         elem.addTextChangedListener {
                             alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
                             binding.btRedigerQuiz.isVisible =
-                                !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt)
+                                !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt, getSvar())
+                        }
+                    }
+
+
+                    for (elem: RadioButton in radioButtonList)
+                        elem.setOnCheckedChangeListener { compoundButton, b ->
+                            binding.btRedigerQuiz.isVisible =
+                                !aktivQuiz!!.sammenlign(binding.inputSangtekst.text.toString(), alt, getSvar())
+                        }
+
+
+                    binding.btRedigerQuiz.setOnClickListener {
+                        if (!sjekkInput(binding))
+                            Toast.makeText(context, "Sørg for at alle feltene er fylt inn!",
+                                           Toast.LENGTH_SHORT).show()
+                        else {
+                            quiz.setSpørsmålsTekst(binding.inputSangtekst.text.toString())
+                            for (elem: EditText in textList) {
+                                alt = arrayOf(
+                                    binding.inputAlt1.text.toString(),
+                                    binding.inputAlt2.text.toString(),
+                                    binding.inputAlt3.text.toString(),
+                                    binding.inputAlt4.text.toString()
+                                )
+                                quiz.setAlternativ(alt)
+                            }
+                            quiz.setSvar(getSvar())
+                            textView.setText(quiz.getSpørsmålsTekst())
+                            tømTekst(binding)
+                            binding.btRedigerQuiz.isVisible = false
+                        }
+                    }
+
+                    binding.btSlett.setOnClickListener {
+                        if (quizListe.indexOf(quiz) < 0)
+                            Toast.makeText(context, "Objektet kan ikke slettes!", Toast.LENGTH_SHORT).show()
+                        else {
+                            printEffektiv(quiz)
+                            val index = quizListe.indexOf(quiz)
+                            tømTekst(binding)
+                            quizRow.removeAllViews()
+                            quizListe.remove(quiz)
+                            if (quizListe.size > 0) {
+                                oppdaterId()
+                            }
                         }
                     }
                 }
                 tømTekst(binding)
             }
         }
-
-
-
         return binding.root;
     }
 
+    // TODO: 15/11/2021 Skal fjernes senere
+    private fun printEffektiv(quiz: Quiz) {
+        println(
+            "KLAR FOR Å SLETTES: " + "\n" +
+            "Valgt objekt: " + quiz.getSpørsmålsTekst() +
+                    "\nID: " + quiz.idTall +
+                    "\nIndex i listen:" + quizListe.indexOf(quiz) +
+                    "\nStørrelse på listen:" + quizListe.size
+
+        )
+    }
+
+    private fun oppdaterId() {
+        println("Oppdaterer ID på listen")
+        for (i in 0 until quizListe.size) {
+            println("GAMMEL id til objekt " + quizListe.get(i).getSpørsmålsTekst() + ": " + quizListe.get(i).getId())
+            quizListe.get(i).setId(i)
+            println("NY id til objekt " + quizListe.get(i).getSpørsmålsTekst() + ": " + quizListe.get(i).getId())
+            println()
+
+        }
+    }
+
     private fun hentQuiz(id: Int, binding: FragmentOpprettMusikkquizBinding) {
+        // TODO: 15/11/2021  Bør optimaliseres, bare temporary
+        for (j in 0 until radioButtonList.size ) {
+            radioButtonList.get(j).isChecked = false
+        }
+
         binding.inputSangtekst.setText(quizListe.get(id).getSpørsmålsTekst())
         for (i in 0 until textList.size) {
             textList[i].setText(quizListe.get(id).getSpørsmål(i))
         }
+        radioButtonList[quizListe.get(id).getSvar()].isChecked = true
     }
 
     private fun getSvar() : Int {
         for (i in 0 until radioButtonList.size ) {
-                if (radioButtonList.get(i).isChecked == true)
+                if (radioButtonList.get(i).isChecked)
                     return i
         }
-    return -1
+        return -1
     }
 
     private fun tømTekst(binding: FragmentOpprettMusikkquizBinding) {
         binding.inputSangtekst.text.clear()
         for (e: EditText in textList)
             e.text.clear()
+        for (j in 0 until radioButtonList.size ) {
+            radioButtonList.get(j).isChecked = false
+        }
+
+    }
+
+    private fun sjekkInput(binding: FragmentOpprettMusikkquizBinding) : Boolean {
+        if (!sjekkInputString(binding.inputSangtekst.text.toString()))
+            return false
+        if (getSvar() < 0)
+            return false
+        for (i in 0 until textList.size) {
+            if (!sjekkInputString(textList[i].text.toString()))
+                return false
+        }
+        return true
+    }
+
+    private fun sjekkInputString(text: String) : Boolean {
+        if (text == "")
+            return false
+        if (text.trim().isEmpty())
+            return false
+        return true
     }
 }
+
+
 
