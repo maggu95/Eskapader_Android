@@ -1,5 +1,6 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,6 +38,20 @@ class HovedMenyActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
 
         drawerLayout = binding.mainHost
+
+
+        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+        val brukernavn = sharedPreference.getString("username","defaultName")
+        val test = sharedPreference.getLong("l",1L)
+        val arr =  sharedPreference.getStringSet("Arr", null)
+        println("Fikk -> $brukernavn  $test   ${arr.toString()} ")
+
+        if (arr != null) {
+            val arr2 = arr.toTypedArray()
+            for (i in 0 until arr2.size) {
+                println("TEst loop -> ${arr2[i]}")
+            }
+        }
 
         val navController = this.findNavController(R.id.MainHost)
 

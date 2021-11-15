@@ -1,6 +1,7 @@
 package usn.gruppe7.eskapader_android
 
 import android.content.ContentValues
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -98,6 +99,14 @@ class LoginActivity : AppCompatActivity() {
          */
 
        // volley.oppdaterGlobalDilemma(0,0,"TEst")
+        val testArr = setOf<String>("Test1", "test2", "Test3")
+        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
+        var editor = sharedPreference.edit()
+        editor.putString("username","Anupam")
+        editor.putStringSet("Arr", testArr)
+        editor.putLong("l",100L)
+        editor.commit()
+
 
 
 
