@@ -50,9 +50,9 @@ class LoginActivity : AppCompatActivity() {
 
         Log.v(ContentValues.TAG, "Initialized the Realm App configuration for: ${app.configuration.appId}")
 
-        /*
-        val volley = APIConnector(this)
 
+        val volley = APIConnector(this)
+        /*
         /*val spillnavn = "Test fra android 2 "
         val author = "Android bruker"
 
@@ -96,6 +96,8 @@ class LoginActivity : AppCompatActivity() {
         volley.opprettQuizSpill("Android peasant", "Generisk quiz",quizListe )
 
          */
+
+       // volley.oppdaterGlobalDilemma(0,0,"TEst")
 
 
 
