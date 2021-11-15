@@ -40,19 +40,6 @@ class HovedMenyActivity : AppCompatActivity() {
         drawerLayout = binding.mainHost
 
 
-        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-        val brukernavn = sharedPreference.getString("username","defaultName")
-        val test = sharedPreference.getLong("l",1L)
-        val arr =  sharedPreference.getStringSet("Arr", null)
-        println("Fikk -> $brukernavn  $test   ${arr.toString()} ")
-
-        if (arr != null) {
-            val arr2 = arr.toTypedArray()
-            for (i in 0 until arr2.size) {
-                println("TEst loop -> ${arr2[i]}")
-            }
-        }
-
         val navController = this.findNavController(R.id.MainHost)
 
         NavigationUI.setupActionBarWithNavController(this,navController, drawerLayout)
@@ -67,6 +54,7 @@ class HovedMenyActivity : AppCompatActivity() {
             popupMenu.setOnMenuItemClickListener( PopupMenu.OnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.item_musikkquiz ->
+
                         view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
                     R.id.item_dilemma ->
                         view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettDilemmaFragment)

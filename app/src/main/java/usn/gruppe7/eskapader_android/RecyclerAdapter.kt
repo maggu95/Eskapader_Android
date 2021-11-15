@@ -1,17 +1,19 @@
 package usn.gruppe7.eskapader_android
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
+import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerAdapter(private val tittler: List<String>, private val instruks1 : List<String> ,private val instruks2: List<String> ,private val instruks3 : List<String>, private val bilde : List<Int> ) :
+class RecyclerAdapter(val context :Context, private val tittler: List<String>, private val instruks1: List<String>, private val instruks2: List<String>, private val instruks3: List<String>, private val bilde: List<Int>, private val type: MutableList<String>) :
 RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,18 +22,25 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         val itemInstruks2 : TextView = itemView.findViewById(R.id.instruks2)
         val itemInstruks3 : TextView = itemView.findViewById(R.id.instruks3)
         val bilde : ImageView = itemView.findViewById(R.id.spillKortBilde)
+        val spillType = type
 
         init {
+
+
             itemView.setOnClickListener() {
                 val kortTrykket : Int = adapterPosition
-                when (kortTrykket) {
-                    0 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz_Activity)
-                    1 -> itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_dilemmaActivity)
+                if(this.spillType[kortTrykket]  == "Dilemma") {
+                    val valgtSpill = this.itemTitle.text.toString()
+                    val bundle = bundleOf("Spillnavn" to valgtSpill)
+                    itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_dilemmaActivity, bundle)
+                }
+                if(this.spillType[kortTrykket] == "Quiz") {
+                    val valgtSpill = this.itemTitle.text.toString()
+                    val bundle = bundleOf("Spillnavn" to valgtSpill)
+                    itemView.findNavController().navigate(R.id.action_hovedMenyFragment_to_musikkQuiz_Activity,bundle)
                 }
             }
         }
-
-
 
     }
 
@@ -47,11 +56,11 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         holder.itemInstruks3.text = instruks3[position]
         holder.bilde.setImageResource(bilde[position])
 
+
     }
 
     override fun getItemCount(): Int {
         return tittler.size
     }
-
 
 }

@@ -73,8 +73,8 @@ class APIConnector(val appContext: Context) : Volley() {
                     val stat2 = alleDilemma.getJSONObject(i).getJSONArray("Statistikk").getInt(1)
                     var stat = arrayOf(stat1,stat2)
                     val id = alleDilemma.getJSONObject(i).getInt("Spørsmål_id")
-                    val tekst = alleDilemma.getJSONObject(i).getString("Spørsmåltekst")
-                    val alt = alleDilemma.getJSONObject(i).getJSONArray("Alternativ")
+                    val tekst = alleDilemma.getJSONObject(i).getString("SpørsmålsTekst")
+                    val alt = alleDilemma.getJSONObject(i).getJSONArray("Alternativer")
                     val alt1 = alt.get(0).toString()
                     val alt2 = alt.get(1).toString()
                     val altListe = arrayOf(alt1,alt2)
@@ -118,16 +118,16 @@ class APIConnector(val appContext: Context) : Volley() {
                 }
 
                 val obj = JSONObject(resultat)
-                val quizResponse = obj.getJSONArray("Musikkquiz")
+                val quizResponse = obj.getJSONArray("Spørsmål")
 
 
                 for(i in 0 until quizResponse.length()) {
-                    val id = quizResponse.getJSONObject(i).getInt("Sporsmal_id")
-                    val spørsmålTekst = quizResponse.getJSONObject(i).getString("Sporsmaltekst")
+                    val id = quizResponse.getJSONObject(i).getInt("Spørsmål_id")
+                    val spørsmålTekst = quizResponse.getJSONObject(i).getString("SpørsmålsTekst")
                     val svar = quizResponse.getJSONObject(i).getInt("Svar")
                     var musikkObjekt = Quiz(spørsmålTekst, id,svar)
 
-                    val spørsmålListe = quizResponse.getJSONObject(i).getJSONArray("Alternativ")
+                    val spørsmålListe = quizResponse.getJSONObject(i).getJSONArray("Alternativer")
                     for(i in 0 until spørsmålListe.length()) {
                         val spørsmål = spørsmålListe.get(i).toString();
                         musikkObjekt.addSpørsmål(spørsmål)

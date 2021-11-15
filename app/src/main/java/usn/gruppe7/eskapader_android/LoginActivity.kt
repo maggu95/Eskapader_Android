@@ -2,6 +2,7 @@ package usn.gruppe7.eskapader_android
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -99,16 +100,6 @@ class LoginActivity : AppCompatActivity() {
          */
 
        // volley.oppdaterGlobalDilemma(0,0,"TEst")
-        val testArr = setOf<String>("Test1", "test2", "Test3")
-        val sharedPreference =  getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-        var editor = sharedPreference.edit()
-        editor.putString("username","Anupam")
-        editor.putStringSet("Arr", testArr)
-        editor.putLong("l",100L)
-        editor.commit()
-
-
-
 
 
 
@@ -120,7 +111,15 @@ class LoginActivity : AppCompatActivity() {
 
         gjestLoginButton.setOnClickListener { view : View ->
             loggInnGjest(app);
-            view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
+            volley.hentAlleSpill {
+                    result ->
+                println("Fikk result fra volley")
+                val intent = Intent(this, HovedMenyActivity::class.java).apply {
+                    putExtra("Spill_liste",result )
+                }
+                startActivity(intent)
+            }
+            //view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
         };
 
         createUserButton.setOnClickListener{view: View ->
@@ -170,7 +169,21 @@ class LoginActivity : AppCompatActivity() {
                 onLoginFailed(it.error.message ?: "FEIL I INNLOGGING")
             } else {
                 //onLoginSuccess()
-                view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
+                val volley =APIConnector(this)
+                volley.hentAlleSpill {
+                    result ->
+                    println("Fikk result fra volley ")
+                    if (result != null) {
+                        val sharedPreference =  getSharedPreferences("SPILL_LISTE",Context.MODE_PRIVATE)
+                        if(getSharedPreferences("SPILL_LISTE",Context.MODE_PRIVATE) == null) {
+                            val editor = sharedPreference.edit()
+                            editor.putStringSet("Arr", result.toSet())
+                            editor.apply()
+                        }
+                    }
+                    val intent = Intent(this, HovedMenyActivity::class.java)
+                    startActivity(intent)
+                }
                 Log.v(ContentValues.TAG, "KLARTE Å LOGGEGE INN SKIKKELIG!!")
             }
         }

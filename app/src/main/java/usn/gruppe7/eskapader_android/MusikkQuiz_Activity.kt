@@ -34,10 +34,13 @@ class MusikkQuiz_Activity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.musikkquiz_spill)
         val container = binding.musikkQuizContainer
 
-
+        val valgtSpill = intent.extras?.getString("Spillnavn").toString()
+        if(valgtSpill != null) {
+            println("FIKK BUNDLE!!!! -> ${valgtSpill}" )
+        }
 
         val connector = APIConnector(this)
-        connector.hentSpill_QuizAsync("Musikkquiz") {
+        connector.hentSpill_QuizAsync(valgtSpill) {
             result ->
             if(result != null) {
                 val quizFragment = MusikkQuizFragment.newInstance(result)
