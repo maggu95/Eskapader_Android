@@ -16,6 +16,30 @@ class APIConnector(val appContext: Context) : Volley() {
     val url = "https://eskapader.herokuapp.com/spill"
 
 
+    fun hentAlleSpill(callBack: (result: ArrayList<String>?) -> Unit){
+
+        var spillListe : ArrayList<String> = ArrayList()
+        val queue = newRequestQueue(appContext)
+
+        val req = JsonArrayRequest(
+            Request.Method.GET,url,null,
+            {
+                response ->
+                for(i in 0 until response.length() ) {
+                    spillListe.add(response.getJSONObject(i).getString("Spillnavn"))
+                }
+                callBack.invoke(spillListe)
+            },
+            {
+                error ->
+                println("$error")
+            }
+
+        )
+        queue.add(req)
+    }
+
+
     fun hentSpill_DilemmaAsync(spillNavn : String, callBack: (result: ArrayList<Dilemma>?) -> Unit)  {
 
         var dilemmaListe = ArrayList<Dilemma>()
