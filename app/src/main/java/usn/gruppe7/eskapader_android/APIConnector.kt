@@ -248,6 +248,56 @@ class APIConnector(val appContext: Context) : Volley() {
     }
 
 
+    fun oppdaterDilemma(spillnavn : String, dilemmaNr : Int, altNr : Int) {
+        val putURL = "https://eskapader.herokuapp.com/oppdaterDilemma"
+        val requestQueue = newRequestQueue(appContext)
+        val putData = JSONObject()
+
+        putData.put("Spillnavn", spillnavn)
+        putData.put("DilemmaNr",dilemmaNr)
+        putData.put("AltNr", altNr)
+
+
+        val req = JsonObjectRequest(Request.Method.PUT,putURL,putData,
+            {
+                    response ->
+                val resultat = response.toString(4)
+                println(resultat)
+            },
+            {
+                    error ->
+                println("Feil oppsto i POST: $error")
+            }
+        )
+        requestQueue.add(req)
+
+    }
+
+
+    fun oppdaterGlobalDilemma(spmNr : Int, valgNr : Int, brukernavn : String){
+        val uriParams = "https://eskapader.herokuapp.com/spill/60508baa3948c9ca5972c3b0/${spmNr}/${valgNr}/${brukernavn}"
+        val o = JSONObject()
+        val requestQueue = newRequestQueue(appContext)
+        val req = JsonObjectRequest(Request.Method.PATCH,uriParams,o,
+            {
+                    response ->
+                val resultat = response.toString(4)
+                println(resultat)
+            },
+            {
+                    error ->
+                println("Feil oppsto i POST: $error")
+            }
+        )
+        requestQueue.add(req)
+
+
+
+
+
+    }
+
+
 
 }
 
