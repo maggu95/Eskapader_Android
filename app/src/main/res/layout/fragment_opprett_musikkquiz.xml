@@ -226,7 +226,10 @@
                     app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/inputQuizNavn"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -236,14 +239,28 @@
                 android:layout_height="match_parent">
 
 
+
                 <TableLayout
                     android:id="@+id/tabQuiz"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center">
 
-
+                    <Button
+                        android:id="@+id/btFerdig"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginEnd="159dp"
+                        android:text="Ferdig"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </TableLayout>
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
