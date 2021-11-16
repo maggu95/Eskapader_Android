@@ -57,6 +57,12 @@ class OpprettMusikkQuizFragment : Fragment() {
             tømTekst(binding)
         }
 
+        binding.btFerdig.setOnClickListener {
+            if (textList.size > 0) {
+                sendSpill(requireContext(), binding.inputQuizNavn.text.toString(), quizListe)
+            }
+        }
+
         for (i in 0 until radioButtonList.size ) {
             radioButtonList.get(i).setOnClickListener {
                 radioButtonList.get(i).isChecked = true
@@ -247,7 +253,8 @@ class OpprettMusikkQuizFragment : Fragment() {
 
     private fun sendSpill(context : Context, spillnavn : String, quizListe : ArrayList<Quiz>) {
         val volley = APIConnector(context)
-        volley.opprettQuizSpill("Testbruker",spillnavn+"_Quiz", quizListe) {
+        val bruker = app.currentUser()?.id.toString()
+        volley.opprettQuizSpill(bruker,spillnavn+"_Quiz", quizListe) {
             utført ->
             if(utført == true) {
                 println("Suksess, ditt spill har blitt lagret")
@@ -257,9 +264,6 @@ class OpprettMusikkQuizFragment : Fragment() {
             }
 
         }
-
-
-
     }
 
 }
