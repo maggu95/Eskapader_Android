@@ -35,25 +35,43 @@ class MusikkQuiz_Activity : AppCompatActivity() {
         val container = binding.musikkQuizContainer
 
         val valgtSpill = intent.extras?.getString("Spillnavn").toString()
+
         if(valgtSpill != null) {
             println("FIKK BUNDLE!!!! -> ${valgtSpill}" )
         }
 
         val connector = APIConnector(this)
-        connector.hentSpill_QuizAsync(valgtSpill) {
-            result ->
-            if(result != null) {
-                val quizFragment = MusikkQuizFragment.newInstance(result)
-                val transaction = supportFragmentManager.beginTransaction()
-                transaction.replace(container.id,quizFragment)
-                transaction.commit()
-            }
-            else {
-                Toast.makeText(this, "Noe gikk galt med innhentinh av spill", Toast.LENGTH_LONG).show()
-                val intent = Intent(this, HovedMenyActivity::class.java)
-                startActivity(intent)
+        if (valgtSpill.equals("Spørsmål")) {
+            connector.hentSpill_QuizAsync(valgtSpill) { result ->
+                if (result != null) {
+                    val quizFragment = MusikkQuizFragment.newInstance(result)
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(container.id, quizFragment)
+                    transaction.commit()
+                } else {
+                    Toast.makeText(this, "Noe gikk galt med innhentinh av spill", Toast.LENGTH_LONG)
+                        .show()
+                    val intent = Intent(this, HovedMenyActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
+        else {
+            connector.hentGlobalMusikkQuiz(valgtSpill) { result ->
+                if (result != null) {
+                    val quizFragment = MusikkQuizFragment.newInstance(result)
+                    val transaction = supportFragmentManager.beginTransaction()
+                    transaction.replace(container.id, quizFragment)
+                    transaction.commit()
+                } else {
+                    Toast.makeText(this, "Noe gikk galt med innhenting av spill", Toast.LENGTH_LONG)
+                        .show()
+                    val intent = Intent(this, HovedMenyActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+        }
+
     }
 }
 
