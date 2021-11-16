@@ -278,7 +278,7 @@ class APIConnector(val appContext: Context) : Volley() {
 
     }
 
-    fun opprettQuizSpill(author : String, spillNavn: String, quizListe : ArrayList<Quiz>) {
+    fun opprettQuizSpill(author : String, spillNavn: String, quizListe : ArrayList<Quiz>,  callBack: (utført: Boolean?) -> Unit) {
         val postURL = "https://eskapader.herokuapp.com/leggQuiz"
         val requestQueue = newRequestQueue(appContext)
 
@@ -311,10 +311,12 @@ class APIConnector(val appContext: Context) : Volley() {
                     response ->
                 val resultat = response.toString(4)
                 println(resultat)
+                callBack.invoke(true)
             },
             {
                     error ->
                 println("Feil oppsto i POST: $error")
+                callBack.invoke(false)
             }
         )
         requestQueue.add(req)
