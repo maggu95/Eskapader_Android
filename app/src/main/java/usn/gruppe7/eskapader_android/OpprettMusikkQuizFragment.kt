@@ -1,5 +1,6 @@
 package usn.gruppe7.eskapader_android
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -242,6 +243,25 @@ class OpprettMusikkQuizFragment : Fragment() {
             return false
         return true
     }
+
+
+    private fun sendSpill(context : Context, spillnavn : String, quizListe : ArrayList<Quiz>) {
+        val volley = APIConnector(context)
+        volley.opprettQuizSpill("Testbruker",spillnavn+"_Quiz", quizListe) {
+            utført ->
+            if(utført == true) {
+                println("Suksess, ditt spill har blitt lagret")
+            }
+            else {
+                println("Noe gikk galt med oppretting av spill")
+            }
+
+        }
+
+
+
+    }
+
 }
 
 

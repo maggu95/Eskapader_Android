@@ -36,9 +36,7 @@ class MusikkQuiz_Activity : AppCompatActivity() {
 
         val valgtSpill = intent.extras?.getString("Spillnavn").toString()
 
-        if(valgtSpill != null) {
-            println("FIKK BUNDLE!!!! -> ${valgtSpill}" )
-        }
+        println("FIKK BUNDLE!!!! -> ${valgtSpill}" )
 
         val connector = APIConnector(this)
         if (!valgtSpill.equals("Musikkquiz")) {
