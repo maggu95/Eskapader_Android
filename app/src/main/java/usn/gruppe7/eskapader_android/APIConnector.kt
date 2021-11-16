@@ -74,7 +74,12 @@ class APIConnector(val appContext: Context) : Volley() {
                     var stat = arrayOf(stat1,stat2)
                     val id = alleDilemma.getJSONObject(i).getInt("Spørsmål_id")
                     val tekst = alleDilemma.getJSONObject(i).getString("SpørsmålsTekst")
-                    val alt = alleDilemma.getJSONObject(i).getJSONArray("Alternativer")
+                    var alt : JSONArray? = null
+                    if(spillNavn == "Dilemma")
+                        alt = alleDilemma.getJSONObject(i).getJSONArray("Alternativ")
+                    else {
+                        alt = alleDilemma.getJSONObject(i).getJSONArray("Alternativer")
+                    }
                     val alt1 = alt.get(0).toString()
                     val alt2 = alt.get(1).toString()
                     val altListe = arrayOf(alt1,alt2)
@@ -112,9 +117,11 @@ class APIConnector(val appContext: Context) : Volley() {
                     println("Fant ikke global Musikkquiz")
                 }
                 else {
-                    val musikkQuizArr = resultat.getJSONArray("MusikkQuiz")
+                    val musikkQuizArr = resultat.getJSONArray("Musikkquiz")
                     for(i in 0 until musikkQuizArr.length()){
+                        println("Går gjennom quiz arr nr -> $i")
                         val id = musikkQuizArr.getJSONObject(i).getInt("Spørsmål_id")
+                        println("Fant id -> $id" )
                         val spørsmålTekst = musikkQuizArr.getJSONObject(i).getString("Spørsmål")
                         val svar = musikkQuizArr.getJSONObject(i).getInt("Svar")
                         var musikkObjekt = Quiz(spørsmålTekst, id,svar)

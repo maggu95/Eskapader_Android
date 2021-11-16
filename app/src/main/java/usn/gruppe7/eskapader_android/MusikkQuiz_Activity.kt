@@ -41,7 +41,7 @@ class MusikkQuiz_Activity : AppCompatActivity() {
         }
 
         val connector = APIConnector(this)
-        if (valgtSpill.equals("Spørsmål")) {
+        if (!valgtSpill.equals("Musikkquiz")) {
             connector.hentSpill_QuizAsync(valgtSpill) { result ->
                 if (result != null) {
                     val quizFragment = MusikkQuizFragment.newInstance(result)
@@ -57,7 +57,8 @@ class MusikkQuiz_Activity : AppCompatActivity() {
             }
         }
         else {
-            connector.hentGlobalMusikkQuiz(valgtSpill) { result ->
+            println("Henter default")
+            connector.hentGlobalMusikkQuiz() { result ->
                 if (result != null) {
                     val quizFragment = MusikkQuizFragment.newInstance(result)
                     val transaction = supportFragmentManager.beginTransaction()
