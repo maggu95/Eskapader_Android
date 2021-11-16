@@ -25,8 +25,6 @@ RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
         val spillType = type
 
         init {
-
-
             itemView.setOnClickListener() {
                 val kortTrykket : Int = adapterPosition
                 if(this.spillType[kortTrykket]  == "Dilemma") {

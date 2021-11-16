@@ -21,10 +21,11 @@ class HovedMenyFragment : Fragment() {
     private val bildeliste = mutableListOf<Int>()
     private val type_liste = mutableListOf<String>()
     private lateinit var btLeggTilQuiz: View
-    private var spillListe : ArrayList<String> = ArrayList()
+    private var spillArray : ArrayList<String> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        fjernKort()
         val binding = DataBindingUtil.inflate<FragmentHovedMenyBinding>(inflater,R.layout.fragment_hoved_meny,container,false)
         val recyclerAdapter = binding.spillListe
         recyclerAdapter.layoutManager = LinearLayoutManager(context)
@@ -35,21 +36,59 @@ class HovedMenyFragment : Fragment() {
         val sharedPreference = activity?.getSharedPreferences("SPILL_LISTE", Context.MODE_PRIVATE)
         val arr = sharedPreference?.getStringSet("Arr", null)
 
+        binding.swiperefresh.setOnRefreshListener {
+            val volley = context?.let { APIConnector(it) }
+            volley?.hentAlleSpill {
+                result ->
+                if (result != null) {
+                    fjernKort()
+                    for (i in 0 until result.size) {
+                        if(result[i].contains("Dilemma",true)) {
+                            if(!tittelListe.contains(result[i])) {
+                                leggTilSpill(result[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Dilemma" )
+                                println("${result[i]} gikk gjennomm")
+                            }
+                            }
+                        if(result[i].contains("Quiz",true)) {
+                            if(!tittelListe.contains(result[i])){
+                                leggTilSpill(result[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Quiz" )
+                                println("${result[i]} gikk gjennomm")
+                            }
+                        }
+
+                    }
+                    recyclerAdapter.adapter = context?.let { RecyclerAdapter(it,tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste,type_liste) }
+                    binding.swiperefresh.isRefreshing = false
+
+                }
+                else {
+                    Toast.makeText(context, "Fikk ikke resultater", Toast.LENGTH_LONG).show()
+                    binding.swiperefresh.isRefreshing = false
+                }
+            }
+
+
+
+
+
+
+            binding.swiperefresh.isRefreshing = false
+        }
+
 
         if (arr != null) {
-            spillListe = arr.toMutableList() as ArrayList<String>
+            spillArray = arr.toMutableList() as ArrayList<String>
         }
         else {
             println("Arr er null")
         }
 
-        if (spillListe != null) {
-            for (i in 0 until spillListe.size) {
-                println("Legger til som kort -> ${spillListe[i]}" )
-                if(spillListe[i].contains("Dilemma",true))
-                    leggTilSpill(spillListe[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Dilemma" )
-                if(spillListe[i].contains("Quiz",true))
-                    leggTilSpill(spillListe[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Quiz" )
+        if (spillArray != null) {
+            for (i in 0 until spillArray.size) {
+                if(spillArray[i].contains("Dilemma",true))
+                    leggTilSpill(spillArray[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Dilemma" )
+                if(spillArray[i].contains("Quiz",true))
+                    leggTilSpill(spillArray[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Quiz" )
             }
 
 
@@ -82,12 +121,23 @@ class HovedMenyFragment : Fragment() {
 
 
     fun leggTilSpill(tittel: String, instruks1: String,instruks2: String,instruks3: String, bilde: Int, type : String ) {
+        println("Legger til kort: $tittel")
         tittelListe.add(tittel)
         instruks1_Liste.add(instruks1)
         instruks2_Liste.add(instruks2)
         instruks3_Liste.add(instruks3)
         bildeliste.add(bilde)
         type_liste.add(type)
+    }
+
+    fun fjernKort() {
+        println("Fjerner kort....")
+        tittelListe.clear()
+        instruks1_Liste.clear()
+        instruks2_Liste.clear()
+        instruks3_Liste.clear()
+        bildeliste.clear()
+        type_liste.clear()
     }
 
     fun fyllEksempelData() {
