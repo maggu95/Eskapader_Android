@@ -111,14 +111,7 @@ class LoginActivity : AppCompatActivity() {
 
         gjestLoginButton.setOnClickListener { view : View ->
             loggInnGjest(app);
-            volley.hentAlleSpill {
-                    result ->
-                println("Fikk result fra volley")
-                val intent = Intent(this, HovedMenyActivity::class.java).apply {
-                    putExtra("Spill_liste",result )
-                }
-                startActivity(intent)
-            }
+            hentSpillOgGåVidere()
             //view.findNavController().navigate(R.id.action_loggInnFragment_to_hovedMenyActivity)
         };
 
@@ -130,6 +123,7 @@ class LoginActivity : AppCompatActivity() {
             Log.d("Debug", "Trykket på LOGIN")
             if (username.text.toString().isNotEmpty() && password.text.toString().isNotEmpty()) {
                 loggInn(app, username.text.toString(), password.text.toString(), view)
+                hentSpillOgGåVidere()
             }
             else
                 Log.v("X", "BRUKERNAVN ELLER PASSORD ER TOM!!!!")
@@ -169,21 +163,7 @@ class LoginActivity : AppCompatActivity() {
                 onLoginFailed(it.error.message ?: "FEIL I INNLOGGING")
             } else {
                 //onLoginSuccess()
-                val volley =APIConnector(this)
-                volley.hentAlleSpill {
-                    result ->
-                    println("Fikk result fra volley ")
-                    if (result != null) {
-                        val sharedPreference =  getSharedPreferences("SPILL_LISTE",Context.MODE_PRIVATE)
-                        if(getSharedPreferences("SPILL_LISTE",Context.MODE_PRIVATE) == null) {
-                            val editor = sharedPreference.edit()
-                            editor.putStringSet("Arr", result.toSet())
-                            editor.apply()
-                        }
-                    }
-                    val intent = Intent(this, HovedMenyActivity::class.java)
-                    startActivity(intent)
-                }
+
                 Log.v(ContentValues.TAG, "KLARTE Å LOGGEGE INN SKIKKELIG!!")
             }
         }
@@ -191,6 +171,26 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onLoginFailed(errorMsg: String) {
         Log.e(ContentValues.TAG, errorMsg)
+    }
+
+    fun hentSpillOgGåVidere() {
+        val volley =APIConnector(this)
+        volley.hentAlleSpill {
+                result ->
+            println(result)
+            println("Fikk result fra volley i logginn ")
+            if (result != null) {
+                println("resultat er ikke null")
+                val sharedPreference =  getSharedPreferences("SPILL_LISTE",Context.MODE_PRIVATE)
+                val editor = sharedPreference.edit()
+                editor.putStringSet("Arr", result.toSet())
+                println("Legger med til hoved -> ${result.toSet()}" )
+                editor.apply()
+
+            }
+            val intent = Intent(this, HovedMenyActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

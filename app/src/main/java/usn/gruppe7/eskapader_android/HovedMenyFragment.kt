@@ -21,7 +21,7 @@ class HovedMenyFragment : Fragment() {
     private val bildeliste = mutableListOf<Int>()
     private val type_liste = mutableListOf<String>()
     private lateinit var btLeggTilQuiz: View
-    private lateinit var spillListe : ArrayList<String>
+    private var spillListe : ArrayList<String> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -35,7 +35,13 @@ class HovedMenyFragment : Fragment() {
         val sharedPreference = activity?.getSharedPreferences("SPILL_LISTE", Context.MODE_PRIVATE)
         val arr = sharedPreference?.getStringSet("Arr", null)
 
-       spillListe = arr?.toMutableList() as ArrayList<String>
+
+        if (arr != null) {
+            spillListe = arr.toMutableList() as ArrayList<String>
+        }
+        else {
+            println("Arr er null")
+        }
 
         if (spillListe != null) {
             for (i in 0 until spillListe.size) {

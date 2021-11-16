@@ -96,6 +96,49 @@ class APIConnector(val appContext: Context) : Volley() {
 
     }
 
+    fun hentGlobalMusikkQuiz(callBack: (result: ArrayList<Quiz>?) -> Unit) {
+        val queue = newRequestQueue(appContext)
+        var quizListe = ArrayList<Quiz>()
+        val json = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            {
+                    response ->
+                var resultat : JSONObject? = null
+                for(i in 0 until response.length())
+                    if(response.getJSONObject(i).getString("Spillnavn") == "Musikkquiz")
+                        resultat = response.getJSONObject((i))
+
+                if(resultat == null) {
+                    println("Fant ikke global Musikkquiz")
+                }
+                else {
+                    val musikkQuizArr = resultat.getJSONArray("MusikkQuiz")
+                    for(i in 0 until musikkQuizArr.length()){
+                        val id = musikkQuizArr.getJSONObject(i).getInt("Spørsmål_id")
+                        val spørsmålTekst = musikkQuizArr.getJSONObject(i).getString("Spørsmål")
+                        val svar = musikkQuizArr.getJSONObject(i).getInt("Svar")
+                        var musikkObjekt = Quiz(spørsmålTekst, id,svar)
+
+                        val spørsmålListe = musikkQuizArr.getJSONObject(i).getJSONArray("Alternativer")
+                        for(i in 0 until spørsmålListe.length()) {
+                            val spørsmål = spørsmålListe.get(i).toString();
+                            musikkObjekt.addSpørsmål(spørsmål)
+                        }
+                        quizListe.add(musikkObjekt)
+                    }
+                    callBack.invoke(quizListe)
+
+                }
+            },
+            {
+                    error ->
+                println("Feil oppsto: $error")
+            })
+        queue.add(json)
+
+
+    }
+
     fun hentSpill_QuizAsync(spillNavn: String , callBack: (result: ArrayList<Quiz>?) -> Unit) {
         val queue = newRequestQueue(appContext)
         var quizListe = ArrayList<Quiz>()
