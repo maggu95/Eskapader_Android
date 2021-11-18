@@ -69,6 +69,7 @@ class DilemmaFragment : Fragment() {
 
         //Neste dilemma btn
         binding.btNesteDilemma.setOnClickListener {
+            volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
             currDilemma++
 
             if(currDilemma >= dilemmaListe.size-1) {
@@ -88,8 +89,6 @@ class DilemmaFragment : Fragment() {
                     binding.dillAlt1.background = normalShape
                     binding.dillAlt2.background = normalShape
                     binding.btNesteDilemma.visibility = View.INVISIBLE
-                    volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
-                    println("Valgt alternativ" + valgtAlternativ)
                 }
             }
         }
