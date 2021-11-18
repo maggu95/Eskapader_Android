@@ -24,6 +24,9 @@ class HovedMenyFragment : Fragment() {
     private var spillArray : ArrayList<String> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
+        println("Du er nå på HovedmenyFragment")
+
         // Inflate the layout for this fragment
         fjernKort()
         val binding = DataBindingUtil.inflate<FragmentHovedMenyBinding>(inflater,R.layout.fragment_hoved_meny,container,false)
@@ -109,7 +112,7 @@ class HovedMenyFragment : Fragment() {
                     R.id.item_musikkquiz ->
                         view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
                     R.id.item_dilemma ->
-                        Toast.makeText(context, "You Clicked : " + item.title, Toast.LENGTH_SHORT).show()
+                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettDilemmaFragment)
                 }
                 true
             })
