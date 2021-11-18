@@ -72,7 +72,7 @@ class DilemmaFragment : Fragment() {
             volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
             currDilemma++
 
-            if(currDilemma >= dilemmaListe.size-1) {
+            if (currDilemma >= dilemmaListe.size) {
                 val dilemmaFerdigFragment = DilemmaFerdigFragment.newInstance(stats = "")
                 var fr = getFragmentManager()?.beginTransaction()
                 fr?.replace(R.id.dilemma_Container, dilemmaFerdigFragment)
@@ -80,9 +80,7 @@ class DilemmaFragment : Fragment() {
 
             }
 
-            else {
-
-                if (valgtDilemma == true) {
+            else if (valgtDilemma == true) {
                     binding.btNesteDilemma.text = "Neste"
                     binding.dillAlt1.text = dilemmaListe[currDilemma].alternativ[0]
                     binding.dillAlt2.text = dilemmaListe[currDilemma].alternativ[1]
@@ -91,7 +89,6 @@ class DilemmaFragment : Fragment() {
                     binding.btNesteDilemma.visibility = View.INVISIBLE
                 }
             }
-        }
 
 
         // Returnerer binding for view

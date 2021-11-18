@@ -54,8 +54,8 @@ class LoginActivity : AppCompatActivity() {
 
 
         val volley = APIConnector(this)
-        /*
-        /*val spillnavn = "Test fra android 2 "
+
+        /*val spillnavn = "Dilemma test "
         val author = "Android bruker"
 
         val statListe = arrayOf(0,0)
@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
         dilemmaListe.add(dilemma)
         dilemmaListe.add(dilemma2)
         println("Poster $dilemma til database...")
-        volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);*/
+        volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);
 
 
 
