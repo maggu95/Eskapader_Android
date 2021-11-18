@@ -61,31 +61,35 @@ class DilemmaFragment : Fragment() {
                 binding.dillAlt2.background = normalShape
             else
                 binding.dillAlt2.background = korrektShape
-            binding.btNesteDilemma.visibility = View.VISIBLE
-            valgtDilemma = true
-            valgtAlternativ = 1
-
-
+                binding.btNesteDilemma.visibility = View.VISIBLE
+                valgtDilemma = true
+                valgtAlternativ = 1
         }
 
         //Neste dilemma btn
         binding.btNesteDilemma.setOnClickListener {
+            currDilemma++
+            println(currDilemma)
 
-            if(currDilemma == 4) {
+            if(currDilemma >= dilemmaListe.size-1) {
+                println("kom til bytter")
                 val dilemmaFerdigFragment = DilemmaFerdigFragment.newInstance(stats = "")
                 var fr = getFragmentManager()?.beginTransaction()
                 fr?.replace(R.id.dilemma_Container, dilemmaFerdigFragment)
                 fr?.commit()
+
             }
 
-            if (valgtDilemma == true) {
-                binding.btNesteDilemma.text = "Neste"
-                currDilemma++
-                binding.dillAlt1.text = dilemmaListe[currDilemma].alternativ[0]
-                binding.dillAlt2.text = dilemmaListe[currDilemma].alternativ[1]
-                binding.dillAlt1.background = normalShape
-                binding.dillAlt2.background = normalShape
-                binding.btNesteDilemma.visibility = View.INVISIBLE
+            else {
+
+                if (valgtDilemma == true) {
+                    binding.btNesteDilemma.text = "Neste"
+                    binding.dillAlt1.text = dilemmaListe[currDilemma].alternativ[0]
+                    binding.dillAlt2.text = dilemmaListe[currDilemma].alternativ[1]
+                    binding.dillAlt1.background = normalShape
+                    binding.dillAlt2.background = normalShape
+                    binding.btNesteDilemma.visibility = View.INVISIBLE
+                }
             }
         }
 
