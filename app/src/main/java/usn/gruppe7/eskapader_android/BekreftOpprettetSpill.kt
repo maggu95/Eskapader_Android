@@ -20,7 +20,7 @@ class BekreftOpprettetSpill : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentBekreftOpprettetSpillBinding>(inflater, R.layout.fragment_bekreft_opprettet_spill,container,false)
-        val spillNavn =  arguments?.getParcelableArrayList<Quiz>("Spillnavn") as String
+        val spillNavn =  arguments?.getString("Spillnavn") as String
         binding.spillBeskrivelseTxt.text = "Spill som ble opprettet: $spillNavn"
 
         binding.tilbakeTIilStartBtn.setOnClickListener {
@@ -34,7 +34,7 @@ class BekreftOpprettetSpill : Fragment() {
 
     companion object {
 
-        fun newInstance(spillNavn : String) =
+        fun newInstance(Spillnavn : String) =
             BekreftOpprettetSpill().apply {
                 arguments = Bundle().apply {
 

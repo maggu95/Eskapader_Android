@@ -62,9 +62,17 @@
         android:id="@+id/opprettMusikkQuizFragment"
         android:name="usn.gruppe7.eskapader_android.OpprettMusikkQuizFragment"
         android:label="fragment_opprett_musikkquiz"
-        tools:layout="@layout/fragment_opprett_musikkquiz" />
+        tools:layout="@layout/fragment_opprett_musikkquiz" >
+        <action
+            android:id="@+id/action_opprettMusikkQuizFragment_to_bekreftOpprettetSpill"
+            app:destination="@id/bekreftOpprettetSpill" />
+    </fragment>
     <fragment
         android:id="@+id/opprettDilemmaFragment"
         android:name="usn.gruppe7.eskapader_android.OpprettDilemmaFragment"
         android:label="OpprettDilemmaFragment" />
+    <fragment
+        android:id="@+id/bekreftOpprettetSpill"
+        android:name="usn.gruppe7.eskapader_android.BekreftOpprettetSpill"
+        android:label="BekreftOpprettetSpill" />
 </navigation>

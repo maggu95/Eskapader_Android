@@ -17,6 +17,7 @@ import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.core.view.iterator
 import androidx.core.widget.addTextChangedListener
+import androidx.navigation.findNavController
 
 
 class OpprettMusikkQuizFragment : Fragment() {
@@ -57,9 +58,22 @@ class OpprettMusikkQuizFragment : Fragment() {
             tømTekst(binding)
         }
 
-        binding.btFerdig.setOnClickListener {
-            if (textList.size > 0) {
+        binding.btFerdig.setOnClickListener { view : View ->
+            if (quizListe.size > 0) {
                 sendSpill(requireContext(), binding.inputQuizNavn.text.toString(), quizListe)
+
+                val bundle = Bundle()
+                bundle.putString("Spillnavn", binding.inputQuizNavn.text.toString())
+
+                view.findNavController().navigate(R.id.action_opprettMusikkQuizFragment_to_bekreftOpprettetSpill, bundle)
+
+                /*
+                val ferdigFragment = BekreftOpprettetSpill.newInstance(binding.inputQuizNavn.text.toString())
+                val fr = getFragmentManager()?.beginTransaction()
+                fr?.replace(R.id.opprettMusikkquiz_container, ferdigFragment)
+                fr?.commit()
+
+                 */
             }
         }
 
