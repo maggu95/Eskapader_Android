@@ -339,6 +339,7 @@ class APIConnector(val appContext: Context) : Volley() {
             {
                     response ->
                 val resultat = response.toString(4)
+                println("Oppdaterte dilemma -> ")
                 println(resultat)
             },
             {
@@ -347,9 +348,7 @@ class APIConnector(val appContext: Context) : Volley() {
             }
         )
         requestQueue.add(req)
-
     }
-
 
     fun oppdaterGlobalDilemma(spmNr : Int, valgNr : Int, brukernavn : String){
         val uriParams = "https://eskapader.herokuapp.com/spill/60508baa3948c9ca5972c3b0/${spmNr}/${valgNr}/${brukernavn}"
