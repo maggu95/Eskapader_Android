@@ -33,7 +33,7 @@ class DilemmaActivity : AppCompatActivity() {
             result ->
             if (result != null) {
                 dilemmaListe = result
-                val dilemmaFragment = DilemmaFragment.newInstance(dilemmaListe)
+                val dilemmaFragment = DilemmaFragment.newInstance(dilemmaListe, valgtSpill)
                 val transaction = supportFragmentManager.beginTransaction()
                 transaction.replace(container.id, dilemmaFragment)
                 transaction.commit()

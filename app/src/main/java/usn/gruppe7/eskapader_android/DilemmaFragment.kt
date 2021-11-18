@@ -38,6 +38,7 @@ class DilemmaFragment : Fragment() {
 
         //Henter listen med dillemma
         val dilemmaListe =  arguments?.getParcelableArrayList<Dilemma>("liste") as ArrayList<Dilemma>
+        val spillNavn = arguments?.getString("Spillnavn") as String
 
         binding.dillAlt1.text = dilemmaListe.get(currDilemma).alternativ[0]
         binding.dillAlt2.text = dilemmaListe.get(currDilemma).alternativ[1]
@@ -69,10 +70,8 @@ class DilemmaFragment : Fragment() {
         //Neste dilemma btn
         binding.btNesteDilemma.setOnClickListener {
             currDilemma++
-            println(currDilemma)
 
             if(currDilemma >= dilemmaListe.size-1) {
-                println("kom til bytter")
                 val dilemmaFerdigFragment = DilemmaFerdigFragment.newInstance(stats = "")
                 var fr = getFragmentManager()?.beginTransaction()
                 fr?.replace(R.id.dilemma_Container, dilemmaFerdigFragment)
@@ -89,6 +88,8 @@ class DilemmaFragment : Fragment() {
                     binding.dillAlt1.background = normalShape
                     binding.dillAlt2.background = normalShape
                     binding.btNesteDilemma.visibility = View.INVISIBLE
+                    volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
+                    println("Valgt alternativ" + valgtAlternativ)
                 }
             }
         }
@@ -99,12 +100,16 @@ class DilemmaFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(dilemmaListe : ArrayList<Dilemma>) =
+        fun newInstance(dilemmaListe : ArrayList<Dilemma>, spillNavn:String) =
             DilemmaFragment().apply {
                 arguments = Bundle().apply {
                     putParcelableArrayList("liste", dilemmaListe)
+                    putString("Spillnavn", spillNavn)
                 }
             }
     }
+
+
+
 }
 
