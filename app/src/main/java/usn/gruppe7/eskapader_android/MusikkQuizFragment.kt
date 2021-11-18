@@ -68,8 +68,9 @@ class MusikkQuizFragment() : Fragment() {
 
 
         binding.btBekreft.setOnClickListener {
+            println("Curr spørs = $currSpørs" )
+            if(currSpørs >= quizListe.size-1) {
 
-            if(currSpørs == 4) {
                 val quizFerdigFragment = MusikkQuizFerdigFragment.newInstance(poeng)
                 var fr = getFragmentManager()?.beginTransaction()
                 fr?.replace(R.id.musikkQuiz_Container,quizFerdigFragment)
