@@ -5,14 +5,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".OpprettMusikkQuizFragment">
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="414dp"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/dilemma_Alt2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/inputDilemmaAlt2"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="94dp"
@@ -22,39 +34,38 @@
             app:layout_constraintBottom_toTopOf="@+id/btLeggtilDilemma"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dilemma_Alt1" />
+            app:layout_constraintTop_toBottomOf="@+id/inputDilemmaAlt1" />
 
         <EditText
-            android:id="@+id/dilemma_Spm"
+            android:id="@+id/inputDilemmaSpillnavn"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="30dp"
+            android:layout_height="60dp"
             android:layout_marginTop="71dp"
-            android:layout_marginEnd="30dp"
             android:layout_marginBottom="59dp"
             android:ems="10"
             android:hint="Spørsmålstekst her"
             android:inputType="textPersonName"
             android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/dilemma_Alt1"
+            app:layout_constraintBottom_toTopOf="@+id/inputDilemmaAlt1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
-            android:id="@+id/dilemma_Alt1"
+            android:id="@+id/inputDilemmaAlt1"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="60dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:layout_marginBottom="32dp"
             android:ems="10"
             android:hint="Alternativ 1"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/dilemma_Alt2"
+            app:layout_constraintBottom_toTopOf="@+id/inputDilemmaAlt2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dilemma_Spm" />
+            app:layout_constraintTop_toBottomOf="@+id/inputDilemmaSpillnavn" />
 
         <Button
             android:id="@+id/btLeggtilDilemma"
@@ -65,9 +76,41 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dilemma_Alt2" />
+            app:layout_constraintTop_toBottomOf="@+id/inputDilemmaAlt2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:id="@+id/tabQuiz"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btFerdig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="159dp"
+                android:text="Ferdig"
+                android:backgroundTint="@color/green"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </TableLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+    </ScrollView>
 
 </layout>

@@ -13,29 +13,44 @@ import usn.gruppe7.eskapader_android.databinding.FragmentOpprettMusikkquizBindin
 
 class OpprettDilemmaFragment : Fragment() {
 
+    lateinit var dilemmaListe : ArrayList<Dilemma>
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         val binding = DataBindingUtil.inflate<FragmentOpprettDilemmaBinding>(inflater,R.layout.fragment_opprett_dilemma,container,false)
+        val volley = context?.let { APIConnector(it) }
+        dilemmaListe = arrayListOf<Dilemma>()
 
-        val textList = ArrayList<EditText>()
-        textList.add(binding.dilemmaSpm)
-        textList.add(binding.dilemmaAlt1)
-        textList.add(binding.dilemmaAlt2)
+        //volley.opprettDIlemmaSpill(author,spillnavn,dilemmaListe);
+
+
+
+        //val textList = ArrayList<EditText>()
+
 
         binding.btLeggtilDilemma.setOnClickListener {
-            for (item in textList) {
-                item.text.clear()
-            }
+            val spillnavn = binding.inputDilemmaSpillnavn.text.toString()
+            var id = dilemmaListe.size
+            val statListe = arrayOf(0,0)
+            var alternativListe = arrayOf(binding.inputDilemmaAlt1.text.toString(), binding.inputDilemmaAlt2.text.toString())
+
+            var dilemma = Dilemma(statListe, id, spillnavn, alternativListe)
+            dilemmaListe.add(dilemma)
+
+            tømInput(binding)
+
+            println(dilemmaListe.toString())
         }
 
-        return binding.root;
+    return binding.root;
     }
 
-
-
-
-
+    fun tømInput(binding: FragmentOpprettDilemmaBinding ) {
+        //binding.inputDilemmaSpillnavn.text.clear()
+        binding.inputDilemmaAlt1.text.clear()
+        binding.inputDilemmaAlt2.text.clear()
+    }
 }

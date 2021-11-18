@@ -32,7 +32,7 @@ class Dilemma(
     }
 
     override fun toString(): String {
-        return "$id  $tekst  ${alternativ} ${statistikk }"
+        return "ID: $id, Spillnavn: $tekst, alt1: " + alternativ[0] + ", alt2: " + alternativ[1]
     }
 
 }

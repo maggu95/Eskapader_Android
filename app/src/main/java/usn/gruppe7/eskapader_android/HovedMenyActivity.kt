@@ -35,6 +35,9 @@ class HovedMenyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_hoved_meny)
+
+        println("Du er nå på HovedmenyActivity")
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
 
         drawerLayout = binding.mainHost
@@ -47,6 +50,7 @@ class HovedMenyActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.navViewMain, navController)
 
 
+        /*
         btLeggTilQuiz = findViewById(R.id.btLeggTilQuiz)
         btLeggTilQuiz.setOnClickListener { view : View ->
             val popupMenu: PopupMenu = PopupMenu(this, btLeggTilQuiz)
@@ -56,13 +60,14 @@ class HovedMenyActivity : AppCompatActivity() {
                     R.id.item_musikkquiz ->
 
                         view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
-                    R.id.item_dilemma ->
-                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettDilemmaFragment)
+
                 }
                 true
             })
             popupMenu.show()
         }
+
+         */
     }
 
 
