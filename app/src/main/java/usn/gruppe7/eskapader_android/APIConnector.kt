@@ -430,13 +430,8 @@ class APIConnector(val appContext: Context) : Volley() {
         val req = JsonObjectRequest(Request.Method.PUT,deleteURL,deleteData,
             {
                     response ->
-<<<<<<< Updated upstream
-                        println("Slettet: " + response)
-                        callBack.invoke(true)
-=======
                 val resultat = response.toString(4)
                 println(resultat)
->>>>>>> Stashed changes
             },
             {
                     error ->
