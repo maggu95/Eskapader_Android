@@ -376,14 +376,11 @@ class APIConnector(val appContext: Context) : Volley() {
             {
                 response ->
                 for(i in 0 until response.length()) {
-                    if(response[i] == "Musikkquiz"){
-                        var json : JSONObject = response[i] as JSONObject
+                    var json : JSONObject = response[i] as JSONObject
+                    if(json.getString("Spillnavn") == "Musikkquiz")
+                    spillListe.add(json.getString("Spillnavn"))
+                    if(json.getString("Spillnavn") == "Dilemma")
                         spillListe.add(json.getString("Spillnavn"))
-                    }
-                    if(response[i] == "Dilemma"){
-                        var json : JSONObject = response[i] as JSONObject
-                        spillListe.add(json.getString("Spillnavn"))
-                    }
                 }
                 callBack.invoke(spillListe)
 
