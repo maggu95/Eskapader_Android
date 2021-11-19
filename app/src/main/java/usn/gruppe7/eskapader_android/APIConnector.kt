@@ -10,6 +10,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONArray
+import retrofit2.Retrofit
 
 
 class APIConnector(val appContext: Context) : Volley() {
@@ -426,19 +427,22 @@ class APIConnector(val appContext: Context) : Volley() {
         deleteData.put("Brukernavn",author)
         deleteData.put("SpillType", spilltype)
 
-        val req = JsonObjectRequest(
-            Request.Method.DELETE, deleteURL, deleteData,
+        val req = JsonObjectRequest(Request.Method.PUT,deleteURL,deleteData,
             {
                     response ->
+<<<<<<< Updated upstream
                         println("Slettet: " + response)
                         callBack.invoke(true)
+=======
+                val resultat = response.toString(4)
+                println(resultat)
+>>>>>>> Stashed changes
             },
             {
                     error ->
-                println("Feil oppsto: $error")
-                callBack.invoke(false)
-            })
-
+                println("Feil oppsto i POST: $error")
+            }
+        )
         requestQueue.add(req)
 
     }
