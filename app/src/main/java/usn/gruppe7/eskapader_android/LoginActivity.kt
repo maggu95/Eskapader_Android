@@ -73,6 +73,8 @@ class LoginActivity : AppCompatActivity() {
             else
                 Log.v("X", "BRUKERNAVN ELLER PASSORD ER TOM!!!!")
         }
+
+        volley.slettSpill("testkomman_Dilemma", "magnus", "Dilemma") {}
     }
 
     private fun loggInnGjest(app: App) {

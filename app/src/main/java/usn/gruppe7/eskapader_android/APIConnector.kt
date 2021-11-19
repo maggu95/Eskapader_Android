@@ -403,7 +403,7 @@ class APIConnector(val appContext: Context) : Volley() {
             Request.Method.GET, url, null,
             {
                 response ->
-                for(i in 0 until response.length()) {
+                for(i in 2 until response.length()) {
                     val spill : JSONObject = response.getJSONObject(i)
                     if(spill.getString("Author") == author)
                         spillListe.add(spill.getString("Spillnavn"))
@@ -430,7 +430,7 @@ class APIConnector(val appContext: Context) : Volley() {
             Request.Method.DELETE, deleteURL, deleteData,
             {
                     response ->
-                        println(response)
+                        println("Slettet: " + response)
                         callBack.invoke(true)
             },
             {
@@ -442,8 +442,5 @@ class APIConnector(val appContext: Context) : Volley() {
         requestQueue.add(req)
 
     }
-
-
-
 }
 
