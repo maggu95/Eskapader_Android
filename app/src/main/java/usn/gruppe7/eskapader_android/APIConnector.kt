@@ -366,10 +366,36 @@ class APIConnector(val appContext: Context) : Volley() {
             }
         )
         requestQueue.add(req)
+    }
+
+    fun hentGlobaleSpillNavn(callBack: (spillListe: ArrayList<String>?) -> Unit) {
+        val requestQueue = newRequestQueue(appContext)
+        var spillListe : ArrayList<String> = ArrayList()
+        val req = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            {
+                response ->
+                for(i in 0 until response.length()) {
+                    if(response[i] == "Musikkquiz"){
+                        var json : JSONObject = response[i] as JSONObject
+                        spillListe.add(json.getString("Spillnavn"))
+                    }
+                    if(response[i] == "Dilemma"){
+                        var json : JSONObject = response[i] as JSONObject
+                        spillListe.add(json.getString("Spillnavn"))
+                    }
+                }
+                callBack.invoke(spillListe)
+
+            },
+            {
+                    error ->
+                println("Feil oppsto: $error")
+
+            })
 
 
-
-
+        requestQueue.add(req)
 
     }
 
