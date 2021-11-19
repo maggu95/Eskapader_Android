@@ -57,11 +57,17 @@ class DilemmaFragment : Fragment() {
             valgtDilemma = true
             valgtAlternativ = 0
 
-                val statestikk1 = (dilemmaListe[currDilemma].statistikk[0] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
-                val statestikk2 = (dilemmaListe[currDilemma].statistikk[1] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
+            val stat1Total = dilemmaListe[currDilemma].statistikk[0].toDouble()
+            val stat2Total = dilemmaListe[currDilemma].statistikk[1].toDouble()
+            val totalStat =   stat1Total+stat2Total.toDouble()
 
-                binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}"
-                binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}"
+            val statestikk1 = (stat1Total/totalStat)*100
+            println("Statistikk 1 = $statestikk1" )
+            val statestikk2 = (stat2Total/totalStat)*100
+            println("Statistikk 2 = $statestikk2" )
+
+            binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}%"
+            binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}%"
 
             }
 
@@ -75,11 +81,19 @@ class DilemmaFragment : Fragment() {
                 valgtDilemma = true
                 valgtAlternativ = 1
 
-            val statestikk1 = (dilemmaListe[currDilemma].statistikk[0] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
-            val statestikk2 = (dilemmaListe[currDilemma].statistikk[1] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
+            val stat1Total = dilemmaListe[currDilemma].statistikk[0].toDouble()
+            val stat2Total = dilemmaListe[currDilemma].statistikk[1].toDouble()
+            val totalStat =   stat1Total+stat2Total.toDouble()
 
-            binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}"
-            binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}"
+            val statestikk1 = (stat1Total/totalStat)*100
+            println("Statistikk 1 = $statestikk1" )
+            val statestikk2 = (stat2Total/totalStat)*100
+            println("Statistikk 2 = $statestikk2" )
+
+
+
+            binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}%"
+            binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}%"
         }
 
         //Neste dilemma btn
