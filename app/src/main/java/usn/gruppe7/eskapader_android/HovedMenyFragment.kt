@@ -41,41 +41,64 @@ class HovedMenyFragment : Fragment() {
         val arr = sharedPreference?.getStringSet("Arr", null)
 
         binding.swiperefresh.setOnRefreshListener {
-            val volley = context?.let { APIConnector(it) }
-            volley?.hentAlleSpill {
-                result ->
-                if (result != null) {
-                    fjernKort()
-                    for (i in 0 until result.size) {
-                        if(result[i].contains("Dilemma",true)) {
-                            if(!tittelListe.contains(result[i])) {
-                                leggTilSpill(result[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Dilemma" )
-                                println("${result[i]} gikk gjennomm")
+            val user = app.currentUser()
+            if (user != null) {
+                if (user.profile.email != null) {
+
+                    val volley = context?.let { APIConnector(it) }
+                    volley?.hentAlleSpill { result ->
+                        if (result != null) {
+                            fjernKort()
+                            for (i in 0 until result.size) {
+                                if (result[i].contains("Dilemma", true)) {
+                                    if (!tittelListe.contains(result[i])) {
+                                        leggTilSpill(
+                                            result[i],
+                                            "asd",
+                                            "asd",
+                                            "asd",
+                                            R.mipmap.ic_launcher_round,
+                                            "Dilemma"
+                                        )
+                                        println("${result[i]} gikk gjennomm")
+                                    }
+                                }
+                                if (result[i].contains("Quiz", true)) {
+                                    if (!tittelListe.contains(result[i])) {
+                                        leggTilSpill(
+                                            result[i],
+                                            "asd",
+                                            "asd",
+                                            "asd",
+                                            R.mipmap.ic_launcher_round,
+                                            "Quiz"
+                                        )
+                                        println("${result[i]} gikk gjennomm")
+                                    }
+                                }
+
                             }
+                            recyclerAdapter.adapter = context?.let {
+                                RecyclerAdapter(
+                                    it,
+                                    tittelListe,
+                                    instruks1_Liste,
+                                    instruks2_Liste,
+                                    instruks3_Liste,
+                                    bildeliste,
+                                    type_liste
+                                )
                             }
-                        if(result[i].contains("Quiz",true)) {
-                            if(!tittelListe.contains(result[i])){
-                                leggTilSpill(result[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Quiz" )
-                                println("${result[i]} gikk gjennomm")
-                            }
+                            binding.swiperefresh.isRefreshing = false
+
+                        } else {
+                            Toast.makeText(context, "Fikk ikke resultater", Toast.LENGTH_LONG).show()
+                            binding.swiperefresh.isRefreshing = false
                         }
-
                     }
-                    recyclerAdapter.adapter = context?.let { RecyclerAdapter(it,tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste,type_liste) }
-                    binding.swiperefresh.isRefreshing = false
 
-                }
-                else {
-                    Toast.makeText(context, "Fikk ikke resultater", Toast.LENGTH_LONG).show()
-                    binding.swiperefresh.isRefreshing = false
                 }
             }
-
-
-
-
-
-
             binding.swiperefresh.isRefreshing = false
         }
 
