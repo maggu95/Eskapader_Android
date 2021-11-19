@@ -18,7 +18,7 @@ class DilemmaFragment : Fragment() {
 
     lateinit var  normalShape : Drawable
     lateinit var korrektShape: Drawable
-    private var valgtDilemma : Boolean = true
+    private var valgtDilemma : Boolean = false
     private var valgtAlternativ: Int = 0
 
     @SuppressLint("SetTextI18n")
@@ -47,39 +47,46 @@ class DilemmaFragment : Fragment() {
 
         val volley = APIConnector (requireContext())
 
+        if (!valgtDilemma) {
+            binding.dillAlt1.background = normalShape
+            binding.dillAlt2.background = normalShape
+        }
+
         //Du valgte alternativ 1
         binding.dillAlt1.setOnClickListener {
-            if (!valgtDilemma)
-                binding.dillAlt1.background = normalShape
-            else
-                binding.dillAlt1.background = korrektShape
-            binding.btNesteDilemma.visibility = View.VISIBLE
-            valgtDilemma = true
             valgtAlternativ = 0
+            if (valgtAlternativ == 0 && valgtDilemma == false) {
+                valgtDilemma = true
+                binding.dillAlt1.background = korrektShape
+                binding.dillAlt2.background = normalShape
+                binding.btNesteDilemma.visibility = View.VISIBLE
+            }
+            else{}
 
             val stat1Total = dilemmaListe[currDilemma].statistikk[0].toDouble()
             val stat2Total = dilemmaListe[currDilemma].statistikk[1].toDouble()
-            val totalStat =   stat1Total+stat2Total.toDouble()
+            val totalStat =   stat1Total+stat2Total
 
             val statestikk1 = (stat1Total/totalStat)*100
             println("Statistikk 1 = $statestikk1" )
             val statestikk2 = (stat2Total/totalStat)*100
             println("Statistikk 2 = $statestikk2" )
 
-            binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}%"
-            binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}%"
+            binding.statestikk1.text = "Alternativ 1 er valgt ${Math.round(statestikk1)}% av tiden"
+            binding.statestikk2.text = "mens Alternativ 2 er valgt ${Math.round(statestikk2)}%"
 
             }
 
         //Du valgte alternativ 2
         binding.dillAlt2.setOnClickListener{
-            if (!valgtDilemma)
-                binding.dillAlt2.background = normalShape
-            else
+            valgtAlternativ = 1
+            if (valgtAlternativ == 1 && valgtDilemma == false) {
+                valgtDilemma = true
+                binding.dillAlt1.background = normalShape
                 binding.dillAlt2.background = korrektShape
                 binding.btNesteDilemma.visibility = View.VISIBLE
-                valgtDilemma = true
-                valgtAlternativ = 1
+            }
+            else{}
 
             val stat1Total = dilemmaListe[currDilemma].statistikk[0].toDouble()
             val stat2Total = dilemmaListe[currDilemma].statistikk[1].toDouble()
@@ -92,9 +99,10 @@ class DilemmaFragment : Fragment() {
 
 
 
-            binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}%"
-            binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}%"
+            binding.statestikk1.text = "Alternativ 1 er valgt ${Math.round(statestikk1)}% av tiden"
+            binding.statestikk2.text = "mens Alternativ 2 er valgt ${Math.round(statestikk2)}% "
         }
+
 
         //Neste dilemma btn
         binding.btNesteDilemma.setOnClickListener {
@@ -117,6 +125,7 @@ class DilemmaFragment : Fragment() {
                     binding.btNesteDilemma.visibility = View.INVISIBLE
                     binding.statestikk1.text  = ""
                     binding.statestikk2.text  = ""
+                    valgtDilemma = false
 
                 if (spillNavn == "Dilemma")
                     volley.oppdaterGlobalDilemma(currDilemma, valgtAlternativ, "testbruker")
