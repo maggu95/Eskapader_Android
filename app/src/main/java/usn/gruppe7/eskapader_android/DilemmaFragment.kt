@@ -20,6 +20,7 @@ class DilemmaFragment : Fragment() {
     lateinit var korrektShape: Drawable
     private var valgtDilemma : Boolean = false
     private var valgtAlternativ: Int = 0
+    private var enigMedFlertall: Int = 0
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
@@ -72,10 +73,14 @@ class DilemmaFragment : Fragment() {
             val statestikk2 = (stat2Total/totalStat)*100
             println("Statistikk 2 = $statestikk2" )
 
+            if(statestikk1 > statestikk2 && valgtAlternativ == 0)
+                enigMedFlertall++
+
             binding.statestikk1.text = "Alternativ 1 er valgt ${Math.round(statestikk1)}% av tiden"
             binding.statestikk2.text = "mens Alternativ 2 er valgt ${Math.round(statestikk2)}%"
 
             }
+
 
         //Du valgte alternativ 2
         binding.dillAlt2.setOnClickListener{
@@ -97,7 +102,8 @@ class DilemmaFragment : Fragment() {
             val statestikk2 = (stat2Total/totalStat)*100
             println("Statistikk 2 = $statestikk2" )
 
-
+            if(statestikk2 > statestikk1 && valgtAlternativ == 1)
+                enigMedFlertall++
 
             binding.statestikk1.text = "Alternativ 1 er valgt ${Math.round(statestikk1)}% av tiden"
             binding.statestikk2.text = "mens Alternativ 2 er valgt ${Math.round(statestikk2)}% "
@@ -107,12 +113,14 @@ class DilemmaFragment : Fragment() {
         //Neste dilemma btn
         binding.btNesteDilemma.setOnClickListener {
             currDilemma++
-
-            if (currDilemma >= dilemmaListe.size) {
-                val dilemmaFerdigFragment = DilemmaFerdigFragment.newInstance(stats = "")
+            if (currDilemma == dilemmaListe.size) {
+                val stats = ((enigMedFlertall.toDouble() / dilemmaListe.size.toDouble())* 100)
+                println("SENDER MED STATS $stats")
+                val dilemmaFerdigFragment = DilemmaFerdigFragment.newInstance(stats)
                 var fr = getFragmentManager()?.beginTransaction()
                 fr?.replace(R.id.dilemma_Container, dilemmaFerdigFragment)
                 fr?.commit()
+                (println(stats))
 
             }
 

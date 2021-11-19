@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import usn.gruppe7.eskapader_android.databinding.FragmentDilemmaFerdigBinding
-import usn.gruppe7.eskapader_android.databinding.FragmentMusikkQuizFerdigBinding
 
 
 class DilemmaFerdigFragment : Fragment() {
@@ -22,13 +21,14 @@ class DilemmaFerdigFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     override fun onCreateView(
-
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val stats = arguments?.getString("stats")
+        val stats = arguments?.getDouble("Stats") as Double
+        println ("MOTTOK STATS: $stats")
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentDilemmaFerdigBinding>(inflater,R.layout.fragment_dilemma_ferdig,container,false)
+        binding.resultatTxt.text = "Du var enig med flertallet ${Math.round(stats)} % av tiden!"
         binding.backBtn.setOnClickListener {
             val intent = Intent(context, HovedMenyActivity::class.java)
             startActivity(intent)
@@ -42,9 +42,10 @@ class DilemmaFerdigFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(stats : String) =
+        fun newInstance(stats: Double) =
             DilemmaFerdigFragment().apply {
                 arguments = Bundle().apply {
+                    putDouble("Stats", stats)
                 }
             }
     }
