@@ -52,15 +52,10 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
 
             }
         }
-
         spinner.onItemSelectedListener = this
-
 
         var spillType :String = ""
 
-
-
-        /*
         binding.btSlettSpill.setOnClickListener {
             val spillNavn = binding.txtInfoSpill.text.toString()
             if (binding.txtInfoSpill.text.toString().contains("Dilemma")) {
@@ -78,7 +73,6 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
             }
         }
 
-         */
         return binding.root
     }
 

@@ -20,7 +20,6 @@
             android:id="@+id/minSide"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="18dp"
             android:text="@string/min_side"
             android:textAlignment="center"
             android:textSize="34sp"
@@ -34,70 +33,66 @@
             android:id="@+id/textView22"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginBottom="39dp"
             android:text="Mine spill:"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/spillSpinner"
-            app:layout_constraintEnd_toEndOf="@+id/spillSpinner"
-            app:layout_constraintStart_toStartOf="@+id/spillSpinner"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="62dp"
-            android:layout_marginEnd="62dp"
-            android:layout_marginBottom="32dp"
-            android:contentDescription="TODO"
-            android:src="@drawable/eskapader_logo2"
-            app:layout_constraintBottom_toTopOf="@+id/textView22"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/minSide" />
+            app:layout_constraintBottom_toBottomOf="@+id/spillSpinner"
+            app:layout_constraintEnd_toStartOf="@+id/btSlettSpill"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Spinner
             android:id="@+id/spillSpinner"
-            android:layout_width="151dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="60dp"
-            app:layout_constraintBottom_toTopOf="@+id/txtInfoSpill"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-        <Button
-            android:id="@+id/button2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="14dp"
-            android:layout_marginEnd="14dp"
-            android:layout_marginBottom="40dp"
-            android:text="Bekreft bytte"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="115dp"
+            android:layout_marginBottom="37dp"
+            app:layout_constraintBottom_toTopOf="@+id/txtInfoSpill"
+            app:layout_constraintEnd_toStartOf="@+id/btSlettSpill"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtInfoSpill" />
+            app:layout_constraintTop_toBottomOf="@+id/btSlettSpill"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/txtInfoSpill"
-            android:layout_width="266dp"
+            android:layout_width="352dp"
             android:layout_height="0dp"
-            android:layout_marginStart="47dp"
-            android:layout_marginBottom="25dp"
-            app:layout_constraintBottom_toTopOf="@+id/button2"
-            app:layout_constraintStart_toStartOf="@+id/button2"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="113dp"
+            android:gravity="center"
+            android:textSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spillSpinner" />
 
         <Button
             android:id="@+id/btSlettSpill"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="36dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="38dp"
+            android:backgroundTint="@color/red"
             android:text="Slett"
-            app:layout_constraintBottom_toTopOf="@+id/txtInfoSpill"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintBottom_toTopOf="@+id/spillSpinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/spillSpinner"
+            app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="37dp"
+            android:layout_marginEnd="37dp"
+            android:layout_marginBottom="66dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/eskapader_logo2"
+            app:layout_constraintBottom_toTopOf="@+id/btSlettSpill"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/minSide" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
