@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 class Dilemma(
     val statistikk : Array<Int>,
-    val id: Int,
+    var id: Int,
     val tekst: String,
     val alternativ : Array<String> ) : Parcelable {
 

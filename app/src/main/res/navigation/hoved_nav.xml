@@ -70,7 +70,11 @@
     <fragment
         android:id="@+id/opprettDilemmaFragment"
         android:name="usn.gruppe7.eskapader_android.OpprettDilemmaFragment"
-        android:label="OpprettDilemmaFragment" />
+        android:label="OpprettDilemmaFragment" >
+        <action
+            android:id="@+id/action_opprettDilemmaFragment_to_bekreftOpprettetSpill"
+            app:destination="@id/bekreftOpprettetSpill" />
+    </fragment>
     <fragment
         android:id="@+id/bekreftOpprettetSpill"
         android:name="usn.gruppe7.eskapader_android.BekreftOpprettetSpill"
