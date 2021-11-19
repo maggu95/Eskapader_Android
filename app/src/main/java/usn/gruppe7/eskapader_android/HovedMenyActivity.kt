@@ -48,26 +48,6 @@ class HovedMenyActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this,navController, drawerLayout)
 
         NavigationUI.setupWithNavController(binding.navViewMain, navController)
-
-
-        /*
-        btLeggTilQuiz = findViewById(R.id.btLeggTilQuiz)
-        btLeggTilQuiz.setOnClickListener { view : View ->
-            val popupMenu: PopupMenu = PopupMenu(this, btLeggTilQuiz)
-            popupMenu.menuInflater.inflate(R.menu.item_ny_quiz, popupMenu.menu)
-            popupMenu.setOnMenuItemClickListener( PopupMenu.OnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.item_musikkquiz ->
-
-                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
-
-                }
-                true
-            })
-            popupMenu.show()
-        }
-
-         */
     }
 
 
