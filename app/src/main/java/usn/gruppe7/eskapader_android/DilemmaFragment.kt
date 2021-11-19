@@ -1,5 +1,6 @@
 package usn.gruppe7.eskapader_android
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -20,6 +21,7 @@ class DilemmaFragment : Fragment() {
     private var valgtDilemma : Boolean = true
     private var valgtAlternativ: Int = 0
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,15 +48,22 @@ class DilemmaFragment : Fragment() {
         val volley = APIConnector (requireContext())
 
         //Du valgte alternativ 1
-        binding.dillAlt1.setOnClickListener{
+        binding.dillAlt1.setOnClickListener {
             if (!valgtDilemma)
                 binding.dillAlt1.background = normalShape
             else
                 binding.dillAlt1.background = korrektShape
-                binding.btNesteDilemma.visibility = View.VISIBLE
-                valgtDilemma = true
-                valgtAlternativ = 0
-        }
+            binding.btNesteDilemma.visibility = View.VISIBLE
+            valgtDilemma = true
+            valgtAlternativ = 0
+
+                val statestikk1 = (dilemmaListe[currDilemma].statistikk[0] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
+                val statestikk2 = (dilemmaListe[currDilemma].statistikk[1] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
+
+                binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}"
+                binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}"
+
+            }
 
         //Du valgte alternativ 2
         binding.dillAlt2.setOnClickListener{
@@ -65,11 +74,16 @@ class DilemmaFragment : Fragment() {
                 binding.btNesteDilemma.visibility = View.VISIBLE
                 valgtDilemma = true
                 valgtAlternativ = 1
+
+            val statestikk1 = (dilemmaListe[currDilemma].statistikk[0] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
+            val statestikk2 = (dilemmaListe[currDilemma].statistikk[1] / dilemmaListe[currDilemma].statistikk[0] + dilemmaListe[currDilemma].statistikk[1]).toDouble()
+
+            binding.statestikk1.text = "Alternativ 1 ${Math.round(statestikk1)}"
+            binding.statestikk2.text = "Alternativ 2 ${Math.round(statestikk2)}"
         }
 
         //Neste dilemma btn
         binding.btNesteDilemma.setOnClickListener {
-            volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
             currDilemma++
 
             if (currDilemma >= dilemmaListe.size) {
@@ -87,7 +101,15 @@ class DilemmaFragment : Fragment() {
                     binding.dillAlt1.background = normalShape
                     binding.dillAlt2.background = normalShape
                     binding.btNesteDilemma.visibility = View.INVISIBLE
+                    binding.statestikk1.text  = ""
+                    binding.statestikk2.text  = ""
+
+                if (spillNavn == "Dilemma")
+                    volley.oppdaterGlobalDilemma(currDilemma, valgtAlternativ, "testbruker")
+                else
+                    volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
                 }
+
             }
 
 
