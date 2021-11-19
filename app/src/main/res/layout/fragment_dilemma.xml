@@ -84,11 +84,13 @@
             android:id="@+id/statestikk1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="177dp"
-            android:layout_marginBottom="38dp"
-            app:layout_constraintBottom_toTopOf="@+id/dill_alt_1"
+            android:layout_marginStart="191dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="192dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/statestikk2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dilemma_overskrift" />
@@ -97,14 +99,16 @@
             android:id="@+id/statestikk2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="173dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="180dp"
-            android:layout_marginBottom="22dp"
+            android:layout_marginStart="191dp"
+            android:layout_marginEnd="192dp"
+            android:layout_marginBottom="19dp"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/dill_alt_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dilemma_overskrift" />
+            app:layout_constraintTop_toBottomOf="@+id/statestikk1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

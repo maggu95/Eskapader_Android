@@ -21,7 +21,8 @@ class BekreftOpprettetSpill : Fragment() {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentBekreftOpprettetSpillBinding>(inflater, R.layout.fragment_bekreft_opprettet_spill,container,false)
         val spillNavn =  arguments?.getString("Spillnavn") as String
-        binding.spillBeskrivelseTxt.text = "Spill som ble opprettet: $spillNavn"
+        binding.spillBeskrivelseTxt1.text = "Spill som ble opprettet:"
+        binding.spillBeskrivelseTxt2.text = "$spillNavn"
 
         binding.tilbakeTIilStartBtn.setOnClickListener {
             val intent = Intent(context, HovedMenyActivity::class.java)

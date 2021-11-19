@@ -396,6 +396,53 @@ class APIConnector(val appContext: Context) : Volley() {
 
     }
 
+    fun hentMineSpill(author: String ,callBack: (spillListe: ArrayList<String>?) -> Unit) {
+        val requestQueue = newRequestQueue(appContext)
+        var spillListe : ArrayList<String> = ArrayList()
+        val req = JsonArrayRequest(
+            Request.Method.GET, url, null,
+            {
+                response ->
+                for(i in 0 until response.length()) {
+                    val spill : JSONObject = response.getJSONObject(i)
+                    if(spill.getString("Author") == author)
+                        spillListe.add(spill.getString("Spillnavn"))
+                }
+                callBack.invoke(spillListe)
+            },
+            {
+                    error ->
+                println("Feil oppsto: $error")
+
+            })
+        requestQueue.add(req)
+    }
+
+    fun slettSpill(spillnavn : String,author: String, spilltype : String,callBack: (velykket: Boolean?) -> Unit) {
+        val requestQueue = newRequestQueue(appContext)
+        val deleteURL = "https://eskapader.herokuapp.com/SlettSpill"
+        val deleteData = JSONObject()
+        deleteData.put("Spillnavn", spillnavn)
+        deleteData.put("Brukernavn",author)
+        deleteData.put("SpillType", spilltype)
+
+        val req = JsonObjectRequest(
+            Request.Method.DELETE, deleteURL, deleteData,
+            {
+                    response ->
+                        println(response)
+                        callBack.invoke(true)
+            },
+            {
+                    error ->
+                println("Feil oppsto: $error")
+                callBack.invoke(false)
+            })
+
+        requestQueue.add(req)
+
+    }
+
 
 
 }
