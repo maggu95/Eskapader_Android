@@ -66,4 +66,5 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation("com.android.volley:volley:1.2.1")
+
 }
