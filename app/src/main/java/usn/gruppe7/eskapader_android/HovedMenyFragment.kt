@@ -2,6 +2,7 @@ package usn.gruppe7.eskapader_android
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -108,15 +109,22 @@ class HovedMenyFragment : Fragment() {
             val popupMenu: PopupMenu = PopupMenu(context, btLeggTilQuiz)
             popupMenu.menuInflater.inflate(R.menu.item_ny_quiz, popupMenu.menu)
             popupMenu.setOnMenuItemClickListener( PopupMenu.OnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.item_musikkquiz ->
-                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
-                    R.id.item_dilemma ->
-                        view.findNavController().navigate(R.id.action_hovedMenyFragment_to_opprettDilemmaFragment)
-                }
+                if (sjekkBruker())
+                    when (item.itemId) {
+                        R.id.item_musikkquiz ->
+                            view.findNavController()
+                                .navigate(R.id.action_hovedMenyFragment_to_opprettMusikkQuizFragment)
+                        R.id.item_dilemma ->
+                            view.findNavController()
+                                .navigate(R.id.action_hovedMenyFragment_to_opprettDilemmaFragment)
+                    }
+                else
+                    Toast.makeText(context, "Du må ha en bruker for å opprette nye spill!", Toast.LENGTH_SHORT).show()
                 true
             })
+
             popupMenu.show()
+
         }
 
         return binding.root
@@ -148,7 +156,15 @@ class HovedMenyFragment : Fragment() {
         leggTilSpill("Dilemma", "asdf", "asdf", "asdf", R.mipmap.ic_launcher_round, "Dilemma")
     }
 
-
+    fun sjekkBruker() : Boolean {
+        var user = app.currentUser();
+        if (user != null) {
+            if (user.profile.email != null) {
+                return true
+            }
+        }
+        return false
+    }
 
 
 
