@@ -40,7 +40,7 @@ class OpprettDilemmaFragment : Fragment() {
 
 
         val spillnavn = binding.inputDilemmaSpillnavn.text.toString()
-        val author = app.currentUser()?.id.toString()
+
 
         //val textList = ArrayList<EditText>()
 
@@ -156,7 +156,9 @@ class OpprettDilemmaFragment : Fragment() {
 
     private fun sendSpill(context : Context, spillnavn : String, dilemmaListe: ArrayList<Dilemma>) {
         val volley = APIConnector(context)
-        val bruker = app.currentUser()?.id.toString()
-        volley.opprettDIlemmaSpill(bruker ,spillnavn+"_Dilemma", dilemmaListe)
+        val user = app.currentUser()
+        val author = user?.profile?.email.toString()
+
+        volley.opprettDIlemmaSpill(author ,spillnavn+"_Dilemma", dilemmaListe)
     }
 }

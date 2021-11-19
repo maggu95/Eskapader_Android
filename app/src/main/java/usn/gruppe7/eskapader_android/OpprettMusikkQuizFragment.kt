@@ -267,7 +267,8 @@ class OpprettMusikkQuizFragment : Fragment() {
 
     private fun sendSpill(context : Context, spillnavn : String, quizListe : ArrayList<Quiz>) {
         val volley = APIConnector(context)
-        val bruker = app.currentUser()?.id.toString()
+        val user = app.currentUser()
+        val bruker = user?.profile?.email.toString()
         volley.opprettQuizSpill(bruker,spillnavn+"_Quiz", quizListe) {
             utført ->
             if(utført == true) {
