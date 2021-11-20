@@ -10,7 +10,6 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import org.json.JSONArray
-import retrofit2.Retrofit
 
 
 class APIConnector(val appContext: Context) : Volley() {
