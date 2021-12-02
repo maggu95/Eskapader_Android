@@ -52,7 +52,15 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
 
             }
         }
+
+        //spinner.isSelected = false;
+
+
+
         spinner.onItemSelectedListener = this
+
+
+
 
         var spillType :String = ""
 
@@ -71,6 +79,15 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
                     if (result == true)
                         Toast.makeText(context, "Slettet spill!" , Toast.LENGTH_LONG).show()
             }
+
+            //spinner.isSelected = false;
+            spillListe.remove(spillNavn)
+            spinner.adapter = adapter
+            binding.txtInfoSpill.setText("")
+            if (spillListe.isEmpty()) {
+                binding.txtInfoSpill.setText("Du har ingen spill å slette!")
+            }
+
         }
 
         return binding.root
@@ -78,6 +95,7 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
         binding?.txtInfoSpill?.setText(spillListe.get(position))
+        //binding?.txtAdapter?.setText(spillListe.get(position))
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
