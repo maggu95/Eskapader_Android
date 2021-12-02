@@ -84,7 +84,6 @@ class LoginActivity : AppCompatActivity() {
                 Log.v("X", "BRUKERNAVN ELLER PASSORD ER TOM!!!!")
         }
 
-        volley.slettSpill("testkomman_Dilemma", "magnus", "Dilemma") {}
     }
 
     private fun loggInnGjest(app: App) {
@@ -128,14 +127,10 @@ class LoginActivity : AppCompatActivity() {
 
         if (sjekkBruker()) {
             volley.hentAlleSpill { result ->
-                println(result)
-                println("Fikk result fra volley i logginn ")
                 if (result != null) {
-                    println("resultat er ikke null")
                     val sharedPreference = getSharedPreferences("SPILL_LISTE", Context.MODE_PRIVATE)
                     val editor = sharedPreference.edit()
                     editor.putStringSet("Arr", result.toSet())
-                    println("Legger med til hoved -> ${result.toSet()}")
                     editor.apply()
                 }
                 val intent = Intent(this, HovedMenyActivity::class.java)
@@ -145,13 +140,10 @@ class LoginActivity : AppCompatActivity() {
         else {
             volley.hentGlobaleSpillNavn { result ->
                 println(result)
-                println("Fikk result fra volley i logginn ")
                 if (result != null) {
-                    println("resultat er ikke null")
                     val sharedPreference = getSharedPreferences("SPILL_LISTE", Context.MODE_PRIVATE)
                     val editor = sharedPreference.edit()
                     editor.putStringSet("Arr", result.toSet())
-                    println("Legger med til hoved -> ${result.toSet()}")
                     editor.apply()
                 }
                 val intent = Intent(this, HovedMenyActivity::class.java)
