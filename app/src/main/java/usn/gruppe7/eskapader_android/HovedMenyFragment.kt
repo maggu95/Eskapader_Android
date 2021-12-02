@@ -26,8 +26,6 @@ class HovedMenyFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        println("Du er nå på HovedmenyFragment")
-
         // Inflate the layout for this fragment
         fjernKort()
         val binding = DataBindingUtil.inflate<FragmentHovedMenyBinding>(inflater,R.layout.fragment_hoved_meny,container,false)
@@ -54,9 +52,9 @@ class HovedMenyFragment : Fragment() {
                                     if (!tittelListe.contains(result[i])) {
                                         leggTilSpill(
                                             result[i],
-                                            "asd",
-                                            "asd",
-                                            "asd",
+                                            "Du får to valg, du må velge et",
+                                            "Du vil få opp hvor mange andre som valgte samme",
+                                            "Se hvor unik du er",
                                             R.mipmap.icon_dilemma,
                                             "Dilemma"
                                         )
@@ -67,9 +65,9 @@ class HovedMenyFragment : Fragment() {
                                     if (!tittelListe.contains(result[i])) {
                                         leggTilSpill(
                                             result[i],
-                                            "asd",
-                                            "asd",
-                                            "asd",
+                                            "Du får 4 alternativ",
+                                            "Kun et av dem er riktig",
+                                            "Du vil få poeng for antall riktig",
                                             R.mipmap.icon_music,
                                             "Quiz"
                                         )
@@ -92,7 +90,7 @@ class HovedMenyFragment : Fragment() {
                             binding.swiperefresh.isRefreshing = false
 
                         } else {
-                            Toast.makeText(context, "Fikk ikke resultater", Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, "Fikk ikke resultater, sjekk om du har nettverkstilgang", Toast.LENGTH_LONG).show()
                             binding.swiperefresh.isRefreshing = false
                         }
                     }
@@ -113,9 +111,11 @@ class HovedMenyFragment : Fragment() {
         if (spillArray != null) {
             for (i in 0 until spillArray.size) {
                 if(spillArray[i].contains("Dilemma",true))
-                    leggTilSpill(spillArray[i] , "Velg mellom to goder eller onder", "Sosialt", "Gøy", R.mipmap.icon_dilemma, "Dilemma" )
+                    leggTilSpill(spillArray[i] , "Du får to alternativer", "Velg et av disse",
+                        "Du vil da kunne se hva andre har valgt", R.mipmap.icon_dilemma, "Dilemma" )
                 if(spillArray[i].contains("Quiz",true))
-                    leggTilSpill(spillArray[i] , "Hvem sin lyrikk er det?", "Kunnskap", "Musikk", R.mipmap.icon_music, "Quiz" )
+                    leggTilSpill(spillArray[i] , "Du får 4 alternativ"
+                        , "Kun et av dem er riktig", "Du vil få poeng for riktig svar", R.mipmap.icon_music, "Quiz" )
             }
 
 
@@ -165,7 +165,6 @@ class HovedMenyFragment : Fragment() {
     }
 
     fun fjernKort() {
-        println("Fjerner kort....")
         tittelListe.clear()
         instruks1_Liste.clear()
         instruks2_Liste.clear()
@@ -175,8 +174,8 @@ class HovedMenyFragment : Fragment() {
     }
 
     fun fyllEksempelData() {
-        leggTilSpill("Musikkquiz", "asdf", "asdf", "asdf", R.mipmap.ic_launcher_round, "Dilemma")
-        leggTilSpill("Dilemma", "asdf", "asdf", "asdf", R.mipmap.ic_launcher_round, "Dilemma")
+        leggTilSpill("Musikkquiz", "Eksempelkort", "Eksempel instruks", "eksempelinstruks3", R.mipmap.ic_launcher_round, "Dilemma")
+        leggTilSpill("Dilemma", "Eksempelkort", "Eksempel instruks", "eksempelinstruks3",  R.mipmap.ic_launcher_round, "Dilemma")
     }
 
     fun sjekkBruker() : Boolean {

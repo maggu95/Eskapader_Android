@@ -34,9 +34,7 @@ class HovedMenyActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_hoved_meny)
 
-        println("Du er nå på HovedmenyActivity")
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_hoved_meny)
 
