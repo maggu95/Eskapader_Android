@@ -93,7 +93,8 @@
             app:layout_constraintBottom_toTopOf="@+id/statestikk2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dilemma_overskrift" />
+            app:layout_constraintTop_toBottomOf="@+id/dilemma_overskrift"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/statestikk2"
@@ -108,7 +109,8 @@
             app:layout_constraintBottom_toTopOf="@+id/dill_alt_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/statestikk1" />
+            app:layout_constraintTop_toBottomOf="@+id/statestikk1"
+            tools:visibility="visible" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

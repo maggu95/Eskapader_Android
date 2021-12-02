@@ -57,7 +57,7 @@ class HovedMenyFragment : Fragment() {
                                             "asd",
                                             "asd",
                                             "asd",
-                                            R.mipmap.ic_launcher_round,
+                                            R.mipmap.icon_dilemma,
                                             "Dilemma"
                                         )
                                         println("${result[i]} gikk gjennomm")
@@ -70,7 +70,7 @@ class HovedMenyFragment : Fragment() {
                                             "asd",
                                             "asd",
                                             "asd",
-                                            R.mipmap.ic_launcher_round,
+                                            R.mipmap.icon_music,
                                             "Quiz"
                                         )
                                         println("${result[i]} gikk gjennomm")
@@ -113,9 +113,9 @@ class HovedMenyFragment : Fragment() {
         if (spillArray != null) {
             for (i in 0 until spillArray.size) {
                 if(spillArray[i].contains("Dilemma",true))
-                    leggTilSpill(spillArray[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Dilemma" )
+                    leggTilSpill(spillArray[i] , "Velg mellom to goder eller onder", "Sosialt", "Gøy", R.mipmap.icon_dilemma, "Dilemma" )
                 if(spillArray[i].contains("Quiz",true))
-                    leggTilSpill(spillArray[i] , "asd", "asd", "asd", R.mipmap.ic_launcher_round, "Quiz" )
+                    leggTilSpill(spillArray[i] , "Hvem sin lyrikk er det?", "Kunnskap", "Musikk", R.mipmap.icon_music, "Quiz" )
             }
 
 
