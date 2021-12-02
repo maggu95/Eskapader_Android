@@ -17,7 +17,6 @@ class APIConnector(val appContext: Context) : Volley() {
 
 
     fun hentAlleSpill(callBack: (result: ArrayList<String>?) -> Unit){
-        println("Henter alle spill")
         var spillListe : ArrayList<String> = ArrayList()
         val queue = newRequestQueue(appContext)
 
@@ -25,7 +24,6 @@ class APIConnector(val appContext: Context) : Volley() {
             Request.Method.GET,url,null,
             {
                 response ->
-                println("Response: $response")
                 for(i in 0 until response.length() ) {
                     spillListe.add(response.getJSONObject(i).getString("Spillnavn"))
                 }

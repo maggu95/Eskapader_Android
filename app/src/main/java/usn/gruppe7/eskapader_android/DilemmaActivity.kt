@@ -25,9 +25,7 @@ class DilemmaActivity : AppCompatActivity() {
         val connector = APIConnector(this)
 
         val valgtSpill = intent.extras?.getString("Spillnavn").toString()
-        if(valgtSpill != null) {
-            println("FIKK BUNDLE!!!! -> ${valgtSpill}" )
-        }
+
 
          connector.hentSpill_DilemmaAsync( valgtSpill) {
             result ->

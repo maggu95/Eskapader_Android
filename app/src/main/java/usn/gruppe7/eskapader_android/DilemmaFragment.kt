@@ -57,6 +57,13 @@ class DilemmaFragment : Fragment() {
         binding.dillAlt1.setOnClickListener {
             valgtAlternativ = 0
             if (valgtAlternativ == 0 && valgtDilemma == false) {
+
+                if (spillNavn == "Dilemma")
+                    volley.oppdaterGlobalDilemma(currDilemma, valgtAlternativ, "testbruker")
+                else
+                    volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
+
+
                 valgtDilemma = true
                 binding.dillAlt1.background = korrektShape
                 binding.dillAlt2.background = normalShape
@@ -86,6 +93,12 @@ class DilemmaFragment : Fragment() {
         binding.dillAlt2.setOnClickListener{
             valgtAlternativ = 1
             if (valgtAlternativ == 1 && valgtDilemma == false) {
+
+                if (spillNavn == "Dilemma")
+                    volley.oppdaterGlobalDilemma(currDilemma, valgtAlternativ, "testbruker")
+                else
+                    volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
+
                 valgtDilemma = true
                 binding.dillAlt1.background = normalShape
                 binding.dillAlt2.background = korrektShape
