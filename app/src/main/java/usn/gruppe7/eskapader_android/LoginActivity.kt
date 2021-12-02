@@ -139,7 +139,6 @@ class LoginActivity : AppCompatActivity() {
         }
         else {
             volley.hentGlobaleSpillNavn { result ->
-                println(result)
                 if (result != null) {
                     val sharedPreference = getSharedPreferences("SPILL_LISTE", Context.MODE_PRIVATE)
                     val editor = sharedPreference.edit()
