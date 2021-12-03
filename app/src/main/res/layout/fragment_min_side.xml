@@ -12,31 +12,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="@+id/txtAdapter"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView5">
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/txtAdapter">
 
 
         <TextView
             android:id="@+id/minSide"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="210dp"
             android:text="@string/min_side"
             android:textAlignment="center"
             android:textSize="34sp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView7"
+            app:layout_constraintBottom_toTopOf="@+id/spillSpinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
-            android:id="@+id/textView22"
+            android:id="@+id/txtAdapter"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="19dp"
             android:layout_marginEnd="115dp"
             android:layout_marginBottom="39dp"
-            android:text="Mine spill:"
             android:textAlignment="center"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/spillSpinner"
@@ -45,15 +47,12 @@
 
         <Spinner
             android:id="@+id/spillSpinner"
-            android:layout_width="0dp"
+            android:layout_width="219dp"
             android:layout_height="0dp"
-            android:layout_marginStart="19dp"
-            android:layout_marginEnd="115dp"
-            android:layout_marginBottom="37dp"
-            app:layout_constraintBottom_toTopOf="@+id/txtInfoSpill"
-            app:layout_constraintEnd_toStartOf="@+id/btSlettSpill"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btSlettSpill"
+            android:layout_marginBottom="263dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtInfoSpill"
+            app:layout_constraintTop_toBottomOf="@+id/minSide"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
         <TextView
