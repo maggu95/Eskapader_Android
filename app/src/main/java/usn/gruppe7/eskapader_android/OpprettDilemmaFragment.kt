@@ -69,7 +69,8 @@ class OpprettDilemmaFragment : Fragment() {
                 antDilemma++
 
                 val textView = TextView(context)
-                textView.setText(dilemma.id.toString())
+                val dilemmaId = dilemma.id+1
+                textView.setText(dilemmaId.toString())
                 textView.setTextColor(Color.WHITE)
                 textView.textSize = 25F
                 textView.setPadding(20, 20, 20, 20)
