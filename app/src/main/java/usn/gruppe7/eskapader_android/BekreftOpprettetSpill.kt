@@ -12,14 +12,13 @@ import usn.gruppe7.eskapader_android.databinding.FragmentBekreftOpprettetSpillBi
 
 class BekreftOpprettetSpill : Fragment() {
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentBekreftOpprettetSpillBinding>(inflater, R.layout.fragment_bekreft_opprettet_spill,container,false)
+        //Henter opprettet spillnavn fra arguments
         val spillNavn =  arguments?.getString("Spillnavn") as String
         binding.spillBeskrivelseTxt1.text = "Spill som ble opprettet:"
         binding.spillBeskrivelseTxt2.text = "$spillNavn"

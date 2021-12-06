@@ -28,7 +28,6 @@ class LoggInnFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentLoggInnBinding>(inflater,R.layout.fragment_logg_inn,container,false)
 
         binding.textView2.setOnClickListener{ view : View ->

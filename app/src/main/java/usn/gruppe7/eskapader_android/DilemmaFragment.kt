@@ -57,7 +57,12 @@ class DilemmaFragment : Fragment() {
         binding.dillAlt1.setOnClickListener {
             valgtAlternativ = 0
             if (valgtAlternativ == 0 && valgtDilemma == false) {
-
+                /*
+                Siden API har en metode for å oppdatere globalt dilemma
+                og vi lagde en metode i api for å oppdatere de nye datamodellene
+                må vi skille mellom hvilken vi vil oppdatere. Derfor har vi med en sjekk for å vite hvilken
+                metode i API som skal bli kalt.
+                 */
                 if (spillNavn == "Dilemma")
                     volley.oppdaterGlobalDilemma(currDilemma, valgtAlternativ, "testbruker")
                 else
@@ -69,6 +74,7 @@ class DilemmaFragment : Fragment() {
                 binding.dillAlt2.background = normalShape
                 binding.btNesteDilemma.visibility = View.VISIBLE
             }
+
             else{}
 
             val stat1Total = dilemmaListe[currDilemma].statistikk[0].toDouble()
@@ -76,9 +82,7 @@ class DilemmaFragment : Fragment() {
             val totalStat =   stat1Total+stat2Total
 
             val statestikk1 = (stat1Total/totalStat)*100
-            println("Statistikk 1 = $statestikk1" )
             val statestikk2 = (stat2Total/totalStat)*100
-            println("Statistikk 2 = $statestikk2" )
 
             if(statestikk1 > statestikk2 && valgtAlternativ == 0)
                 enigMedFlertall++
@@ -111,9 +115,7 @@ class DilemmaFragment : Fragment() {
             val totalStat =   stat1Total+stat2Total.toDouble()
 
             val statestikk1 = (stat1Total/totalStat)*100
-            println("Statistikk 1 = $statestikk1" )
             val statestikk2 = (stat2Total/totalStat)*100
-            println("Statistikk 2 = $statestikk2" )
 
             if(statestikk2 > statestikk1 && valgtAlternativ == 1)
                 enigMedFlertall++
@@ -128,12 +130,10 @@ class DilemmaFragment : Fragment() {
             currDilemma++
             if (currDilemma == dilemmaListe.size) {
                 val stats = ((enigMedFlertall.toDouble() / dilemmaListe.size.toDouble())* 100)
-                println("SENDER MED STATS $stats")
                 val dilemmaFerdigFragment = DilemmaFerdigFragment.newInstance(stats)
                 var fr = getFragmentManager()?.beginTransaction()
                 fr?.replace(R.id.dilemma_Container, dilemmaFerdigFragment)
                 fr?.commit()
-                (println(stats))
 
             }
 
@@ -148,10 +148,6 @@ class DilemmaFragment : Fragment() {
                     binding.statestikk2.text  = ""
                     valgtDilemma = false
 
-                if (spillNavn == "Dilemma")
-                    volley.oppdaterGlobalDilemma(currDilemma, valgtAlternativ, "testbruker")
-                else
-                    volley.oppdaterDilemma(spillNavn, currDilemma, valgtAlternativ)
                 }
 
             }

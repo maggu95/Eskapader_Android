@@ -84,7 +84,6 @@ class APIConnector(val appContext: Context) : Volley() {
                     val altListe = arrayOf(alt1,alt2)
                     val dilemmaObjekt = Dilemma(stat,id,tekst,altListe);
                     dilemmaListe.add(dilemmaObjekt)
-                    Log.i("test", "La til i liste -> $dilemmaObjekt")
                 }
                 callBack.invoke(dilemmaListe)
 
@@ -197,7 +196,6 @@ class APIConnector(val appContext: Context) : Volley() {
 
 
         queue.add(json)
-        println("La til forespørsel i kø")
 
     }
 

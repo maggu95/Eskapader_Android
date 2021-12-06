@@ -1,8 +1,8 @@
 package usn.gruppe7.eskapader_android
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,7 +26,7 @@ class HovedMenyFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        // Inflate the layout for this fragment
+        //Fjerner gamle kort
         fjernKort()
         val binding = DataBindingUtil.inflate<FragmentHovedMenyBinding>(inflater,R.layout.fragment_hoved_meny,container,false)
         val recyclerAdapter = binding.spillListe
@@ -34,7 +34,7 @@ class HovedMenyFragment : Fragment() {
         recyclerAdapter.adapter = context?.let { RecyclerAdapter(it,tittelListe,instruks1_Liste,instruks2_Liste,instruks3_Liste,bildeliste,type_liste) }
 
 
-
+        //Henter spilliste fra sharedPreferences og legger dette i en array
         val sharedPreference = activity?.getSharedPreferences("SPILL_LISTE", Context.MODE_PRIVATE)
         val arr = sharedPreference?.getStringSet("Arr", null)
 
@@ -71,7 +71,6 @@ class HovedMenyFragment : Fragment() {
                                             R.mipmap.icon_music,
                                             "Quiz"
                                         )
-                                        println("${result[i]} gikk gjennomm")
                                     }
                                 }
 
@@ -104,9 +103,6 @@ class HovedMenyFragment : Fragment() {
         if (arr != null) {
             spillArray = arr.toMutableList() as ArrayList<String>
         }
-        else {
-            println("Arr er null")
-        }
 
         if (spillArray != null) {
             for (i in 0 until spillArray.size) {
@@ -121,8 +117,11 @@ class HovedMenyFragment : Fragment() {
 
         }
         else {
-            println("Spill liste er null")
-            fyllEksempelData()
+            //Feil med inhenting av kort, går tilbake til hovedmeny
+            Toast.makeText(context, "Feil med innhenting av kort", Toast.LENGTH_LONG).show()
+            val intent = Intent(context, LoginActivity::class.java)
+            startActivity(intent)
+
         }
 
 
@@ -155,7 +154,6 @@ class HovedMenyFragment : Fragment() {
 
 
     fun leggTilSpill(tittel: String, instruks1: String,instruks2: String,instruks3: String, bilde: Int, type : String ) {
-        println("Legger til kort: $tittel")
         tittelListe.add(tittel)
         instruks1_Liste.add(instruks1)
         instruks2_Liste.add(instruks2)
@@ -173,10 +171,6 @@ class HovedMenyFragment : Fragment() {
         type_liste.clear()
     }
 
-    fun fyllEksempelData() {
-        leggTilSpill("Musikkquiz", "Eksempelkort", "Eksempel instruks", "eksempelinstruks3", R.mipmap.ic_launcher_round, "Dilemma")
-        leggTilSpill("Dilemma", "Eksempelkort", "Eksempel instruks", "eksempelinstruks3",  R.mipmap.ic_launcher_round, "Dilemma")
-    }
 
     fun sjekkBruker() : Boolean {
         var user = app.currentUser();

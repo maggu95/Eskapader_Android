@@ -16,7 +16,6 @@ class DilemmaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       // setContentView(R.layout.dilemma_layout)
         binding = DataBindingUtil.setContentView(this, R.layout.dilemma_layout)
         val container = binding.dilemmaContainer
 
@@ -37,6 +36,7 @@ class DilemmaActivity : AppCompatActivity() {
                 transaction.commit()
             }
              else {
+                 //Hvis vi ikke fikk hentet spill så går vi tilbake til hovedmeny
                 Log.i("Dilemma Aktivity", "Fant ikke noe resultat i Dilemma")
                 val intent = Intent(this, HovedMenyActivity::class.java)
                 startActivity(intent)

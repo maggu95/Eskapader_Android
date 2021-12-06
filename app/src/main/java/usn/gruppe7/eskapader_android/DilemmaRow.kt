@@ -13,7 +13,6 @@ class DilemmaRow(val dilemma: Dilemma, val nr: Int, context: Context?) : TableRo
 
     fun addKort( k : CardView) {
         kort = k
-        //addView(txt,0)
         addView(kort)
     }
 

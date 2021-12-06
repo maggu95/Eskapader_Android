@@ -26,9 +26,9 @@ class DilemmaFerdigFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val stats = arguments?.getDouble("Stats") as Double
-        println ("MOTTOK STATS: $stats")
         val listeOver50 = listOf<String>("Du er som folk flest!", "Du er ikke unik", "Du følger flokken!")
-        val listeUnder50 = listOf<String>("Du er unik, og du velger ikke som alle andre", "Her har du laget din egen sti, og den er du fornøyd med", "Du er mester av din egen skjebne, og fri som en fugl")
+        val listeUnder50 = listOf<String>("Du er unik, og du velger ikke som alle andre",
+            "Her har du laget din egen sti, og den er du fornøyd med", "Du er mester av din egen skjebne, og fri som en fugl")
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentDilemmaFerdigBinding>(inflater,R.layout.fragment_dilemma_ferdig,container,false)
         binding.resultatTxt.text = "Du var enig med flertallet ${Math.round(stats)} % av tiden!"

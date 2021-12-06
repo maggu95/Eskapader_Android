@@ -22,7 +22,6 @@ import io.realm.mongodb.User
 
 lateinit var app: App
 class LoginActivity : AppCompatActivity() {
-    private lateinit var drawerLayout: DrawerLayout
 
     private lateinit var username: EditText
     private lateinit var password: EditText
@@ -51,15 +50,6 @@ class LoginActivity : AppCompatActivity() {
 
         val volley = APIConnector(this)
 
-        volley.slettSpill("cckremorekme_Dilemma","6177c6e7dace2a1715775fb2","Dilemma") {
-            velykket ->
-            if(velykket == true) {
-                println("Velykket? ")
-            }
-            else {
-                println("Ikke velykket")
-            }
-        }
 
 
         username = findViewById(R.id.brukernavnInput)
