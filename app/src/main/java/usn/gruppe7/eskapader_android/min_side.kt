@@ -81,8 +81,6 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
         binding?.txtInfoSpill?.setText(spillListe.get(position))
     }
 
-    override fun onNothingSelected(p0: AdapterView<*>?) {
-        TODO("Not yet implemented")
-    }
+    override fun onNothingSelected(p0: AdapterView<*>?) {}
 
 }

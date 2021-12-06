@@ -20,6 +20,11 @@ import io.realm.mongodb.AppConfiguration
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 
+/**
+ * Klasse for innlogging av bruker
+ * Kode inspirert fra: https://docs.mongodb.com/realm/tutorial/android-kotlin/#connect-to-your-mongodb-realm-app
+ */
+
 lateinit var app: App
 class LoginActivity : AppCompatActivity() {
 

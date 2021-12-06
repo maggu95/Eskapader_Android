@@ -12,6 +12,10 @@ import io.realm.mongodb.App
 import io.realm.mongodb.Credentials
 import io.realm.mongodb.User
 
+/**
+ * Klasse for oppretting av bruker
+ * Kode inspirert fra: https://docs.mongodb.com/realm/tutorial/android-kotlin/#connect-to-your-mongodb-realm-app
+ */
 
 class LoggUtFragment : Fragment() {
     override fun onCreateView(

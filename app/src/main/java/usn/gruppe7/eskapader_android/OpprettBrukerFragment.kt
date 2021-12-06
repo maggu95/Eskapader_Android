@@ -14,6 +14,10 @@ import io.realm.mongodb.App
 import io.realm.mongodb.User
 import usn.gruppe7.eskapader_android.databinding.FragmentOpprettBrukerBinding
 
+/**
+ * Klasse for oppretting av bruker
+ * Kode inspirert fra: https://docs.mongodb.com/realm/tutorial/android-kotlin/#connect-to-your-mongodb-realm-app
+ */
 
 class OpprettBrukerFragment : Fragment() {
 
