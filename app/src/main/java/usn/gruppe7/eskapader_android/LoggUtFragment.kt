@@ -34,12 +34,11 @@ class LoggUtFragment : Fragment() {
         else
             Log.v("X","INGEN BRUKER ATM!");
 
-        // Inflate the layout for this fragment
         val i = Intent(context,LoginActivity::class.java)
         startActivity(i)
         Toast.makeText(context,"Du er nå logget ut",Toast.LENGTH_LONG).show()
 
-        return inflater.inflate(R.layout.fragment_logg_ut, container, false)
+        return inflater.inflate(R.layout.fragment_loading_bar, container, false)
     }
 
     private fun loggUtGjest(app: App, user: User) {

@@ -31,7 +31,6 @@ class OpprettDilemmaFragment : Fragment() {
         rowShape = context?.let { AppCompatResources.getDrawable(it, R.drawable.quizrow_drawable) }!!
 
         val binding = DataBindingUtil.inflate<FragmentOpprettDilemmaBinding>(inflater,R.layout.fragment_opprett_dilemma,container,false)
-        val volley = context?.let { APIConnector(it) }
         dilemmaListe = arrayListOf<Dilemma>()
 
         var antDilemma = 0
@@ -42,24 +41,12 @@ class OpprettDilemmaFragment : Fragment() {
         val spillnavn = binding.inputDilemmaSpillnavn.text.toString()
 
 
-        //val textList = ArrayList<EditText>()
-
         binding.btFerdig.setOnClickListener { view : View ->
             if (dilemmaListe.size > 0) {
                 sendSpill(requireContext(), binding.inputDilemmaSpillnavn.text.toString(), dilemmaListe)
-
                 val bundle = Bundle()
                 bundle.putString("Spillnavn", binding.inputDilemmaSpillnavn.text.toString())
-
                 view.findNavController().navigate(R.id.action_opprettDilemmaFragment_to_bekreftOpprettetSpill, bundle)
-
-                /*
-                val ferdigFragment = BekreftOpprettetSpill.newInstance(binding.inputQuizNavn.text.toString())
-                val fr = getFragmentManager()?.beginTransaction()
-                fr?.replace(R.id.opprettMusikkquiz_container, ferdigFragment)
-                fr?.commit()
-
-                 */
             }
         }
 
@@ -142,13 +129,11 @@ class OpprettDilemmaFragment : Fragment() {
     }
 
     fun tømInput(binding: FragmentOpprettDilemmaBinding ) {
-        //binding.inputDilemmaSpillnavn.text.clear()
         binding.inputDilemmaAlt1.text.clear()
         binding.inputDilemmaAlt2.text.clear()
     }
 
     private fun oppdaterId() {
-        println("Oppdaterer ID på listen")
         for (i in 0 until dilemmaListe.size) {
             dilemmaListe.get(i).id = id
         }

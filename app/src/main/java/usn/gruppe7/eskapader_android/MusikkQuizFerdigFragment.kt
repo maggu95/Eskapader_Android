@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import usn.gruppe7.eskapader_android.databinding.FragmentMusikkQuizFerdigBinding
-import usn.gruppe7.eskapader_android.databinding.MusikkquizSpillBinding
 
 
 class MusikkQuizFerdigFragment : Fragment() {
@@ -27,9 +26,7 @@ class MusikkQuizFerdigFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val poeng = arguments?.getInt("poeng")
-        // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentMusikkQuizFerdigBinding>(inflater,R.layout.fragment_musikk_quiz_ferdig,container,false)
-        //return inflater.inflate(R.layout.fragment_musikk_quiz_ferdig, container, false)
         binding.resultatTxt.text = "Poengsum: \n $poeng"
         binding.backBtn.setOnClickListener {
             val intent = Intent(context, HovedMenyActivity::class.java)

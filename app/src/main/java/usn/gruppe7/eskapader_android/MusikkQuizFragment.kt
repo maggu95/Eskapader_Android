@@ -3,7 +3,6 @@ package usn.gruppe7.eskapader_android
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -39,7 +38,6 @@ class MusikkQuizFragment() : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentMusikkQuizBinding>(inflater,R.layout.fragment_musikk_quiz,container,false)
         binding.sangtekst.text = quizListe[0].getSpørsmålsTekst()
         binding.musAlt1.text = quizListe[0].getSpørsmål(0)
@@ -54,7 +52,6 @@ class MusikkQuizFragment() : Fragment() {
 
         for (i in 0 until alternativer.size ) {
             alternativer.get(i).setOnClickListener {
-                Log.i("Valgt alternativ: " , "Du trykket på alternativ -> $i")
                 alternativer.get(i).background = valgtShape
                 valgtAlternativ = i
                 for(j in 0 until alternativer.size) {
@@ -125,12 +122,6 @@ class MusikkQuizFragment() : Fragment() {
                     binding.btBekreft.text = "Neste"
                 }
 
-
-
-
-
-                /*Log.d("Korrekt svar!", "Curr poeng = $poeng")
-                */
             }
 
 

@@ -13,9 +13,7 @@ import androidx.fragment.app.Fragment
 import usn.gruppe7.eskapader_android.databinding.FragmentOpprettMusikkquizBinding
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.cardview.widget.CardView
-import androidx.core.view.get
 import androidx.core.view.isVisible
-import androidx.core.view.iterator
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.findNavController
 
@@ -26,7 +24,6 @@ class OpprettMusikkQuizFragment : Fragment() {
     lateinit var  radioButtonList : ArrayList<RadioButton>
     lateinit var rowShape: Drawable
     lateinit var quizListe : ArrayList<Quiz>
-    //lateinit var  radioGroup: RadioGroup
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,13 +64,6 @@ class OpprettMusikkQuizFragment : Fragment() {
 
                 view.findNavController().navigate(R.id.action_opprettMusikkQuizFragment_to_bekreftOpprettetSpill, bundle)
 
-                /*
-                val ferdigFragment = BekreftOpprettetSpill.newInstance(binding.inputQuizNavn.text.toString())
-                val fr = getFragmentManager()?.beginTransaction()
-                fr?.replace(R.id.opprettMusikkquiz_container, ferdigFragment)
-                fr?.commit()
-
-                 */
             }
         }
 
@@ -121,7 +111,6 @@ class OpprettMusikkQuizFragment : Fragment() {
                 quizRow.setOnClickListener{
                     aktivQuiz = quiz
                     hentQuiz(quizListe.indexOf(quiz), binding)
-                    //println("ID til valgt objekt -> " + quizListe.indexOf(quiz))
                     binding.scrollView.fullScroll(View.FOCUS_UP)
                     var alt = arrayOf(binding.inputAlt1.text.toString(), binding.inputAlt2.text.toString(), binding.inputAlt3.text.toString(), binding.inputAlt4.text.toString())
 
@@ -173,7 +162,6 @@ class OpprettMusikkQuizFragment : Fragment() {
                         if (quizListe.indexOf(quiz) < 0)
                             Toast.makeText(context, "Objektet kan ikke slettes!", Toast.LENGTH_SHORT).show()
                         else {
-                            printEffektiv(quiz)
                             val index = quizListe.indexOf(quiz)
                             tømTekst(binding)
                             quizRow.removeAllViews()
@@ -190,31 +178,13 @@ class OpprettMusikkQuizFragment : Fragment() {
         return binding.root;
     }
 
-    // TODO: 15/11/2021 Skal fjernes senere
-    private fun printEffektiv(quiz: Quiz) {
-        println(
-            "KLAR FOR Å SLETTES: " + "\n" +
-            "Valgt objekt: " + quiz.getSpørsmålsTekst() +
-                    "\nID: " + quiz.idTall +
-                    "\nIndex i listen:" + quizListe.indexOf(quiz) +
-                    "\nStørrelse på listen:" + quizListe.size
-
-        )
-    }
-
     private fun oppdaterId() {
-        println("Oppdaterer ID på listen")
         for (i in 0 until quizListe.size) {
-            println("GAMMEL id til objekt " + quizListe.get(i).getSpørsmålsTekst() + ": " + quizListe.get(i).getId())
             quizListe.get(i).setId(i)
-            println("NY id til objekt " + quizListe.get(i).getSpørsmålsTekst() + ": " + quizListe.get(i).getId())
-            println()
-
         }
     }
 
     private fun hentQuiz(id: Int, binding: FragmentOpprettMusikkquizBinding) {
-        // TODO: 15/11/2021  Bør optimaliseres, bare temporary
         for (j in 0 until radioButtonList.size ) {
             radioButtonList.get(j).isChecked = false
         }
@@ -272,10 +242,10 @@ class OpprettMusikkQuizFragment : Fragment() {
         volley.opprettQuizSpill(bruker,spillnavn+"_Quiz", quizListe) {
             utført ->
             if(utført == true) {
-                println("Suksess, ditt spill har blitt lagret")
+                Toast.makeText(context,"Suksess", Toast.LENGTH_SHORT).show()
             }
             else {
-                println("Noe gikk galt med oppretting av spill")
+                Toast.makeText(context,"Noe gikk galt i oppretting", Toast.LENGTH_SHORT).show()
             }
 
         }

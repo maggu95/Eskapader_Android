@@ -51,13 +51,10 @@ class Quiz (val spørsmål: String, val idTall: Int, val svarTall: Int) : Parcel
 
     fun sammenlign(tittel: String, alt : Array<String>, svarTall: Int) : Boolean {
         if (spørsmålsTekst != tittel) {
-            //println(spørsmålsTekst + " ---- " + tittel)
-            //println("Spørsmålstekst stemmer ikke")
             return false
         }
         for (i in 0 until alt.size) {
             if (alt[i] != alternativ_Liste[i]) {
-                //println("Alternativer stemmer ikke")
                 return false
             }
         }

@@ -12,10 +12,10 @@
         >
 
         <androidx.fragment.app.FragmentContainerView
-            android:name="usn.gruppe7.eskapader_android.Loading_MusikkQuizFragment"
+            android:name="usn.gruppe7.eskapader_android.Loading_Bar_Fragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout="@layout/fragment_loading__musikk_quiz"
+            tools:layout="@layout/fragment_LoadingBar"
             android:id="@+id/musikkQuiz_Container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

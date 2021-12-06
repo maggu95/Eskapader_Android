@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 
 
-class Loading_MusikkQuizFragment : Fragment() {
+class Loading_Bar_Fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_loading__musikk_quiz, container, false)
+        return inflater.inflate(R.layout.fragment_loading_bar, container, false)
     }
 
 }

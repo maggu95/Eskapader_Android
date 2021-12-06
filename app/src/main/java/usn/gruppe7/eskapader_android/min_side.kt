@@ -6,16 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-
-import android.R
 import android.widget.AdapterView
-
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import usn.gruppe7.eskapader_android.databinding.FragmentMinSideBinding
-import usn.gruppe7.eskapader_android.databinding.FragmentOpprettDilemmaBinding
-import java.text.FieldPosition
 
 
 class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
@@ -53,14 +47,8 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
             }
         }
 
-        //spinner.isSelected = false;
-
-
 
         spinner.onItemSelectedListener = this
-
-
-
 
         var spillType :String = ""
 
@@ -71,16 +59,12 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
             }
             else
                 spillType = "Quiz"
-            println("Spilltype: " + spillType)
-            println("Spillnavn:" + spillNavn)
-            println("Author: " + author)
             volley?.slettSpill(spillNavn, author, spillType) {
                 result ->
                     if (result == true)
                         Toast.makeText(context, "Slettet spill!" , Toast.LENGTH_LONG).show()
             }
 
-            //spinner.isSelected = false;
             spillListe.remove(spillNavn)
             spinner.adapter = adapter
             binding.txtInfoSpill.setText("")
@@ -95,7 +79,6 @@ class min_aide : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long ) {
         binding?.txtInfoSpill?.setText(spillListe.get(position))
-        //binding?.txtAdapter?.setText(spillListe.get(position))
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
